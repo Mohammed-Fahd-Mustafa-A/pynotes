@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8" />
+    <!-- Set the viewport width to device width for mobile -->
+    <meta name="viewport" content="width=device-width" />
+
+    <title>Stock</title>
+
+    <link rel="stylesheet" href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/theme/css/normalize.css" />
+    <link rel="stylesheet" href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/theme/css/foundation.min.css" />
+    <link rel="stylesheet" href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/theme/css/style.css" />
+    <link rel="stylesheet" href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/theme/css/pygments.css" />	
+    <script src="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/theme/js/modernizr.js"></script>
+</head>
+
+<body>
+
+<!-- Nav Bar -->
+<nav>
+<div class="top-bar">
+<div class="row">
+    <div class="large-9 large-centered columns">
+	    <h1><a href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes">My Python Notes</a></h1>
+    </div>
+</div>
+</div>
+
+<!-- Show menu items and pages -->
+<div class="row">
+<div class="large-9 columns">
+    <ul class="button-group navigation">
+
+    </ul>
+</div>
+</div>
+</nav>
+<!-- End Nav -->
+
+
+<!-- Main Page Content and Sidebar -->
+<div class="row">
+
+    <!-- Main Blog Content -->
+    <div class="large-9 columns">
+<article>
+    <header>
+        <h3 class="article-title"><a href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/stock.html" rel="bookmark"
+        title="Permalink to Stock">Stock</a></h3>
+    </header>
+
+<h6 class="subheader" title="2025-06-29T00:00:00-04:00">Sun 29 June 2025
+</h6>
+
+
+    <div class="highlight"><pre><span></span><code><span class="c1"># Block 1: Install required packages (if not already installed)</span>
+<span class="err">!</span><span class="n">pip</span> <span class="n">install</span> <span class="n">yfinance</span> <span class="n">matplotlib</span> <span class="o">--</span><span class="n">quiet</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="c1"># Block 2: Import necessary libraries</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">yfinance</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">yf</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="c1"># Block 3: Set display options for better visualization</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s2">&quot;display.max_rows&quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s2">&quot;display.float_format&quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">{:.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="c1"># Block 4: Download historical stock data for Apple (AAPL)</span>
+<span class="n">stock</span> <span class="o">=</span> <span class="n">yf</span><span class="o">.</span><span class="n">Ticker</span><span class="p">(</span><span class="s2">&quot;AAPL&quot;</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">stock</span><span class="o">.</span><span class="n">history</span><span class="p">(</span><span class="n">period</span><span class="o">=</span><span class="s2">&quot;1y&quot;</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div>
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Open</th>
+      <th>High</th>
+      <th>Low</th>
+      <th>Close</th>
+      <th>Volume</th>
+      <th>Dividends</th>
+      <th>Stock Splits</th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2024-06-28 00:00:00-04:00</th>
+      <td>214.77</td>
+      <td>215.06</td>
+      <td>209.32</td>
+      <td>209.64</td>
+      <td>82542700</td>
+      <td>0.00</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>2024-07-01 00:00:00-04:00</th>
+      <td>211.10</td>
+      <td>216.50</td>
+      <td>210.93</td>
+      <td>215.74</td>
+      <td>60402900</td>
+      <td>0.00</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>2024-07-02 00:00:00-04:00</th>
+      <td>215.14</td>
+      <td>219.35</td>
+      <td>214.10</td>
+      <td>219.24</td>
+      <td>58046200</td>
+      <td>0.00</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>2024-07-03 00:00:00-04:00</th>
+      <td>218.98</td>
+      <td>220.52</td>
+      <td>218.01</td>
+      <td>220.52</td>
+      <td>37369800</td>
+      <td>0.00</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>2024-07-05 00:00:00-04:00</th>
+      <td>220.62</td>
+      <td>225.40</td>
+      <td>220.62</td>
+      <td>225.29</td>
+      <td>60412400</td>
+      <td>0.00</td>
+      <td>0.00</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="highlight"><pre><span></span><code><span class="c1"># Block 5: Basic Information</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Company Info:&quot;</span><span class="p">)</span>
+<span class="n">stock</span><span class="o">.</span><span class="n">info</span><span class="p">[</span><span class="s1">&#39;longBusinessSummary&#39;</span><span class="p">][:</span><span class="mi">300</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;...&quot;</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="nt">Company</span><span class="w"> </span><span class="nt">Info</span><span class="o">:</span>
+
+
+
+
+
+<span class="s1">&#39;Apple Inc. designs, manufactures, and markets smartphones, personal computers, tablets, wearables, and accessories worldwide. The company offers iPhone, a line of smartphones; Mac, a line of personal computers; iPad, a line of multi-purpose tablets; and wearables, home, and accessories comprising Ai...&#39;</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="c1"># Block 6: Describe the dataset</span>
+<span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</code></pre></div>
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Open</th>
+      <th>High</th>
+      <th>Low</th>
+      <th>Close</th>
+      <th>Volume</th>
+      <th>Dividends</th>
+      <th>Stock Splits</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>250.00</td>
+      <td>250.00</td>
+      <td>250.00</td>
+      <td>250.00</td>
+      <td>250.00</td>
+      <td>250.00</td>
+      <td>250.00</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>222.36</td>
+      <td>224.92</td>
+      <td>220.02</td>
+      <td>222.67</td>
+      <td>53516737.60</td>
+      <td>0.00</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>15.69</td>
+      <td>15.12</td>
+      <td>15.96</td>
+      <td>15.61</td>
+      <td>27343853.63</td>
+      <td>0.03</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>171.72</td>
+      <td>190.09</td>
+      <td>168.99</td>
+      <td>172.19</td>
+      <td>23234700.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>211.19</td>
+      <td>214.02</td>
+      <td>209.38</td>
+      <td>212.35</td>
+      <td>39510475.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>224.17</td>
+      <td>226.07</td>
+      <td>222.23</td>
+      <td>224.21</td>
+      <td>46906700.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>232.45</td>
+      <td>234.26</td>
+      <td>229.18</td>
+      <td>232.52</td>
+      <td>58825975.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>257.57</td>
+      <td>259.47</td>
+      <td>257.01</td>
+      <td>258.40</td>
+      <td>318679900.00</td>
+      <td>0.26</td>
+      <td>0.00</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="highlight"><pre><span></span><code><span class="c1"># Block 7: Plot closing price</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Close&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Close Price&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Apple (AAPL) - Closing Price&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Date&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Price (USD)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+
+<p><img alt="png" src="/pynotes/images/stock_6_0.png"></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Block 8: Calculate Moving Averages</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;MA20&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Close&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">window</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;MA50&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Close&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">window</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">df</span><span class="p">[[</span><span class="s1">&#39;Close&#39;</span><span class="p">,</span> <span class="s1">&#39;MA20&#39;</span><span class="p">,</span> <span class="s1">&#39;MA50&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
+</code></pre></div>
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Close</th>
+      <th>MA20</th>
+      <th>MA50</th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2025-06-23 00:00:00-04:00</th>
+      <td>201.50</td>
+      <td>200.04</td>
+      <td>202.30</td>
+    </tr>
+    <tr>
+      <th>2025-06-24 00:00:00-04:00</th>
+      <td>200.30</td>
+      <td>200.29</td>
+      <td>202.50</td>
+    </tr>
+    <tr>
+      <th>2025-06-25 00:00:00-04:00</th>
+      <td>201.56</td>
+      <td>200.36</td>
+      <td>202.57</td>
+    </tr>
+    <tr>
+      <th>2025-06-26 00:00:00-04:00</th>
+      <td>201.00</td>
+      <td>200.38</td>
+      <td>202.55</td>
+    </tr>
+    <tr>
+      <th>2025-06-27 00:00:00-04:00</th>
+      <td>201.08</td>
+      <td>200.44</td>
+      <td>202.53</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="highlight"><pre><span></span><code><span class="c1"># Block 9: Plot Moving Averages</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Close&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Close Price&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;MA20&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;20-day MA&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;MA50&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;50-day MA&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Moving Averages - AAPL&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Date&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Price (USD)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+
+<p><img alt="png" src="/pynotes/images/stock_8_0.png"></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Block 10: Volume analysis</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Volume&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;hist&#39;</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;purple&#39;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Trading Volume Distribution&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>&lt;Axes: title={&#39;center&#39;: &#39;Trading Volume Distribution&#39;}, ylabel=&#39;Frequency&#39;&gt;
+</code></pre></div>
+
+<p><img alt="png" src="/pynotes/images/stock_9_1.png"></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Block 11: Daily Returns</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Daily Return&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Close&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">pct_change</span><span class="p">()</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Daily Return&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Daily Return (%)&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="o">&lt;</span><span class="nv">Axes</span>:<span class="w"> </span><span class="nv">title</span><span class="o">=</span>{<span class="s1">&#39;center&#39;</span>:<span class="w"> </span><span class="s1">&#39;Daily Return (%)&#39;</span>},<span class="w"> </span><span class="nv">xlabel</span><span class="o">=</span><span class="s1">&#39;Date&#39;</span><span class="o">&gt;</span>
+</code></pre></div>
+
+<p><img alt="png" src="/pynotes/images/stock_10_1.png"></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Block 12: Correlation Matrix (simulate multiple stocks)</span>
+<span class="n">tickers</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;AAPL&#39;</span><span class="p">,</span> <span class="s1">&#39;MSFT&#39;</span><span class="p">,</span> <span class="s1">&#39;GOOG&#39;</span><span class="p">,</span> <span class="s1">&#39;AMZN&#39;</span><span class="p">]</span>
+<span class="n">df_multi</span> <span class="o">=</span> <span class="n">yf</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="n">tickers</span><span class="p">,</span> <span class="n">period</span><span class="o">=</span><span class="s2">&quot;6mo&quot;</span><span class="p">)[</span><span class="s1">&#39;Close&#39;</span><span class="p">]</span>
+<span class="n">df_multi</span> <span class="o">=</span> <span class="n">df_multi</span><span class="o">.</span><span class="n">pct_change</span><span class="p">()</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+<span class="n">correlation</span> <span class="o">=</span> <span class="n">df_multi</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
+<span class="n">correlation</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">C</span><span class="p">:</span>\<span class="n">Users</span>\<span class="n">HP</span>\<span class="n">AppData</span>\<span class="n">Local</span>\<span class="n">Temp</span>\<span class="n">ipykernel_6508</span>\<span class="mf">2024470801.</span><span class="n">py</span><span class="p">:</span><span class="mi">3</span><span class="p">:</span><span class="w"> </span><span class="n">FutureWarning</span><span class="p">:</span><span class="w"> </span><span class="n">YF</span><span class="o">.</span><span class="n">download</span><span class="p">()</span><span class="w"> </span><span class="n">has</span><span class="w"> </span><span class="n">changed</span><span class="w"> </span><span class="n">argument</span><span class="w"> </span><span class="n">auto_adjust</span><span class="w"> </span><span class="n">default</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">True</span>
+<span class="w">  </span><span class="n">df_multi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">yf</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="n">tickers</span><span class="p">,</span><span class="w"> </span><span class="n">period</span><span class="o">=</span><span class="s2">&quot;6mo&quot;</span><span class="p">)[</span><span class="s1">&#39;Close&#39;</span><span class="p">]</span>
+<span class="p">[</span><span class="o">*********************</span><span class="mi">100</span><span class="o">%***********************</span><span class="p">]</span><span class="w">  </span><span class="mi">4</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="n">completed</span>
+</code></pre></div>
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Ticker</th>
+      <th>AAPL</th>
+      <th>AMZN</th>
+      <th>GOOG</th>
+      <th>MSFT</th>
+    </tr>
+    <tr>
+      <th>Ticker</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>AAPL</th>
+      <td>1.00</td>
+      <td>0.70</td>
+      <td>0.56</td>
+      <td>0.62</td>
+    </tr>
+    <tr>
+      <th>AMZN</th>
+      <td>0.70</td>
+      <td>1.00</td>
+      <td>0.71</td>
+      <td>0.74</td>
+    </tr>
+    <tr>
+      <th>GOOG</th>
+      <td>0.56</td>
+      <td>0.71</td>
+      <td>1.00</td>
+      <td>0.60</td>
+    </tr>
+    <tr>
+      <th>MSFT</th>
+      <td>0.62</td>
+      <td>0.74</td>
+      <td>0.60</td>
+      <td>1.00</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="highlight"><pre><span></span><code><span class="c1"># Block 13: Heatmap of correlation</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">correlation</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;coolwarm&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Correlation Between Stocks&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>Text(0.5, 1.0, &#39;Correlation Between Stocks&#39;)
+</code></pre></div>
+
+<p><img alt="png" src="/pynotes/images/stock_12_1.png"></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Block 14: Candlestick Chart (optional for advanced visuals)</span>
+<span class="err">!</span><span class="n">pip</span> <span class="n">install</span> <span class="n">plotly</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="nx">Requirement</span><span class="w"> </span><span class="nx">already</span><span class="w"> </span><span class="nx">satisfied</span><span class="p">:</span><span class="w"> </span><span class="nx">plotly</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="nx">c</span><span class="p">:</span><span class="err">\</span><span class="nx">users</span><span class="err">\</span><span class="nx">hp</span><span class="err">\</span><span class="nx">miniconda3</span><span class="err">\</span><span class="nx">envs</span><span class="err">\</span><span class="nx">py312</span><span class="err">\</span><span class="nx">lib</span><span class="err">\</span><span class="nx">site</span><span class="o">-</span><span class="nx">packages</span><span class="w"> </span><span class="p">(</span><span class="m m-Double">6.2.0</span><span class="p">)</span>
+<span class="nx">Requirement</span><span class="w"> </span><span class="nx">already</span><span class="w"> </span><span class="nx">satisfied</span><span class="p">:</span><span class="w"> </span><span class="nx">narwhals</span><span class="o">&gt;=</span><span class="m m-Double">1.15.1</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="nx">c</span><span class="p">:</span><span class="err">\</span><span class="nx">users</span><span class="err">\</span><span class="nx">hp</span><span class="err">\</span><span class="nx">miniconda3</span><span class="err">\</span><span class="nx">envs</span><span class="err">\</span><span class="nx">py312</span><span class="err">\</span><span class="nx">lib</span><span class="err">\</span><span class="nx">site</span><span class="o">-</span><span class="nx">packages</span><span class="w"> </span><span class="p">(</span><span class="nx">from</span><span class="w"> </span><span class="nx">plotly</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="m m-Double">1.44.0</span><span class="p">)</span>
+<span class="nx">Requirement</span><span class="w"> </span><span class="nx">already</span><span class="w"> </span><span class="nx">satisfied</span><span class="p">:</span><span class="w"> </span><span class="nx">packaging</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="nx">c</span><span class="p">:</span><span class="err">\</span><span class="nx">users</span><span class="err">\</span><span class="nx">hp</span><span class="err">\</span><span class="nx">miniconda3</span><span class="err">\</span><span class="nx">envs</span><span class="err">\</span><span class="nx">py312</span><span class="err">\</span><span class="nx">lib</span><span class="err">\</span><span class="nx">site</span><span class="o">-</span><span class="nx">packages</span><span class="w"> </span><span class="p">(</span><span class="nx">from</span><span class="w"> </span><span class="nx">plotly</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="m m-Double">24.2</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">plotly.graph_objects</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">go</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Figure</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="p">[</span><span class="n">go</span><span class="o">.</span><span class="n">Candlestick</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">,</span>
+                <span class="nb">open</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Open&#39;</span><span class="p">],</span>
+                <span class="n">high</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;High&#39;</span><span class="p">],</span>
+                <span class="n">low</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Low&#39;</span><span class="p">],</span>
+                <span class="n">close</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Close&#39;</span><span class="p">])])</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;Candlestick Chart - AAPL&#39;</span><span class="p">,</span> <span class="n">xaxis_rangeslider_visible</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="c1"># Block 15: Highest closing price</span>
+<span class="n">highest</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Close&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Highest Closing Price in the Last 1 Year: $</span><span class="si">{</span><span class="n">highest</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>Highest Closing Price in the Last 1 Year: $258.40
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="c1"># Block 16: Lowest closing price</span>
+<span class="n">lowest</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Close&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Lowest Closing Price in the Last 1 Year: $</span><span class="si">{</span><span class="n">lowest</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>Lowest Closing Price in the Last 1 Year: $172.19
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="c1"># Block 17: Save processed data to CSV</span>
+<span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;AAPL_Processed.csv&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Saved to AAPL_Processed.csv&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>Saved to AAPL_Processed.csv
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="c1"># Block 18: Display final data sample</span>
+<span class="n">df</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
+</code></pre></div>
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Open</th>
+      <th>High</th>
+      <th>Low</th>
+      <th>Close</th>
+      <th>Volume</th>
+      <th>Dividends</th>
+      <th>Stock Splits</th>
+      <th>MA20</th>
+      <th>MA50</th>
+      <th>Daily Return</th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2025-06-23 00:00:00-04:00</th>
+      <td>201.63</td>
+      <td>202.30</td>
+      <td>198.96</td>
+      <td>201.50</td>
+      <td>55814300</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>200.04</td>
+      <td>202.30</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>2025-06-24 00:00:00-04:00</th>
+      <td>202.59</td>
+      <td>203.44</td>
+      <td>200.20</td>
+      <td>200.30</td>
+      <td>54064000</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>200.29</td>
+      <td>202.50</td>
+      <td>-0.01</td>
+    </tr>
+    <tr>
+      <th>2025-06-25 00:00:00-04:00</th>
+      <td>201.45</td>
+      <td>203.67</td>
+      <td>200.62</td>
+      <td>201.56</td>
+      <td>39525700</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>200.36</td>
+      <td>202.57</td>
+      <td>0.01</td>
+    </tr>
+    <tr>
+      <th>2025-06-26 00:00:00-04:00</th>
+      <td>201.43</td>
+      <td>202.64</td>
+      <td>199.46</td>
+      <td>201.00</td>
+      <td>50799100</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>200.38</td>
+      <td>202.55</td>
+      <td>-0.00</td>
+    </tr>
+    <tr>
+      <th>2025-06-27 00:00:00-04:00</th>
+      <td>201.89</td>
+      <td>203.22</td>
+      <td>200.00</td>
+      <td>201.08</td>
+      <td>73114100</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>200.44</td>
+      <td>202.53</td>
+      <td>0.00</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="highlight"><pre><span></span><code>
+</code></pre></div>
+
+<hr>
+<p><strong>Score: 20</strong></p>
+<p class="subheader">Category: <a href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/category/basics.html">basics</a>
+
+</p>
+
+
+
+
+</article>
+    </div>
+    <!-- End Main Content -->
+
+    <!-- Sidebar -->
+    <aside class="large-3 columns">
+        <h5 class="sidebar-title">Site</h5>
+        <ul class="side-nav">
+            <li><a href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/archives.html">Archives</a>
+            <li><a href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/tags.html">Tags</a>
+        </ul>
+
+		
+        <h5 class="sidebar-title">Categories</h5>
+        <ul class="side-nav">
+            <li><a href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/category/basics.html">basics</a></li>
+            <li><a href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/category/pandas-work.html">pandas-work</a></li>
+   
+        </ul>
+
+		
+        <h5 class="sidebar-title">Social</h5>
+        <ul class="side-nav">
+            <li><a href="https://github.com/<yourusername>/">GitHub</a></li>
+            <li><a href="<linkedin handle>">LinkedIn</a></li>
+        </ul>
+
+    </aside> <!-- End Sidebar -->
+
+</div> <!-- End Main Content and Sidebar -->
+
+
+<!-- Footer -->
+<footer class="row">
+    <div class="large-12 columns">
+        <hr />
+        <div class="row">
+            <div class="large-6 columns">
+              <!--                  <p>My Python Notes by Fahd</p> -->
+            </div>
+            </div>
+    </div>
+</footer>
+</body>
+</html>
