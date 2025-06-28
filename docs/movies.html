@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8" />
+    <!-- Set the viewport width to device width for mobile -->
+    <meta name="viewport" content="width=device-width" />
+
+    <title>Movies</title>
+
+    <link rel="stylesheet" href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/theme/css/normalize.css" />
+    <link rel="stylesheet" href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/theme/css/foundation.min.css" />
+    <link rel="stylesheet" href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/theme/css/style.css" />
+    <link rel="stylesheet" href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/theme/css/pygments.css" />	
+    <script src="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/theme/js/modernizr.js"></script>
+</head>
+
+<body>
+
+<!-- Nav Bar -->
+<nav>
+<div class="top-bar">
+<div class="row">
+    <div class="large-9 large-centered columns">
+	    <h1><a href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes">My Python Notes</a></h1>
+    </div>
+</div>
+</div>
+
+<!-- Show menu items and pages -->
+<div class="row">
+<div class="large-9 columns">
+    <ul class="button-group navigation">
+
+    </ul>
+</div>
+</div>
+</nav>
+<!-- End Nav -->
+
+
+<!-- Main Page Content and Sidebar -->
+<div class="row">
+
+    <!-- Main Blog Content -->
+    <div class="large-9 columns">
+<article>
+    <header>
+        <h3 class="article-title"><a href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/movies.html" rel="bookmark"
+        title="Permalink to Movies">Movies</a></h3>
+    </header>
+
+<h6 class="subheader" title="2025-06-28T00:00:00-04:00">Sat 28 June 2025
+</h6>
+
+
+    <div class="highlight"><pre><span></span><code><span class="n">movies</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span><span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;Inception&quot;</span><span class="p">,</span> <span class="s2">&quot;rating&quot;</span><span class="p">:</span> <span class="mf">8.8</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;Interstellar&quot;</span><span class="p">,</span> <span class="s2">&quot;rating&quot;</span><span class="p">:</span> <span class="mf">8.6</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;The Dark Knight&quot;</span><span class="p">,</span> <span class="s2">&quot;rating&quot;</span><span class="p">:</span> <span class="mf">9.0</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;Tenet&quot;</span><span class="p">,</span> <span class="s2">&quot;rating&quot;</span><span class="p">:</span> <span class="mf">7.5</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;Dunkirk&quot;</span><span class="p">,</span> <span class="s2">&quot;rating&quot;</span><span class="p">:</span> <span class="mf">7.9</span><span class="p">}</span>
+<span class="p">]</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="c1"># Create DataFrame</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">movies</span><span class="p">)</span>
+<span class="n">df</span>
+</code></pre></div>
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>title</th>
+      <th>rating</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Inception</td>
+      <td>8.8</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Interstellar</td>
+      <td>8.6</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>The Dark Knight</td>
+      <td>9.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Tenet</td>
+      <td>7.5</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Dunkirk</td>
+      <td>7.9</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="highlight"><pre><span></span><code><span class="c1"># Average rating</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;rating&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>np.float64(8.36)
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="c1"># Bar plot</span>
+<span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;title&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;rating&quot;</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;purple&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Movie Ratings&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="o">---------------------------------------------------------------------------</span>
+
+<span class="n">NameError</span><span class="w">                                 </span><span class="n">Traceback</span><span class="w"> </span><span class="p">(</span><span class="n">most</span><span class="w"> </span><span class="n">recent</span><span class="w"> </span><span class="n">call</span><span class="w"> </span><span class="kr">last</span><span class="p">)</span>
+
+<span class="n">Cell</span><span class="w"> </span><span class="kr">In</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span><span class="w"> </span><span class="n">line</span><span class="w"> </span><span class="mi">3</span>
+<span class="w">      </span><span class="mi">1</span><span class="w"> </span><span class="err">#</span><span class="w"> </span><span class="n">Bar</span><span class="w"> </span><span class="n">plot</span>
+<span class="w">      </span><span class="mi">2</span><span class="w"> </span><span class="n">df</span><span class="p">.</span><span class="n">plot</span><span class="p">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">&quot;title&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="o">=</span><span class="s">&quot;rating&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">legend</span><span class="o">=</span><span class="kr">False</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="o">=</span><span class="s">&quot;purple&quot;</span><span class="p">)</span>
+<span class="o">----&gt;</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="n">plt</span><span class="p">.</span><span class="n">title</span><span class="p">(</span><span class="s">&quot;Movie Ratings&quot;</span><span class="p">)</span>
+<span class="w">      </span><span class="mi">4</span><span class="w"> </span><span class="n">plt</span><span class="p">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span>
+<span class="w">      </span><span class="mi">5</span><span class="w"> </span><span class="n">plt</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+
+
+<span class="n">NameError</span><span class="o">:</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="s">&#39;plt&#39;</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="kr">not</span><span class="w"> </span><span class="n">defined</span>
+</code></pre></div>
+
+<p><img alt="png" src="/pynotes/images/movies_3_1.png"></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># High rated</span>
+<span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;rating&quot;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mf">8.5</span><span class="p">]</span>
+</code></pre></div>
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>title</th>
+      <th>rating</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Inception</td>
+      <td>8.8</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Interstellar</td>
+      <td>8.6</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>The Dark Knight</td>
+      <td>9.0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="highlight"><pre><span></span><code><span class="c1"># Sort by rating</span>
+<span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s2">&quot;rating&quot;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</code></pre></div>
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>title</th>
+      <th>rating</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2</th>
+      <td>The Dark Knight</td>
+      <td>9.0</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>Inception</td>
+      <td>8.8</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Interstellar</td>
+      <td>8.6</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Dunkirk</td>
+      <td>7.9</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Tenet</td>
+      <td>7.5</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="highlight"><pre><span></span><code><span class="c1"># Add genre</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;genre&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Sci-Fi&quot;</span><span class="p">,</span> <span class="s2">&quot;Sci-Fi&quot;</span><span class="p">,</span> <span class="s2">&quot;Action&quot;</span><span class="p">,</span> <span class="s2">&quot;Thriller&quot;</span><span class="p">,</span> <span class="s2">&quot;War&quot;</span><span class="p">]</span>
+<span class="n">df</span>
+</code></pre></div>
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>title</th>
+      <th>rating</th>
+      <th>genre</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Inception</td>
+      <td>8.8</td>
+      <td>Sci-Fi</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Interstellar</td>
+      <td>8.6</td>
+      <td>Sci-Fi</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>The Dark Knight</td>
+      <td>9.0</td>
+      <td>Action</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Tenet</td>
+      <td>7.5</td>
+      <td>Thriller</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Dunkirk</td>
+      <td>7.9</td>
+      <td>War</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="highlight"><pre><span></span><code>
+</code></pre></div>
+
+<hr>
+<p><strong>Score: 5</strong></p>
+<p class="subheader">Category: <a href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/category/basics.html">basics</a>
+
+</p>
+
+
+
+
+</article>
+    </div>
+    <!-- End Main Content -->
+
+    <!-- Sidebar -->
+    <aside class="large-3 columns">
+        <h5 class="sidebar-title">Site</h5>
+        <ul class="side-nav">
+            <li><a href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/archives.html">Archives</a>
+            <li><a href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/tags.html">Tags</a>
+        </ul>
+
+		
+        <h5 class="sidebar-title">Categories</h5>
+        <ul class="side-nav">
+            <li><a href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/category/basics.html">basics</a></li>
+            <li><a href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/category/pandas-work.html">pandas-work</a></li>
+   
+        </ul>
+
+		
+        <h5 class="sidebar-title">Social</h5>
+        <ul class="side-nav">
+            <li><a href="https://github.com/<yourusername>/">GitHub</a></li>
+            <li><a href="<linkedin handle>">LinkedIn</a></li>
+        </ul>
+
+    </aside> <!-- End Sidebar -->
+
+</div> <!-- End Main Content and Sidebar -->
+
+
+<!-- Footer -->
+<footer class="row">
+    <div class="large-12 columns">
+        <hr />
+        <div class="row">
+            <div class="large-6 columns">
+              <!--                  <p>My Python Notes by Fahd</p> -->
+            </div>
+            </div>
+    </div>
+</footer>
+</body>
+</html>
