@@ -3,18 +3,22 @@ title: Palindromechecker
 date: 2025-06-28
 author: Your Name
 cell_count: 2
-score: 10
+score: 0
 ---
 
 ```python
-def is_palindrome(word):
-    return word == word[::-1]
+def is_palindrome(text):
+    clean = ''.join(c.lower() for c in text if c.isalnum())
+    return clean == clean[::-1]
 
-print(is_palindrome("radar"))
-print(is_palindrome("hello"))
+# Test cases
+print(is_palindrome("Madam"))             # True
+print(is_palindrome("Race car!"))         # True
+print(is_palindrome("Hello"))             # False
 
 ```
 
+    True
     True
     False
     
@@ -26,4 +30,4 @@ print(is_palindrome("hello"))
 
 
 ---
-**Score: 10**
+**Score: 0**
