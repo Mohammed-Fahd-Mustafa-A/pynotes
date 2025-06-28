@@ -1,0 +1,1269 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8" />
+    <!-- Set the viewport width to device width for mobile -->
+    <meta name="viewport" content="width=device-width" />
+
+    <title>Covid</title>
+
+    <link rel="stylesheet" href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/theme/css/normalize.css" />
+    <link rel="stylesheet" href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/theme/css/foundation.min.css" />
+    <link rel="stylesheet" href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/theme/css/style.css" />
+    <link rel="stylesheet" href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/theme/css/pygments.css" />	
+    <script src="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/theme/js/modernizr.js"></script>
+</head>
+
+<body>
+
+<!-- Nav Bar -->
+<nav>
+<div class="top-bar">
+<div class="row">
+    <div class="large-9 large-centered columns">
+	    <h1><a href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes">My Python Notes</a></h1>
+    </div>
+</div>
+</div>
+
+<!-- Show menu items and pages -->
+<div class="row">
+<div class="large-9 columns">
+    <ul class="button-group navigation">
+
+    </ul>
+</div>
+</div>
+</nav>
+<!-- End Nav -->
+
+
+<!-- Main Page Content and Sidebar -->
+<div class="row">
+
+    <!-- Main Blog Content -->
+    <div class="large-9 columns">
+<article>
+    <header>
+        <h3 class="article-title"><a href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/covid.html" rel="bookmark"
+        title="Permalink to Covid">Covid</a></h3>
+    </header>
+
+<h6 class="subheader" title="2025-06-28T00:00:00-04:00">Sat 28 June 2025
+</h6>
+
+
+    <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s2">&quot;darkgrid&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;Country&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;USA&#39;</span><span class="p">,</span> <span class="s1">&#39;India&#39;</span><span class="p">,</span> <span class="s1">&#39;Brazil&#39;</span><span class="p">,</span> <span class="s1">&#39;Russia&#39;</span><span class="p">,</span> <span class="s1">&#39;UK&#39;</span><span class="p">,</span> <span class="s1">&#39;France&#39;</span><span class="p">,</span> <span class="s1">&#39;Spain&#39;</span><span class="p">,</span> <span class="s1">&#39;Italy&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;TotalCases&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">34000000</span><span class="p">,</span> <span class="mi">31000000</span><span class="p">,</span> <span class="mi">19000000</span><span class="p">,</span> <span class="mi">7000000</span><span class="p">,</span> <span class="mi">5000000</span><span class="p">,</span> <span class="mi">5800000</span><span class="p">,</span> <span class="mi">3700000</span><span class="p">,</span> <span class="mi">4200000</span><span class="p">],</span>
+    <span class="s1">&#39;TotalDeaths&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">610000</span><span class="p">,</span> <span class="mi">410000</span><span class="p">,</span> <span class="mi">530000</span><span class="p">,</span> <span class="mi">190000</span><span class="p">,</span> <span class="mi">130000</span><span class="p">,</span> <span class="mi">110000</span><span class="p">,</span> <span class="mi">81000</span><span class="p">,</span> <span class="mi">127000</span><span class="p">],</span>
+    <span class="s1">&#39;TotalRecovered&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">28000000</span><span class="p">,</span> <span class="mi">30000000</span><span class="p">,</span> <span class="mi">17000000</span><span class="p">,</span> <span class="mi">6500000</span><span class="p">,</span> <span class="mi">4800000</span><span class="p">,</span> <span class="mi">5000000</span><span class="p">,</span> <span class="mi">3500000</span><span class="p">,</span> <span class="mi">3900000</span><span class="p">],</span>
+    <span class="s1">&#39;Population&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">331000000</span><span class="p">,</span> <span class="mi">1380000000</span><span class="p">,</span> <span class="mi">213000000</span><span class="p">,</span> <span class="mi">146000000</span><span class="p">,</span> <span class="mi">68000000</span><span class="p">,</span> <span class="mi">67000000</span><span class="p">,</span> <span class="mi">47000000</span><span class="p">,</span> <span class="mi">60000000</span><span class="p">]</span>
+<span class="p">}</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">df</span>
+</code></pre></div>
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Country</th>
+      <th>TotalCases</th>
+      <th>TotalDeaths</th>
+      <th>TotalRecovered</th>
+      <th>Population</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>USA</td>
+      <td>34000000</td>
+      <td>610000</td>
+      <td>28000000</td>
+      <td>331000000</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>India</td>
+      <td>31000000</td>
+      <td>410000</td>
+      <td>30000000</td>
+      <td>1380000000</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Brazil</td>
+      <td>19000000</td>
+      <td>530000</td>
+      <td>17000000</td>
+      <td>213000000</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Russia</td>
+      <td>7000000</td>
+      <td>190000</td>
+      <td>6500000</td>
+      <td>146000000</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>UK</td>
+      <td>5000000</td>
+      <td>130000</td>
+      <td>4800000</td>
+      <td>68000000</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>France</td>
+      <td>5800000</td>
+      <td>110000</td>
+      <td>5000000</td>
+      <td>67000000</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Spain</td>
+      <td>3700000</td>
+      <td>81000</td>
+      <td>3500000</td>
+      <td>47000000</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Italy</td>
+      <td>4200000</td>
+      <td>127000</td>
+      <td>3900000</td>
+      <td>60000000</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="highlight"><pre><span></span><code><span class="n">df</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="nx">Country</span><span class="w">           </span><span class="mi">0</span>
+<span class="nx">TotalCases</span><span class="w">        </span><span class="mi">0</span>
+<span class="nx">TotalDeaths</span><span class="w">       </span><span class="mi">0</span>
+<span class="nx">TotalRecovered</span><span class="w">    </span><span class="mi">0</span>
+<span class="nx">Population</span><span class="w">        </span><span class="mi">0</span>
+<span class="nx">dtype</span><span class="p">:</span><span class="w"> </span><span class="nx">int64</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">df</span><span class="p">[</span><span class="s1">&#39;ActiveCases&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;TotalCases&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;TotalRecovered&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;TotalDeaths&#39;</span><span class="p">]</span>
+<span class="n">df</span>
+</code></pre></div>
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Country</th>
+      <th>TotalCases</th>
+      <th>TotalDeaths</th>
+      <th>TotalRecovered</th>
+      <th>Population</th>
+      <th>ActiveCases</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>USA</td>
+      <td>34000000</td>
+      <td>610000</td>
+      <td>28000000</td>
+      <td>331000000</td>
+      <td>5390000</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>India</td>
+      <td>31000000</td>
+      <td>410000</td>
+      <td>30000000</td>
+      <td>1380000000</td>
+      <td>590000</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Brazil</td>
+      <td>19000000</td>
+      <td>530000</td>
+      <td>17000000</td>
+      <td>213000000</td>
+      <td>1470000</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Russia</td>
+      <td>7000000</td>
+      <td>190000</td>
+      <td>6500000</td>
+      <td>146000000</td>
+      <td>310000</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>UK</td>
+      <td>5000000</td>
+      <td>130000</td>
+      <td>4800000</td>
+      <td>68000000</td>
+      <td>70000</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>France</td>
+      <td>5800000</td>
+      <td>110000</td>
+      <td>5000000</td>
+      <td>67000000</td>
+      <td>690000</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Spain</td>
+      <td>3700000</td>
+      <td>81000</td>
+      <td>3500000</td>
+      <td>47000000</td>
+      <td>119000</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Italy</td>
+      <td>4200000</td>
+      <td>127000</td>
+      <td>3900000</td>
+      <td>60000000</td>
+      <td>173000</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="highlight"><pre><span></span><code><span class="n">df</span><span class="p">[</span><span class="s1">&#39;MortalityRate&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;TotalDeaths&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;TotalCases&#39;</span><span class="p">])</span> <span class="o">*</span> <span class="mi">100</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;MortalityRate&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;MortalityRate&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">df</span>
+</code></pre></div>
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Country</th>
+      <th>TotalCases</th>
+      <th>TotalDeaths</th>
+      <th>TotalRecovered</th>
+      <th>Population</th>
+      <th>ActiveCases</th>
+      <th>MortalityRate</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>USA</td>
+      <td>34000000</td>
+      <td>610000</td>
+      <td>28000000</td>
+      <td>331000000</td>
+      <td>5390000</td>
+      <td>1.79</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>India</td>
+      <td>31000000</td>
+      <td>410000</td>
+      <td>30000000</td>
+      <td>1380000000</td>
+      <td>590000</td>
+      <td>1.32</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Brazil</td>
+      <td>19000000</td>
+      <td>530000</td>
+      <td>17000000</td>
+      <td>213000000</td>
+      <td>1470000</td>
+      <td>2.79</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Russia</td>
+      <td>7000000</td>
+      <td>190000</td>
+      <td>6500000</td>
+      <td>146000000</td>
+      <td>310000</td>
+      <td>2.71</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>UK</td>
+      <td>5000000</td>
+      <td>130000</td>
+      <td>4800000</td>
+      <td>68000000</td>
+      <td>70000</td>
+      <td>2.60</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>France</td>
+      <td>5800000</td>
+      <td>110000</td>
+      <td>5000000</td>
+      <td>67000000</td>
+      <td>690000</td>
+      <td>1.90</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Spain</td>
+      <td>3700000</td>
+      <td>81000</td>
+      <td>3500000</td>
+      <td>47000000</td>
+      <td>119000</td>
+      <td>2.19</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Italy</td>
+      <td>4200000</td>
+      <td>127000</td>
+      <td>3900000</td>
+      <td>60000000</td>
+      <td>173000</td>
+      <td>3.02</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="highlight"><pre><span></span><code><span class="n">df</span><span class="p">[</span><span class="s1">&#39;RecoveryRate&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;TotalRecovered&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;TotalCases&#39;</span><span class="p">])</span> <span class="o">*</span> <span class="mi">100</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;RecoveryRate&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;RecoveryRate&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">df</span>
+</code></pre></div>
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Country</th>
+      <th>TotalCases</th>
+      <th>TotalDeaths</th>
+      <th>TotalRecovered</th>
+      <th>Population</th>
+      <th>ActiveCases</th>
+      <th>MortalityRate</th>
+      <th>RecoveryRate</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>USA</td>
+      <td>34000000</td>
+      <td>610000</td>
+      <td>28000000</td>
+      <td>331000000</td>
+      <td>5390000</td>
+      <td>1.79</td>
+      <td>82.35</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>India</td>
+      <td>31000000</td>
+      <td>410000</td>
+      <td>30000000</td>
+      <td>1380000000</td>
+      <td>590000</td>
+      <td>1.32</td>
+      <td>96.77</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Brazil</td>
+      <td>19000000</td>
+      <td>530000</td>
+      <td>17000000</td>
+      <td>213000000</td>
+      <td>1470000</td>
+      <td>2.79</td>
+      <td>89.47</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Russia</td>
+      <td>7000000</td>
+      <td>190000</td>
+      <td>6500000</td>
+      <td>146000000</td>
+      <td>310000</td>
+      <td>2.71</td>
+      <td>92.86</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>UK</td>
+      <td>5000000</td>
+      <td>130000</td>
+      <td>4800000</td>
+      <td>68000000</td>
+      <td>70000</td>
+      <td>2.60</td>
+      <td>96.00</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>France</td>
+      <td>5800000</td>
+      <td>110000</td>
+      <td>5000000</td>
+      <td>67000000</td>
+      <td>690000</td>
+      <td>1.90</td>
+      <td>86.21</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Spain</td>
+      <td>3700000</td>
+      <td>81000</td>
+      <td>3500000</td>
+      <td>47000000</td>
+      <td>119000</td>
+      <td>2.19</td>
+      <td>94.59</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Italy</td>
+      <td>4200000</td>
+      <td>127000</td>
+      <td>3900000</td>
+      <td>60000000</td>
+      <td>173000</td>
+      <td>3.02</td>
+      <td>92.86</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="highlight"><pre><span></span><code><span class="n">df</span><span class="p">[</span><span class="s1">&#39;CasesPer100k&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;TotalCases&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Population&#39;</span><span class="p">])</span> <span class="o">*</span> <span class="mi">100000</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;CasesPer100k&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;CasesPer100k&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">df</span>
+</code></pre></div>
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Country</th>
+      <th>TotalCases</th>
+      <th>TotalDeaths</th>
+      <th>TotalRecovered</th>
+      <th>Population</th>
+      <th>ActiveCases</th>
+      <th>MortalityRate</th>
+      <th>RecoveryRate</th>
+      <th>CasesPer100k</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>USA</td>
+      <td>34000000</td>
+      <td>610000</td>
+      <td>28000000</td>
+      <td>331000000</td>
+      <td>5390000</td>
+      <td>1.79</td>
+      <td>82.35</td>
+      <td>10271.90</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>India</td>
+      <td>31000000</td>
+      <td>410000</td>
+      <td>30000000</td>
+      <td>1380000000</td>
+      <td>590000</td>
+      <td>1.32</td>
+      <td>96.77</td>
+      <td>2246.38</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Brazil</td>
+      <td>19000000</td>
+      <td>530000</td>
+      <td>17000000</td>
+      <td>213000000</td>
+      <td>1470000</td>
+      <td>2.79</td>
+      <td>89.47</td>
+      <td>8920.19</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Russia</td>
+      <td>7000000</td>
+      <td>190000</td>
+      <td>6500000</td>
+      <td>146000000</td>
+      <td>310000</td>
+      <td>2.71</td>
+      <td>92.86</td>
+      <td>4794.52</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>UK</td>
+      <td>5000000</td>
+      <td>130000</td>
+      <td>4800000</td>
+      <td>68000000</td>
+      <td>70000</td>
+      <td>2.60</td>
+      <td>96.00</td>
+      <td>7352.94</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>France</td>
+      <td>5800000</td>
+      <td>110000</td>
+      <td>5000000</td>
+      <td>67000000</td>
+      <td>690000</td>
+      <td>1.90</td>
+      <td>86.21</td>
+      <td>8656.72</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Spain</td>
+      <td>3700000</td>
+      <td>81000</td>
+      <td>3500000</td>
+      <td>47000000</td>
+      <td>119000</td>
+      <td>2.19</td>
+      <td>94.59</td>
+      <td>7872.34</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Italy</td>
+      <td>4200000</td>
+      <td>127000</td>
+      <td>3900000</td>
+      <td>60000000</td>
+      <td>173000</td>
+      <td>3.02</td>
+      <td>92.86</td>
+      <td>7000.00</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="highlight"><pre><span></span><code><span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;TotalCases&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</code></pre></div>
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Country</th>
+      <th>TotalCases</th>
+      <th>TotalDeaths</th>
+      <th>TotalRecovered</th>
+      <th>Population</th>
+      <th>ActiveCases</th>
+      <th>MortalityRate</th>
+      <th>RecoveryRate</th>
+      <th>CasesPer100k</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>USA</td>
+      <td>34000000</td>
+      <td>610000</td>
+      <td>28000000</td>
+      <td>331000000</td>
+      <td>5390000</td>
+      <td>1.79</td>
+      <td>82.35</td>
+      <td>10271.90</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>India</td>
+      <td>31000000</td>
+      <td>410000</td>
+      <td>30000000</td>
+      <td>1380000000</td>
+      <td>590000</td>
+      <td>1.32</td>
+      <td>96.77</td>
+      <td>2246.38</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Brazil</td>
+      <td>19000000</td>
+      <td>530000</td>
+      <td>17000000</td>
+      <td>213000000</td>
+      <td>1470000</td>
+      <td>2.79</td>
+      <td>89.47</td>
+      <td>8920.19</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Russia</td>
+      <td>7000000</td>
+      <td>190000</td>
+      <td>6500000</td>
+      <td>146000000</td>
+      <td>310000</td>
+      <td>2.71</td>
+      <td>92.86</td>
+      <td>4794.52</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>France</td>
+      <td>5800000</td>
+      <td>110000</td>
+      <td>5000000</td>
+      <td>67000000</td>
+      <td>690000</td>
+      <td>1.90</td>
+      <td>86.21</td>
+      <td>8656.72</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>UK</td>
+      <td>5000000</td>
+      <td>130000</td>
+      <td>4800000</td>
+      <td>68000000</td>
+      <td>70000</td>
+      <td>2.60</td>
+      <td>96.00</td>
+      <td>7352.94</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Italy</td>
+      <td>4200000</td>
+      <td>127000</td>
+      <td>3900000</td>
+      <td>60000000</td>
+      <td>173000</td>
+      <td>3.02</td>
+      <td>92.86</td>
+      <td>7000.00</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Spain</td>
+      <td>3700000</td>
+      <td>81000</td>
+      <td>3500000</td>
+      <td>47000000</td>
+      <td>119000</td>
+      <td>2.19</td>
+      <td>94.59</td>
+      <td>7872.34</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="highlight"><pre><span></span><code><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;Country&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;TotalCases&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Total COVID-19 Cases by Country&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+
+<p><img alt="png" src="/pynotes/images/covid_8_0.png"></p>
+<div class="highlight"><pre><span></span><code><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">pie</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;TotalDeaths&#39;</span><span class="p">],</span> <span class="n">labels</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Country&#39;</span><span class="p">],</span> <span class="n">autopct</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%1.1f%%</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">startangle</span><span class="o">=</span><span class="mi">140</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Share of Total Deaths&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+
+<p><img alt="png" src="/pynotes/images/covid_9_0.png"></p>
+<div class="highlight"><pre><span></span><code><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;RecoveryRate&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;MortalityRate&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;Country&quot;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Recovery vs Mortality Rate&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+
+<p><img alt="png" src="/pynotes/images/covid_10_0.png"></p>
+<div class="highlight"><pre><span></span><code><span class="n">correlation</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">corr</span><span class="p">(</span><span class="n">numeric_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">correlation</span>
+</code></pre></div>
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>TotalCases</th>
+      <th>TotalDeaths</th>
+      <th>TotalRecovered</th>
+      <th>Population</th>
+      <th>ActiveCases</th>
+      <th>MortalityRate</th>
+      <th>RecoveryRate</th>
+      <th>CasesPer100k</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>TotalCases</th>
+      <td>1.000000</td>
+      <td>0.912920</td>
+      <td>0.993700</td>
+      <td>0.716484</td>
+      <td>0.735629</td>
+      <td>-0.630630</td>
+      <td>-0.350647</td>
+      <td>-0.070176</td>
+    </tr>
+    <tr>
+      <th>TotalDeaths</th>
+      <td>0.912920</td>
+      <td>1.000000</td>
+      <td>0.885787</td>
+      <td>0.456123</td>
+      <td>0.785250</td>
+      <td>-0.319051</td>
+      <td>-0.481419</td>
+      <td>0.170433</td>
+    </tr>
+    <tr>
+      <th>TotalRecovered</th>
+      <td>0.993700</td>
+      <td>0.885787</td>
+      <td>1.000000</td>
+      <td>0.786761</td>
+      <td>0.655228</td>
+      <td>-0.650646</td>
+      <td>-0.258257</td>
+      <td>-0.167963</td>
+    </tr>
+    <tr>
+      <th>Population</th>
+      <td>0.716484</td>
+      <td>0.456123</td>
+      <td>0.786761</td>
+      <td>1.000000</td>
+      <td>0.084207</td>
+      <td>-0.702345</td>
+      <td>0.279695</td>
+      <td>-0.688266</td>
+    </tr>
+    <tr>
+      <th>ActiveCases</th>
+      <td>0.735629</td>
+      <td>0.785250</td>
+      <td>0.655228</td>
+      <td>0.084207</td>
+      <td>1.000000</td>
+      <td>-0.344567</td>
+      <td>-0.801032</td>
+      <td>0.533024</td>
+    </tr>
+    <tr>
+      <th>MortalityRate</th>
+      <td>-0.630630</td>
+      <td>-0.319051</td>
+      <td>-0.650646</td>
+      <td>-0.702345</td>
+      <td>-0.344567</td>
+      <td>1.000000</td>
+      <td>0.153110</td>
+      <td>0.228256</td>
+    </tr>
+    <tr>
+      <th>RecoveryRate</th>
+      <td>-0.350647</td>
+      <td>-0.481419</td>
+      <td>-0.258257</td>
+      <td>0.279695</td>
+      <td>-0.801032</td>
+      <td>0.153110</td>
+      <td>1.000000</td>
+      <td>-0.739556</td>
+    </tr>
+    <tr>
+      <th>CasesPer100k</th>
+      <td>-0.070176</td>
+      <td>0.170433</td>
+      <td>-0.167963</td>
+      <td>-0.688266</td>
+      <td>0.533024</td>
+      <td>0.228256</td>
+      <td>-0.739556</td>
+      <td>1.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="highlight"><pre><span></span><code><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">correlation</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;Blues&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Feature Correlation Matrix&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+
+<p><img alt="png" src="/pynotes/images/covid_12_0.png"></p>
+<div class="highlight"><pre><span></span><code><span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;MortalityRate&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</code></pre></div>
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Country</th>
+      <th>TotalCases</th>
+      <th>TotalDeaths</th>
+      <th>TotalRecovered</th>
+      <th>Population</th>
+      <th>ActiveCases</th>
+      <th>MortalityRate</th>
+      <th>RecoveryRate</th>
+      <th>CasesPer100k</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>7</th>
+      <td>Italy</td>
+      <td>4200000</td>
+      <td>127000</td>
+      <td>3900000</td>
+      <td>60000000</td>
+      <td>173000</td>
+      <td>3.02</td>
+      <td>92.86</td>
+      <td>7000.00</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Brazil</td>
+      <td>19000000</td>
+      <td>530000</td>
+      <td>17000000</td>
+      <td>213000000</td>
+      <td>1470000</td>
+      <td>2.79</td>
+      <td>89.47</td>
+      <td>8920.19</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Russia</td>
+      <td>7000000</td>
+      <td>190000</td>
+      <td>6500000</td>
+      <td>146000000</td>
+      <td>310000</td>
+      <td>2.71</td>
+      <td>92.86</td>
+      <td>4794.52</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>UK</td>
+      <td>5000000</td>
+      <td>130000</td>
+      <td>4800000</td>
+      <td>68000000</td>
+      <td>70000</td>
+      <td>2.60</td>
+      <td>96.00</td>
+      <td>7352.94</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Spain</td>
+      <td>3700000</td>
+      <td>81000</td>
+      <td>3500000</td>
+      <td>47000000</td>
+      <td>119000</td>
+      <td>2.19</td>
+      <td>94.59</td>
+      <td>7872.34</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="highlight"><pre><span></span><code><span class="n">totals</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;TotalCases&#39;</span><span class="p">,</span> <span class="s1">&#39;TotalDeaths&#39;</span><span class="p">,</span> <span class="s1">&#39;TotalRecovered&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">totals</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="nx">TotalCases</span><span class="w">        </span><span class="mi">109700000</span>
+<span class="nx">TotalDeaths</span><span class="w">         </span><span class="mi">2188000</span>
+<span class="nx">TotalRecovered</span><span class="w">     </span><span class="mi">98700000</span>
+<span class="nx">dtype</span><span class="p">:</span><span class="w"> </span><span class="nx">int64</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">global_mortality</span> <span class="o">=</span> <span class="p">(</span><span class="n">totals</span><span class="p">[</span><span class="s1">&#39;TotalDeaths&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">totals</span><span class="p">[</span><span class="s1">&#39;TotalCases&#39;</span><span class="p">])</span> <span class="o">*</span> <span class="mi">100</span>
+<span class="nb">round</span><span class="p">(</span><span class="n">global_mortality</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>np.float64(1.99)
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">df</span><span class="p">[</span><span class="s1">&#39;RiskLevel&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;MortalityRate&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="s1">&#39;High&#39;</span> <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">2</span> <span class="k">else</span> <span class="s1">&#39;Moderate&#39;</span><span class="p">)</span>
+<span class="n">df</span>
+</code></pre></div>
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Country</th>
+      <th>TotalCases</th>
+      <th>TotalDeaths</th>
+      <th>TotalRecovered</th>
+      <th>Population</th>
+      <th>ActiveCases</th>
+      <th>MortalityRate</th>
+      <th>RecoveryRate</th>
+      <th>CasesPer100k</th>
+      <th>RiskLevel</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>USA</td>
+      <td>34000000</td>
+      <td>610000</td>
+      <td>28000000</td>
+      <td>331000000</td>
+      <td>5390000</td>
+      <td>1.79</td>
+      <td>82.35</td>
+      <td>10271.90</td>
+      <td>Moderate</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>India</td>
+      <td>31000000</td>
+      <td>410000</td>
+      <td>30000000</td>
+      <td>1380000000</td>
+      <td>590000</td>
+      <td>1.32</td>
+      <td>96.77</td>
+      <td>2246.38</td>
+      <td>Moderate</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Brazil</td>
+      <td>19000000</td>
+      <td>530000</td>
+      <td>17000000</td>
+      <td>213000000</td>
+      <td>1470000</td>
+      <td>2.79</td>
+      <td>89.47</td>
+      <td>8920.19</td>
+      <td>High</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Russia</td>
+      <td>7000000</td>
+      <td>190000</td>
+      <td>6500000</td>
+      <td>146000000</td>
+      <td>310000</td>
+      <td>2.71</td>
+      <td>92.86</td>
+      <td>4794.52</td>
+      <td>High</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>UK</td>
+      <td>5000000</td>
+      <td>130000</td>
+      <td>4800000</td>
+      <td>68000000</td>
+      <td>70000</td>
+      <td>2.60</td>
+      <td>96.00</td>
+      <td>7352.94</td>
+      <td>High</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>France</td>
+      <td>5800000</td>
+      <td>110000</td>
+      <td>5000000</td>
+      <td>67000000</td>
+      <td>690000</td>
+      <td>1.90</td>
+      <td>86.21</td>
+      <td>8656.72</td>
+      <td>Moderate</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Spain</td>
+      <td>3700000</td>
+      <td>81000</td>
+      <td>3500000</td>
+      <td>47000000</td>
+      <td>119000</td>
+      <td>2.19</td>
+      <td>94.59</td>
+      <td>7872.34</td>
+      <td>High</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Italy</td>
+      <td>4200000</td>
+      <td>127000</td>
+      <td>3900000</td>
+      <td>60000000</td>
+      <td>173000</td>
+      <td>3.02</td>
+      <td>92.86</td>
+      <td>7000.00</td>
+      <td>High</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="highlight"><pre><span></span><code><span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;RiskLevel&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Country Risk Level Count&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+
+<p><img alt="png" src="/pynotes/images/covid_17_0.png"></p>
+<div class="highlight"><pre><span></span><code>
+</code></pre></div>
+
+<hr>
+<p><strong>Score: 15</strong></p>
+<p class="subheader">Category: <a href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/category/basics.html">basics</a>
+
+</p>
+
+
+
+
+</article>
+    </div>
+    <!-- End Main Content -->
+
+    <!-- Sidebar -->
+    <aside class="large-3 columns">
+        <h5 class="sidebar-title">Site</h5>
+        <ul class="side-nav">
+            <li><a href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/archives.html">Archives</a>
+            <li><a href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/tags.html">Tags</a>
+        </ul>
+
+		
+        <h5 class="sidebar-title">Categories</h5>
+        <ul class="side-nav">
+            <li><a href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/category/basics.html">basics</a></li>
+            <li><a href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/category/pandas-work.html">pandas-work</a></li>
+   
+        </ul>
+
+		
+        <h5 class="sidebar-title">Social</h5>
+        <ul class="side-nav">
+            <li><a href="https://github.com/<yourusername>/">GitHub</a></li>
+            <li><a href="<linkedin handle>">LinkedIn</a></li>
+        </ul>
+
+    </aside> <!-- End Sidebar -->
+
+</div> <!-- End Main Content and Sidebar -->
+
+
+<!-- Footer -->
+<footer class="row">
+    <div class="large-12 columns">
+        <hr />
+        <div class="row">
+            <div class="large-6 columns">
+              <!--                  <p>My Python Notes by Fahd</p> -->
+            </div>
+            </div>
+    </div>
+</footer>
+</body>
+</html>
