@@ -26,4 +26,4 @@ print(is_palindrome("hello"))
 
 
 ---
-**Score: 0**
+**Score: 10**
