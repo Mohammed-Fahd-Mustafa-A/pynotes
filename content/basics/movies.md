@@ -2,11 +2,12 @@
 title: Movies
 date: 2025-06-28
 author: Your Name
-cell_count: 8
+cell_count: 9
 score: 5
 ---
 
 ```python
+import matplotlib.pyplot as plt
 movies = [
     {"title": "Inception", "rating": 8.8},
     {"title": "Interstellar", "rating": 8.6},
@@ -108,24 +109,8 @@ plt.show()
 ```
 
 
-    ---------------------------------------------------------------------------
-
-    NameError                                 Traceback (most recent call last)
-
-    Cell In[4], line 3
-          1 # Bar plot
-          2 df.plot.bar(x="title", y="rating", legend=False, color="purple")
-    ----> 3 plt.title("Movie Ratings")
-          4 plt.ylim(0, 10)
-          5 plt.show()
     
-
-    NameError: name 'plt' is not defined
-
-
-
-    
-![png](/pynotes/images/movies_3_1.png)
+![png](/pynotes/images/movies_3_0.png)
     
 
 
@@ -317,6 +302,11 @@ df
 </div>
 
 
+
+
+```python
+
+```
 
 
 ```python

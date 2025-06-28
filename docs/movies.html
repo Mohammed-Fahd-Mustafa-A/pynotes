@@ -52,7 +52,8 @@
 </h6>
 
 
-    <div class="highlight"><pre><span></span><code><span class="n">movies</span> <span class="o">=</span> <span class="p">[</span>
+    <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="n">movies</span> <span class="o">=</span> <span class="p">[</span>
     <span class="p">{</span><span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;Inception&quot;</span><span class="p">,</span> <span class="s2">&quot;rating&quot;</span><span class="p">:</span> <span class="mf">8.8</span><span class="p">},</span>
     <span class="p">{</span><span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;Interstellar&quot;</span><span class="p">,</span> <span class="s2">&quot;rating&quot;</span><span class="p">:</span> <span class="mf">8.6</span><span class="p">},</span>
     <span class="p">{</span><span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;The Dark Knight&quot;</span><span class="p">,</span> <span class="s2">&quot;rating&quot;</span><span class="p">:</span> <span class="mf">9.0</span><span class="p">},</span>
@@ -133,22 +134,7 @@
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div>
 
-<div class="highlight"><pre><span></span><code><span class="o">---------------------------------------------------------------------------</span>
-
-<span class="n">NameError</span><span class="w">                                 </span><span class="n">Traceback</span><span class="w"> </span><span class="p">(</span><span class="n">most</span><span class="w"> </span><span class="n">recent</span><span class="w"> </span><span class="n">call</span><span class="w"> </span><span class="kr">last</span><span class="p">)</span>
-
-<span class="n">Cell</span><span class="w"> </span><span class="kr">In</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span><span class="w"> </span><span class="n">line</span><span class="w"> </span><span class="mi">3</span>
-<span class="w">      </span><span class="mi">1</span><span class="w"> </span><span class="err">#</span><span class="w"> </span><span class="n">Bar</span><span class="w"> </span><span class="n">plot</span>
-<span class="w">      </span><span class="mi">2</span><span class="w"> </span><span class="n">df</span><span class="p">.</span><span class="n">plot</span><span class="p">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">&quot;title&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="o">=</span><span class="s">&quot;rating&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">legend</span><span class="o">=</span><span class="kr">False</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="o">=</span><span class="s">&quot;purple&quot;</span><span class="p">)</span>
-<span class="o">----&gt;</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="n">plt</span><span class="p">.</span><span class="n">title</span><span class="p">(</span><span class="s">&quot;Movie Ratings&quot;</span><span class="p">)</span>
-<span class="w">      </span><span class="mi">4</span><span class="w"> </span><span class="n">plt</span><span class="p">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span>
-<span class="w">      </span><span class="mi">5</span><span class="w"> </span><span class="n">plt</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
-
-
-<span class="n">NameError</span><span class="o">:</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="s">&#39;plt&#39;</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="kr">not</span><span class="w"> </span><span class="n">defined</span>
-</code></pre></div>
-
-<p><img alt="png" src="/pynotes/images/movies_3_1.png"></p>
+<p><img alt="png" src="/pynotes/images/movies_3_0.png"></p>
 <div class="highlight"><pre><span></span><code><span class="c1"># High rated</span>
 <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;rating&quot;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mf">8.5</span><span class="p">]</span>
 </code></pre></div>
@@ -313,6 +299,9 @@
   </tbody>
 </table>
 </div>
+
+<div class="highlight"><pre><span></span><code>
+</code></pre></div>
 
 <div class="highlight"><pre><span></span><code>
 </code></pre></div>
