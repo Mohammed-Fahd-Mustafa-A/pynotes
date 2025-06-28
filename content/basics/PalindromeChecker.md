@@ -2,7 +2,7 @@
 title: Palindromechecker
 date: 2025-06-28
 author: Your Name
-cell_count: 2
+cell_count: 3
 score: 0
 ---
 
@@ -22,6 +22,11 @@ print(is_palindrome("Hello"))             # False
     True
     False
     
+
+
+```python
+
+```
 
 
 ```python
