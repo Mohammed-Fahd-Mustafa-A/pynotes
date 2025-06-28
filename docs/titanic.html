@@ -1,0 +1,1518 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8" />
+    <!-- Set the viewport width to device width for mobile -->
+    <meta name="viewport" content="width=device-width" />
+
+    <title>Titanic</title>
+
+    <link rel="stylesheet" href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/theme/css/normalize.css" />
+    <link rel="stylesheet" href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/theme/css/foundation.min.css" />
+    <link rel="stylesheet" href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/theme/css/style.css" />
+    <link rel="stylesheet" href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/theme/css/pygments.css" />	
+    <script src="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/theme/js/modernizr.js"></script>
+</head>
+
+<body>
+
+<!-- Nav Bar -->
+<nav>
+<div class="top-bar">
+<div class="row">
+    <div class="large-9 large-centered columns">
+	    <h1><a href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes">My Python Notes</a></h1>
+    </div>
+</div>
+</div>
+
+<!-- Show menu items and pages -->
+<div class="row">
+<div class="large-9 columns">
+    <ul class="button-group navigation">
+
+    </ul>
+</div>
+</div>
+</nav>
+<!-- End Nav -->
+
+
+<!-- Main Page Content and Sidebar -->
+<div class="row">
+
+    <!-- Main Blog Content -->
+    <div class="large-9 columns">
+<article>
+    <header>
+        <h3 class="article-title"><a href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/titanic.html" rel="bookmark"
+        title="Permalink to Titanic">Titanic</a></h3>
+    </header>
+
+<h6 class="subheader" title="2025-06-28T00:00:00-04:00">Sat 28 June 2025
+</h6>
+
+
+    <div class="highlight"><pre><span></span><code><span class="n">pip</span> <span class="n">install</span> <span class="n">scikit</span><span class="o">-</span><span class="n">learn</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="c">Collecting scikit</span><span class="nb">-</span><span class="c">learn</span>
+<span class="c">  Downloading scikit_learn</span><span class="nb">-</span><span class="c">1</span><span class="nt">.</span><span class="c">7</span><span class="nt">.</span><span class="c">0</span><span class="nb">-</span><span class="c">cp312</span><span class="nb">-</span><span class="c">cp312</span><span class="nb">-</span><span class="c">win_amd64</span><span class="nt">.</span><span class="c">whl</span><span class="nt">.</span><span class="c">metadata (14 kB)</span>
+<span class="c">Requirement already satisfied: numpy</span><span class="nv">&gt;</span><span class="c">=1</span><span class="nt">.</span><span class="c">22</span><span class="nt">.</span><span class="c">0 in c:\users\hp\miniconda3\envs\py312\lib\site</span><span class="nb">-</span><span class="c">packages (from scikit</span><span class="nb">-</span><span class="c">learn) (2</span><span class="nt">.</span><span class="c">3</span><span class="nt">.</span><span class="c">1)</span>
+<span class="c">Collecting scipy</span><span class="nv">&gt;</span><span class="c">=1</span><span class="nt">.</span><span class="c">8</span><span class="nt">.</span><span class="c">0 (from scikit</span><span class="nb">-</span><span class="c">learn)</span>
+<span class="c">  Downloading scipy</span><span class="nb">-</span><span class="c">1</span><span class="nt">.</span><span class="c">16</span><span class="nt">.</span><span class="c">0</span><span class="nb">-</span><span class="c">cp312</span><span class="nb">-</span><span class="c">cp312</span><span class="nb">-</span><span class="c">win_amd64</span><span class="nt">.</span><span class="c">whl</span><span class="nt">.</span><span class="c">metadata (60 kB)</span>
+<span class="c">Collecting joblib</span><span class="nv">&gt;</span><span class="c">=1</span><span class="nt">.</span><span class="c">2</span><span class="nt">.</span><span class="c">0 (from scikit</span><span class="nb">-</span><span class="c">learn)</span>
+<span class="c">  Downloading joblib</span><span class="nb">-</span><span class="c">1</span><span class="nt">.</span><span class="c">5</span><span class="nt">.</span><span class="c">1</span><span class="nb">-</span><span class="c">py3</span><span class="nb">-</span><span class="c">none</span><span class="nb">-</span><span class="c">any</span><span class="nt">.</span><span class="c">whl</span><span class="nt">.</span><span class="c">metadata (5</span><span class="nt">.</span><span class="c">6 kB)</span>
+<span class="c">Collecting threadpoolctl</span><span class="nv">&gt;</span><span class="c">=3</span><span class="nt">.</span><span class="c">1</span><span class="nt">.</span><span class="c">0 (from scikit</span><span class="nb">-</span><span class="c">learn)</span>
+<span class="c">  Downloading threadpoolctl</span><span class="nb">-</span><span class="c">3</span><span class="nt">.</span><span class="c">6</span><span class="nt">.</span><span class="c">0</span><span class="nb">-</span><span class="c">py3</span><span class="nb">-</span><span class="c">none</span><span class="nb">-</span><span class="c">any</span><span class="nt">.</span><span class="c">whl</span><span class="nt">.</span><span class="c">metadata (13 kB)</span>
+<span class="c">Downloading scikit_learn</span><span class="nb">-</span><span class="c">1</span><span class="nt">.</span><span class="c">7</span><span class="nt">.</span><span class="c">0</span><span class="nb">-</span><span class="c">cp312</span><span class="nb">-</span><span class="c">cp312</span><span class="nb">-</span><span class="c">win_amd64</span><span class="nt">.</span><span class="c">whl (10</span><span class="nt">.</span><span class="c">7 MB)</span>
+<span class="c">   </span><span class="nb">----------------------------------------</span><span class="c"> 0</span><span class="nt">.</span><span class="c">0/10</span><span class="nt">.</span><span class="c">7 MB ? eta </span><span class="nb">-</span><span class="c">:</span><span class="nb">--</span><span class="c">:</span><span class="nb">--</span>
+<span class="c">   </span><span class="nb">-</span><span class="c"> </span><span class="nb">--------------------------------------</span><span class="c"> 0</span><span class="nt">.</span><span class="c">5/10</span><span class="nt">.</span><span class="c">7 MB 16</span><span class="nt">.</span><span class="c">4 MB/s eta 0:00:01</span>
+<span class="c">   </span><span class="nb">---</span><span class="c"> </span><span class="nb">------------------------------------</span><span class="c"> 1</span><span class="nt">.</span><span class="c">0/10</span><span class="nt">.</span><span class="c">7 MB 2</span><span class="nt">.</span><span class="c">8 MB/s eta 0:00:04</span>
+<span class="c">   </span><span class="nb">----</span><span class="c"> </span><span class="nb">-----------------------------------</span><span class="c"> 1</span><span class="nt">.</span><span class="c">3/10</span><span class="nt">.</span><span class="c">7 MB 1</span><span class="nt">.</span><span class="c">9 MB/s eta 0:00:06</span>
+<span class="c">   </span><span class="nb">----</span><span class="c"> </span><span class="nb">-----------------------------------</span><span class="c"> 1</span><span class="nt">.</span><span class="c">3/10</span><span class="nt">.</span><span class="c">7 MB 1</span><span class="nt">.</span><span class="c">9 MB/s eta 0:00:06</span>
+<span class="c">   </span><span class="nb">-----</span><span class="c"> </span><span class="nb">----------------------------------</span><span class="c"> 1</span><span class="nt">.</span><span class="c">6/10</span><span class="nt">.</span><span class="c">7 MB 1</span><span class="nt">.</span><span class="c">6 MB/s eta 0:00:06</span>
+<span class="c">   </span><span class="nb">-------</span><span class="c"> </span><span class="nb">--------------------------------</span><span class="c"> 2</span><span class="nt">.</span><span class="c">1/10</span><span class="nt">.</span><span class="c">7 MB 1</span><span class="nt">.</span><span class="c">6 MB/s eta 0:00:06</span>
+<span class="c">   </span><span class="nb">--------</span><span class="c"> </span><span class="nb">-------------------------------</span><span class="c"> 2</span><span class="nt">.</span><span class="c">4/10</span><span class="nt">.</span><span class="c">7 MB 1</span><span class="nt">.</span><span class="c">5 MB/s eta 0:00:06</span>
+<span class="c">   </span><span class="nb">---------</span><span class="c"> </span><span class="nb">------------------------------</span><span class="c"> 2</span><span class="nt">.</span><span class="c">6/10</span><span class="nt">.</span><span class="c">7 MB 1</span><span class="nt">.</span><span class="c">5 MB/s eta 0:00:06</span>
+<span class="c">   </span><span class="nb">---------</span><span class="c"> </span><span class="nb">------------------------------</span><span class="c"> 2</span><span class="nt">.</span><span class="c">6/10</span><span class="nt">.</span><span class="c">7 MB 1</span><span class="nt">.</span><span class="c">5 MB/s eta 0:00:06</span>
+<span class="c">   </span><span class="nb">-----------</span><span class="c"> </span><span class="nb">----------------------------</span><span class="c"> 3</span><span class="nt">.</span><span class="c">1/10</span><span class="nt">.</span><span class="c">7 MB 1</span><span class="nt">.</span><span class="c">5 MB/s eta 0:00:05</span>
+<span class="c">   </span><span class="nb">------------</span><span class="c"> </span><span class="nb">---------------------------</span><span class="c"> 3</span><span class="nt">.</span><span class="c">4/10</span><span class="nt">.</span><span class="c">7 MB 1</span><span class="nt">.</span><span class="c">5 MB/s eta 0:00:05</span>
+<span class="c">   </span><span class="nb">-------------</span><span class="c"> </span><span class="nb">--------------------------</span><span class="c"> 3</span><span class="nt">.</span><span class="c">7/10</span><span class="nt">.</span><span class="c">7 MB 1</span><span class="nt">.</span><span class="c">5 MB/s eta 0:00:05</span>
+<span class="c">   </span><span class="nb">--------------</span><span class="c"> </span><span class="nb">-------------------------</span><span class="c"> 3</span><span class="nt">.</span><span class="c">9/10</span><span class="nt">.</span><span class="c">7 MB 1</span><span class="nt">.</span><span class="c">4 MB/s eta 0:00:05</span>
+<span class="c">   </span><span class="nb">---------------</span><span class="c"> </span><span class="nb">------------------------</span><span class="c"> 4</span><span class="nt">.</span><span class="c">2/10</span><span class="nt">.</span><span class="c">7 MB 1</span><span class="nt">.</span><span class="c">4 MB/s eta 0:00:05</span>
+<span class="c">   </span><span class="nb">----------------</span><span class="c"> </span><span class="nb">-----------------------</span><span class="c"> 4</span><span class="nt">.</span><span class="c">5/10</span><span class="nt">.</span><span class="c">7 MB 1</span><span class="nt">.</span><span class="c">4 MB/s eta 0:00:05</span>
+<span class="c">   </span><span class="nb">-----------------</span><span class="c"> </span><span class="nb">----------------------</span><span class="c"> 4</span><span class="nt">.</span><span class="c">7/10</span><span class="nt">.</span><span class="c">7 MB 1</span><span class="nt">.</span><span class="c">4 MB/s eta 0:00:05</span>
+<span class="c">   </span><span class="nb">------------------</span><span class="c"> </span><span class="nb">---------------------</span><span class="c"> 5</span><span class="nt">.</span><span class="c">0/10</span><span class="nt">.</span><span class="c">7 MB 1</span><span class="nt">.</span><span class="c">4 MB/s eta 0:00:05</span>
+<span class="c">   </span><span class="nb">-------------------</span><span class="c"> </span><span class="nb">--------------------</span><span class="c"> 5</span><span class="nt">.</span><span class="c">2/10</span><span class="nt">.</span><span class="c">7 MB 1</span><span class="nt">.</span><span class="c">4 MB/s eta 0:00:04</span>
+<span class="c">   </span><span class="nb">--------------------</span><span class="c"> </span><span class="nb">-------------------</span><span class="c"> 5</span><span class="nt">.</span><span class="c">5/10</span><span class="nt">.</span><span class="c">7 MB 1</span><span class="nt">.</span><span class="c">3 MB/s eta 0:00:04</span>
+<span class="c">   </span><span class="nb">---------------------</span><span class="c"> </span><span class="nb">------------------</span><span class="c"> 5</span><span class="nt">.</span><span class="c">8/10</span><span class="nt">.</span><span class="c">7 MB 1</span><span class="nt">.</span><span class="c">4 MB/s eta 0:00:04</span>
+<span class="c">   </span><span class="nb">----------------------</span><span class="c"> </span><span class="nb">-----------------</span><span class="c"> 6</span><span class="nt">.</span><span class="c">0/10</span><span class="nt">.</span><span class="c">7 MB 1</span><span class="nt">.</span><span class="c">4 MB/s eta 0:00:04</span>
+<span class="c">   </span><span class="nb">-----------------------</span><span class="c"> </span><span class="nb">----------------</span><span class="c"> 6</span><span class="nt">.</span><span class="c">3/10</span><span class="nt">.</span><span class="c">7 MB 1</span><span class="nt">.</span><span class="c">3 MB/s eta 0:00:04</span>
+<span class="c">   </span><span class="nb">------------------------</span><span class="c"> </span><span class="nb">---------------</span><span class="c"> 6</span><span class="nt">.</span><span class="c">6/10</span><span class="nt">.</span><span class="c">7 MB 1</span><span class="nt">.</span><span class="c">3 MB/s eta 0:00:04</span>
+<span class="c">   </span><span class="nb">-------------------------</span><span class="c"> </span><span class="nb">--------------</span><span class="c"> 6</span><span class="nt">.</span><span class="c">8/10</span><span class="nt">.</span><span class="c">7 MB 1</span><span class="nt">.</span><span class="c">3 MB/s eta 0:00:03</span>
+<span class="c">   </span><span class="nb">--------------------------</span><span class="c"> </span><span class="nb">-------------</span><span class="c"> 7</span><span class="nt">.</span><span class="c">1/10</span><span class="nt">.</span><span class="c">7 MB 1</span><span class="nt">.</span><span class="c">3 MB/s eta 0:00:03</span>
+<span class="c">   </span><span class="nb">---------------------------</span><span class="c"> </span><span class="nb">------------</span><span class="c"> 7</span><span class="nt">.</span><span class="c">3/10</span><span class="nt">.</span><span class="c">7 MB 1</span><span class="nt">.</span><span class="c">3 MB/s eta 0:00:03</span>
+<span class="c">   </span><span class="nb">----------------------------</span><span class="c"> </span><span class="nb">-----------</span><span class="c"> 7</span><span class="nt">.</span><span class="c">6/10</span><span class="nt">.</span><span class="c">7 MB 1</span><span class="nt">.</span><span class="c">3 MB/s eta 0:00:03</span>
+<span class="c">   </span><span class="nb">----------------------------</span><span class="c"> </span><span class="nb">-----------</span><span class="c"> 7</span><span class="nt">.</span><span class="c">6/10</span><span class="nt">.</span><span class="c">7 MB 1</span><span class="nt">.</span><span class="c">3 MB/s eta 0:00:03</span>
+<span class="c">   </span><span class="nb">------------------------------</span><span class="c"> </span><span class="nb">---------</span><span class="c"> 8</span><span class="nt">.</span><span class="c">1/10</span><span class="nt">.</span><span class="c">7 MB 1</span><span class="nt">.</span><span class="c">3 MB/s eta 0:00:02</span>
+<span class="c">   </span><span class="nb">------------------------------</span><span class="c"> </span><span class="nb">---------</span><span class="c"> 8</span><span class="nt">.</span><span class="c">1/10</span><span class="nt">.</span><span class="c">7 MB 1</span><span class="nt">.</span><span class="c">3 MB/s eta 0:00:02</span>
+<span class="c">   </span><span class="nb">-------------------------------</span><span class="c"> </span><span class="nb">--------</span><span class="c"> 8</span><span class="nt">.</span><span class="c">4/10</span><span class="nt">.</span><span class="c">7 MB 1</span><span class="nt">.</span><span class="c">3 MB/s eta 0:00:02</span>
+<span class="c">   </span><span class="nb">---------------------------------</span><span class="c"> </span><span class="nb">------</span><span class="c"> 8</span><span class="nt">.</span><span class="c">9/10</span><span class="nt">.</span><span class="c">7 MB 1</span><span class="nt">.</span><span class="c">3 MB/s eta 0:00:02</span>
+<span class="c">   </span><span class="nb">----------------------------------</span><span class="c"> </span><span class="nb">-----</span><span class="c"> 9</span><span class="nt">.</span><span class="c">2/10</span><span class="nt">.</span><span class="c">7 MB 1</span><span class="nt">.</span><span class="c">3 MB/s eta 0:00:02</span>
+<span class="c">   </span><span class="nb">-----------------------------------</span><span class="c"> </span><span class="nb">----</span><span class="c"> 9</span><span class="nt">.</span><span class="c">4/10</span><span class="nt">.</span><span class="c">7 MB 1</span><span class="nt">.</span><span class="c">3 MB/s eta 0:00:01</span>
+<span class="c">   </span><span class="nb">-----------------------------------</span><span class="c"> </span><span class="nb">----</span><span class="c"> 9</span><span class="nt">.</span><span class="c">4/10</span><span class="nt">.</span><span class="c">7 MB 1</span><span class="nt">.</span><span class="c">3 MB/s eta 0:00:01</span>
+<span class="c">   </span><span class="nb">------------------------------------</span><span class="c"> </span><span class="nb">---</span><span class="c"> 9</span><span class="nt">.</span><span class="c">7/10</span><span class="nt">.</span><span class="c">7 MB 1</span><span class="nt">.</span><span class="c">3 MB/s eta 0:00:01</span>
+<span class="c">   </span><span class="nb">-------------------------------------</span><span class="c"> </span><span class="nb">--</span><span class="c"> 10</span><span class="nt">.</span><span class="c">0/10</span><span class="nt">.</span><span class="c">7 MB 1</span><span class="nt">.</span><span class="c">3 MB/s eta 0:00:01</span>
+<span class="c">   </span><span class="nb">---------------------------------------</span><span class="c">  10</span><span class="nt">.</span><span class="c">5/10</span><span class="nt">.</span><span class="c">7 MB 1</span><span class="nt">.</span><span class="c">3 MB/s eta 0:00:01</span>
+<span class="c">   </span><span class="nb">----------------------------------------</span><span class="c"> 10</span><span class="nt">.</span><span class="c">7/10</span><span class="nt">.</span><span class="c">7 MB 1</span><span class="nt">.</span><span class="c">3 MB/s eta 0:00:00</span>
+<span class="c">Downloading joblib</span><span class="nb">-</span><span class="c">1</span><span class="nt">.</span><span class="c">5</span><span class="nt">.</span><span class="c">1</span><span class="nb">-</span><span class="c">py3</span><span class="nb">-</span><span class="c">none</span><span class="nb">-</span><span class="c">any</span><span class="nt">.</span><span class="c">whl (307 kB)</span>
+<span class="c">Downloading scipy</span><span class="nb">-</span><span class="c">1</span><span class="nt">.</span><span class="c">16</span><span class="nt">.</span><span class="c">0</span><span class="nb">-</span><span class="c">cp312</span><span class="nb">-</span><span class="c">cp312</span><span class="nb">-</span><span class="c">win_amd64</span><span class="nt">.</span><span class="c">whl (38</span><span class="nt">.</span><span class="c">4 MB)</span>
+<span class="c">   </span><span class="nb">----------------------------------------</span><span class="c"> 0</span><span class="nt">.</span><span class="c">0/38</span><span class="nt">.</span><span class="c">4 MB ? eta </span><span class="nb">-</span><span class="c">:</span><span class="nb">--</span><span class="c">:</span><span class="nb">--</span>
+<span class="c">   </span><span class="nb">----------------------------------------</span><span class="c"> 0</span><span class="nt">.</span><span class="c">3/38</span><span class="nt">.</span><span class="c">4 MB ? eta </span><span class="nb">-</span><span class="c">:</span><span class="nb">--</span><span class="c">:</span><span class="nb">--</span>
+<span class="c">   </span><span class="nb">----------------------------------------</span><span class="c"> 0</span><span class="nt">.</span><span class="c">3/38</span><span class="nt">.</span><span class="c">4 MB ? eta </span><span class="nb">-</span><span class="c">:</span><span class="nb">--</span><span class="c">:</span><span class="nb">--</span>
+<span class="c">    </span><span class="nb">---------------------------------------</span><span class="c"> 0</span><span class="nt">.</span><span class="c">5/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">3 MB/s eta 0:00:30</span>
+<span class="c">    </span><span class="nb">---------------------------------------</span><span class="c"> 0</span><span class="nt">.</span><span class="c">8/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:31</span>
+<span class="c">   </span><span class="nb">-</span><span class="c"> </span><span class="nb">--------------------------------------</span><span class="c"> 1</span><span class="nt">.</span><span class="c">0/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:31</span>
+<span class="c">   </span><span class="nb">-</span><span class="c"> </span><span class="nb">--------------------------------------</span><span class="c"> 1</span><span class="nt">.</span><span class="c">3/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:31</span>
+<span class="c">   </span><span class="nb">-</span><span class="c"> </span><span class="nb">--------------------------------------</span><span class="c"> 1</span><span class="nt">.</span><span class="c">6/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:30</span>
+<span class="c">   </span><span class="nb">-</span><span class="c"> </span><span class="nb">--------------------------------------</span><span class="c"> 1</span><span class="nt">.</span><span class="c">8/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:30</span>
+<span class="c">   </span><span class="nb">--</span><span class="c"> </span><span class="nb">-------------------------------------</span><span class="c"> 2</span><span class="nt">.</span><span class="c">1/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:30</span>
+<span class="c">   </span><span class="nb">--</span><span class="c"> </span><span class="nb">-------------------------------------</span><span class="c"> 2</span><span class="nt">.</span><span class="c">4/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:30</span>
+<span class="c">   </span><span class="nb">--</span><span class="c"> </span><span class="nb">-------------------------------------</span><span class="c"> 2</span><span class="nt">.</span><span class="c">6/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:29</span>
+<span class="c">   </span><span class="nb">---</span><span class="c"> </span><span class="nb">------------------------------------</span><span class="c"> 2</span><span class="nt">.</span><span class="c">9/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:29</span>
+<span class="c">   </span><span class="nb">---</span><span class="c"> </span><span class="nb">------------------------------------</span><span class="c"> 3</span><span class="nt">.</span><span class="c">1/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:29</span>
+<span class="c">   </span><span class="nb">---</span><span class="c"> </span><span class="nb">------------------------------------</span><span class="c"> 3</span><span class="nt">.</span><span class="c">4/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:29</span>
+<span class="c">   </span><span class="nb">---</span><span class="c"> </span><span class="nb">------------------------------------</span><span class="c"> 3</span><span class="nt">.</span><span class="c">7/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:29</span>
+<span class="c">   </span><span class="nb">----</span><span class="c"> </span><span class="nb">-----------------------------------</span><span class="c"> 3</span><span class="nt">.</span><span class="c">9/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:30</span>
+<span class="c">   </span><span class="nb">----</span><span class="c"> </span><span class="nb">-----------------------------------</span><span class="c"> 4</span><span class="nt">.</span><span class="c">2/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:28</span>
+<span class="c">   </span><span class="nb">----</span><span class="c"> </span><span class="nb">-----------------------------------</span><span class="c"> 4</span><span class="nt">.</span><span class="c">5/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:28</span>
+<span class="c">   </span><span class="nb">----</span><span class="c"> </span><span class="nb">-----------------------------------</span><span class="c"> 4</span><span class="nt">.</span><span class="c">7/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:28</span>
+<span class="c">   </span><span class="nb">-----</span><span class="c"> </span><span class="nb">----------------------------------</span><span class="c"> 5</span><span class="nt">.</span><span class="c">0/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:27</span>
+<span class="c">   </span><span class="nb">-----</span><span class="c"> </span><span class="nb">----------------------------------</span><span class="c"> 5</span><span class="nt">.</span><span class="c">2/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:28</span>
+<span class="c">   </span><span class="nb">-----</span><span class="c"> </span><span class="nb">----------------------------------</span><span class="c"> 5</span><span class="nt">.</span><span class="c">5/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:27</span>
+<span class="c">   </span><span class="nb">------</span><span class="c"> </span><span class="nb">---------------------------------</span><span class="c"> 5</span><span class="nt">.</span><span class="c">8/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:28</span>
+<span class="c">   </span><span class="nb">------</span><span class="c"> </span><span class="nb">---------------------------------</span><span class="c"> 6</span><span class="nt">.</span><span class="c">0/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:27</span>
+<span class="c">   </span><span class="nb">------</span><span class="c"> </span><span class="nb">---------------------------------</span><span class="c"> 6</span><span class="nt">.</span><span class="c">3/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:27</span>
+<span class="c">   </span><span class="nb">------</span><span class="c"> </span><span class="nb">---------------------------------</span><span class="c"> 6</span><span class="nt">.</span><span class="c">6/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:26</span>
+<span class="c">   </span><span class="nb">-------</span><span class="c"> </span><span class="nb">--------------------------------</span><span class="c"> 6</span><span class="nt">.</span><span class="c">8/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:26</span>
+<span class="c">   </span><span class="nb">-------</span><span class="c"> </span><span class="nb">--------------------------------</span><span class="c"> 7</span><span class="nt">.</span><span class="c">1/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:26</span>
+<span class="c">   </span><span class="nb">-------</span><span class="c"> </span><span class="nb">--------------------------------</span><span class="c"> 7</span><span class="nt">.</span><span class="c">3/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:26</span>
+<span class="c">   </span><span class="nb">-------</span><span class="c"> </span><span class="nb">--------------------------------</span><span class="c"> 7</span><span class="nt">.</span><span class="c">6/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:25</span>
+<span class="c">   </span><span class="nb">--------</span><span class="c"> </span><span class="nb">-------------------------------</span><span class="c"> 7</span><span class="nt">.</span><span class="c">9/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:25</span>
+<span class="c">   </span><span class="nb">--------</span><span class="c"> </span><span class="nb">-------------------------------</span><span class="c"> 8</span><span class="nt">.</span><span class="c">1/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:25</span>
+<span class="c">   </span><span class="nb">--------</span><span class="c"> </span><span class="nb">-------------------------------</span><span class="c"> 8</span><span class="nt">.</span><span class="c">4/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:25</span>
+<span class="c">   </span><span class="nb">--------</span><span class="c"> </span><span class="nb">-------------------------------</span><span class="c"> 8</span><span class="nt">.</span><span class="c">4/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:25</span>
+<span class="c">   </span><span class="nb">---------</span><span class="c"> </span><span class="nb">------------------------------</span><span class="c"> 8</span><span class="nt">.</span><span class="c">9/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:24</span>
+<span class="c">   </span><span class="nb">---------</span><span class="c"> </span><span class="nb">------------------------------</span><span class="c"> 9</span><span class="nt">.</span><span class="c">2/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:24</span>
+<span class="c">   </span><span class="nb">---------</span><span class="c"> </span><span class="nb">------------------------------</span><span class="c"> 9</span><span class="nt">.</span><span class="c">2/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:24</span>
+<span class="c">   </span><span class="nb">----------</span><span class="c"> </span><span class="nb">-----------------------------</span><span class="c"> 9</span><span class="nt">.</span><span class="c">7/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:24</span>
+<span class="c">   </span><span class="nb">----------</span><span class="c"> </span><span class="nb">-----------------------------</span><span class="c"> 10</span><span class="nt">.</span><span class="c">0/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:23</span>
+<span class="c">   </span><span class="nb">----------</span><span class="c"> </span><span class="nb">-----------------------------</span><span class="c"> 10</span><span class="nt">.</span><span class="c">2/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:23</span>
+<span class="c">   </span><span class="nb">----------</span><span class="c"> </span><span class="nb">-----------------------------</span><span class="c"> 10</span><span class="nt">.</span><span class="c">5/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:23</span>
+<span class="c">   </span><span class="nb">-----------</span><span class="c"> </span><span class="nb">----------------------------</span><span class="c"> 10</span><span class="nt">.</span><span class="c">7/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:23</span>
+<span class="c">   </span><span class="nb">-----------</span><span class="c"> </span><span class="nb">----------------------------</span><span class="c"> 11</span><span class="nt">.</span><span class="c">0/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:23</span>
+<span class="c">   </span><span class="nb">-----------</span><span class="c"> </span><span class="nb">----------------------------</span><span class="c"> 11</span><span class="nt">.</span><span class="c">3/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:22</span>
+<span class="c">   </span><span class="nb">-----------</span><span class="c"> </span><span class="nb">----------------------------</span><span class="c"> 11</span><span class="nt">.</span><span class="c">3/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:22</span>
+<span class="c">   </span><span class="nb">------------</span><span class="c"> </span><span class="nb">---------------------------</span><span class="c"> 11</span><span class="nt">.</span><span class="c">8/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:22</span>
+<span class="c">   </span><span class="nb">------------</span><span class="c"> </span><span class="nb">---------------------------</span><span class="c"> 12</span><span class="nt">.</span><span class="c">1/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:22</span>
+<span class="c">   </span><span class="nb">------------</span><span class="c"> </span><span class="nb">---------------------------</span><span class="c"> 12</span><span class="nt">.</span><span class="c">3/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:22</span>
+<span class="c">   </span><span class="nb">-------------</span><span class="c"> </span><span class="nb">--------------------------</span><span class="c"> 12</span><span class="nt">.</span><span class="c">6/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:21</span>
+<span class="c">   </span><span class="nb">-------------</span><span class="c"> </span><span class="nb">--------------------------</span><span class="c"> 12</span><span class="nt">.</span><span class="c">8/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:21</span>
+<span class="c">   </span><span class="nb">-------------</span><span class="c"> </span><span class="nb">--------------------------</span><span class="c"> 12</span><span class="nt">.</span><span class="c">8/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:21</span>
+<span class="c">   </span><span class="nb">-------------</span><span class="c"> </span><span class="nb">--------------------------</span><span class="c"> 13</span><span class="nt">.</span><span class="c">4/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:21</span>
+<span class="c">   </span><span class="nb">-------------</span><span class="c"> </span><span class="nb">--------------------------</span><span class="c"> 13</span><span class="nt">.</span><span class="c">4/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:21</span>
+<span class="c">   </span><span class="nb">--------------</span><span class="c"> </span><span class="nb">-------------------------</span><span class="c"> 13</span><span class="nt">.</span><span class="c">6/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:21</span>
+<span class="c">   </span><span class="nb">--------------</span><span class="c"> </span><span class="nb">-------------------------</span><span class="c"> 13</span><span class="nt">.</span><span class="c">9/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:20</span>
+<span class="c">   </span><span class="nb">--------------</span><span class="c"> </span><span class="nb">-------------------------</span><span class="c"> 14</span><span class="nt">.</span><span class="c">2/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:20</span>
+<span class="c">   </span><span class="nb">---------------</span><span class="c"> </span><span class="nb">------------------------</span><span class="c"> 14</span><span class="nt">.</span><span class="c">4/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:20</span>
+<span class="c">   </span><span class="nb">---------------</span><span class="c"> </span><span class="nb">------------------------</span><span class="c"> 14</span><span class="nt">.</span><span class="c">7/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:20</span>
+<span class="c">   </span><span class="nb">---------------</span><span class="c"> </span><span class="nb">------------------------</span><span class="c"> 14</span><span class="nt">.</span><span class="c">9/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:20</span>
+<span class="c">   </span><span class="nb">---------------</span><span class="c"> </span><span class="nb">------------------------</span><span class="c"> 15</span><span class="nt">.</span><span class="c">2/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:19</span>
+<span class="c">   </span><span class="nb">----------------</span><span class="c"> </span><span class="nb">-----------------------</span><span class="c"> 15</span><span class="nt">.</span><span class="c">5/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:19</span>
+<span class="c">   </span><span class="nb">----------------</span><span class="c"> </span><span class="nb">-----------------------</span><span class="c"> 15</span><span class="nt">.</span><span class="c">5/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:19</span>
+<span class="c">   </span><span class="nb">----------------</span><span class="c"> </span><span class="nb">-----------------------</span><span class="c"> 16</span><span class="nt">.</span><span class="c">0/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:19</span>
+<span class="c">   </span><span class="nb">----------------</span><span class="c"> </span><span class="nb">-----------------------</span><span class="c"> 16</span><span class="nt">.</span><span class="c">3/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:19</span>
+<span class="c">   </span><span class="nb">-----------------</span><span class="c"> </span><span class="nb">----------------------</span><span class="c"> 16</span><span class="nt">.</span><span class="c">5/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:18</span>
+<span class="c">   </span><span class="nb">-----------------</span><span class="c"> </span><span class="nb">----------------------</span><span class="c"> 16</span><span class="nt">.</span><span class="c">8/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:18</span>
+<span class="c">   </span><span class="nb">-----------------</span><span class="c"> </span><span class="nb">----------------------</span><span class="c"> 17</span><span class="nt">.</span><span class="c">0/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:18</span>
+<span class="c">   </span><span class="nb">------------------</span><span class="c"> </span><span class="nb">---------------------</span><span class="c"> 17</span><span class="nt">.</span><span class="c">3/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:18</span>
+<span class="c">   </span><span class="nb">------------------</span><span class="c"> </span><span class="nb">---------------------</span><span class="c"> 17</span><span class="nt">.</span><span class="c">6/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:17</span>
+<span class="c">   </span><span class="nb">------------------</span><span class="c"> </span><span class="nb">---------------------</span><span class="c"> 17</span><span class="nt">.</span><span class="c">6/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:17</span>
+<span class="c">   </span><span class="nb">------------------</span><span class="c"> </span><span class="nb">---------------------</span><span class="c"> 17</span><span class="nt">.</span><span class="c">8/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:17</span>
+<span class="c">   </span><span class="nb">------------------</span><span class="c"> </span><span class="nb">---------------------</span><span class="c"> 18</span><span class="nt">.</span><span class="c">1/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:17</span>
+<span class="c">   </span><span class="nb">-------------------</span><span class="c"> </span><span class="nb">--------------------</span><span class="c"> 18</span><span class="nt">.</span><span class="c">4/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:17</span>
+<span class="c">   </span><span class="nb">-------------------</span><span class="c"> </span><span class="nb">--------------------</span><span class="c"> 18</span><span class="nt">.</span><span class="c">6/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:17</span>
+<span class="c">   </span><span class="nb">-------------------</span><span class="c"> </span><span class="nb">--------------------</span><span class="c"> 18</span><span class="nt">.</span><span class="c">9/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:16</span>
+<span class="c">   </span><span class="nb">-------------------</span><span class="c"> </span><span class="nb">--------------------</span><span class="c"> 19</span><span class="nt">.</span><span class="c">1/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:16</span>
+<span class="c">   </span><span class="nb">--------------------</span><span class="c"> </span><span class="nb">-------------------</span><span class="c"> 19</span><span class="nt">.</span><span class="c">4/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:16</span>
+<span class="c">   </span><span class="nb">--------------------</span><span class="c"> </span><span class="nb">-------------------</span><span class="c"> 19</span><span class="nt">.</span><span class="c">7/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:16</span>
+<span class="c">   </span><span class="nb">--------------------</span><span class="c"> </span><span class="nb">-------------------</span><span class="c"> 19</span><span class="nt">.</span><span class="c">9/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:16</span>
+<span class="c">   </span><span class="nb">---------------------</span><span class="c"> </span><span class="nb">------------------</span><span class="c"> 20</span><span class="nt">.</span><span class="c">2/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:15</span>
+<span class="c">   </span><span class="nb">---------------------</span><span class="c"> </span><span class="nb">------------------</span><span class="c"> 20</span><span class="nt">.</span><span class="c">4/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:15</span>
+<span class="c">   </span><span class="nb">---------------------</span><span class="c"> </span><span class="nb">------------------</span><span class="c"> 20</span><span class="nt">.</span><span class="c">7/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:15</span>
+<span class="c">   </span><span class="nb">---------------------</span><span class="c"> </span><span class="nb">------------------</span><span class="c"> 20</span><span class="nt">.</span><span class="c">7/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:15</span>
+<span class="c">   </span><span class="nb">----------------------</span><span class="c"> </span><span class="nb">-----------------</span><span class="c"> 21</span><span class="nt">.</span><span class="c">2/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:15</span>
+<span class="c">   </span><span class="nb">----------------------</span><span class="c"> </span><span class="nb">-----------------</span><span class="c"> 21</span><span class="nt">.</span><span class="c">5/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:14</span>
+<span class="c">   </span><span class="nb">----------------------</span><span class="c"> </span><span class="nb">-----------------</span><span class="c"> 21</span><span class="nt">.</span><span class="c">5/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:14</span>
+<span class="c">   </span><span class="nb">----------------------</span><span class="c"> </span><span class="nb">-----------------</span><span class="c"> 22</span><span class="nt">.</span><span class="c">0/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:14</span>
+<span class="c">   </span><span class="nb">-----------------------</span><span class="c"> </span><span class="nb">----------------</span><span class="c"> 22</span><span class="nt">.</span><span class="c">3/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:14</span>
+<span class="c">   </span><span class="nb">-----------------------</span><span class="c"> </span><span class="nb">----------------</span><span class="c"> 22</span><span class="nt">.</span><span class="c">5/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:13</span>
+<span class="c">   </span><span class="nb">-----------------------</span><span class="c"> </span><span class="nb">----------------</span><span class="c"> 22</span><span class="nt">.</span><span class="c">5/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:13</span>
+<span class="c">   </span><span class="nb">-----------------------</span><span class="c"> </span><span class="nb">----------------</span><span class="c"> 22</span><span class="nt">.</span><span class="c">8/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:13</span>
+<span class="c">   </span><span class="nb">------------------------</span><span class="c"> </span><span class="nb">---------------</span><span class="c"> 23</span><span class="nt">.</span><span class="c">3/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:13</span>
+<span class="c">   </span><span class="nb">------------------------</span><span class="c"> </span><span class="nb">---------------</span><span class="c"> 23</span><span class="nt">.</span><span class="c">6/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:13</span>
+<span class="c">   </span><span class="nb">------------------------</span><span class="c"> </span><span class="nb">---------------</span><span class="c"> 23</span><span class="nt">.</span><span class="c">9/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:12</span>
+<span class="c">   </span><span class="nb">------------------------</span><span class="c"> </span><span class="nb">---------------</span><span class="c"> 23</span><span class="nt">.</span><span class="c">9/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:12</span>
+<span class="c">   </span><span class="nb">-------------------------</span><span class="c"> </span><span class="nb">--------------</span><span class="c"> 24</span><span class="nt">.</span><span class="c">4/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:12</span>
+<span class="c">   </span><span class="nb">-------------------------</span><span class="c"> </span><span class="nb">--------------</span><span class="c"> 24</span><span class="nt">.</span><span class="c">6/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:12</span>
+<span class="c">   </span><span class="nb">-------------------------</span><span class="c"> </span><span class="nb">--------------</span><span class="c"> 24</span><span class="nt">.</span><span class="c">9/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:12</span>
+<span class="c">   </span><span class="nb">-------------------------</span><span class="c"> </span><span class="nb">--------------</span><span class="c"> 24</span><span class="nt">.</span><span class="c">9/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:12</span>
+<span class="c">   </span><span class="nb">--------------------------</span><span class="c"> </span><span class="nb">-------------</span><span class="c"> 25</span><span class="nt">.</span><span class="c">2/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:11</span>
+<span class="c">   </span><span class="nb">--------------------------</span><span class="c"> </span><span class="nb">-------------</span><span class="c"> 25</span><span class="nt">.</span><span class="c">4/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:11</span>
+<span class="c">   </span><span class="nb">--------------------------</span><span class="c"> </span><span class="nb">-------------</span><span class="c"> 25</span><span class="nt">.</span><span class="c">7/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:11</span>
+<span class="c">   </span><span class="nb">--------------------------</span><span class="c"> </span><span class="nb">-------------</span><span class="c"> 25</span><span class="nt">.</span><span class="c">7/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:11</span>
+<span class="c">   </span><span class="nb">---------------------------</span><span class="c"> </span><span class="nb">------------</span><span class="c"> 26</span><span class="nt">.</span><span class="c">2/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:10</span>
+<span class="c">   </span><span class="nb">---------------------------</span><span class="c"> </span><span class="nb">------------</span><span class="c"> 26</span><span class="nt">.</span><span class="c">5/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:10</span>
+<span class="c">   </span><span class="nb">---------------------------</span><span class="c"> </span><span class="nb">------------</span><span class="c"> 26</span><span class="nt">.</span><span class="c">7/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:10</span>
+<span class="c">   </span><span class="nb">----------------------------</span><span class="c"> </span><span class="nb">-----------</span><span class="c"> 27</span><span class="nt">.</span><span class="c">0/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:10</span>
+<span class="c">   </span><span class="nb">----------------------------</span><span class="c"> </span><span class="nb">-----------</span><span class="c"> 27</span><span class="nt">.</span><span class="c">3/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:10</span>
+<span class="c">   </span><span class="nb">----------------------------</span><span class="c"> </span><span class="nb">-----------</span><span class="c"> 27</span><span class="nt">.</span><span class="c">5/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:09</span>
+<span class="c">   </span><span class="nb">----------------------------</span><span class="c"> </span><span class="nb">-----------</span><span class="c"> 27</span><span class="nt">.</span><span class="c">8/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:09</span>
+<span class="c">   </span><span class="nb">----------------------------</span><span class="c"> </span><span class="nb">-----------</span><span class="c"> 27</span><span class="nt">.</span><span class="c">8/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:09</span>
+<span class="c">   </span><span class="nb">-----------------------------</span><span class="c"> </span><span class="nb">----------</span><span class="c"> 28</span><span class="nt">.</span><span class="c">3/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:09</span>
+<span class="c">   </span><span class="nb">-----------------------------</span><span class="c"> </span><span class="nb">----------</span><span class="c"> 28</span><span class="nt">.</span><span class="c">6/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:09</span>
+<span class="c">   </span><span class="nb">-----------------------------</span><span class="c"> </span><span class="nb">----------</span><span class="c"> 28</span><span class="nt">.</span><span class="c">6/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:09</span>
+<span class="c">   </span><span class="nb">------------------------------</span><span class="c"> </span><span class="nb">---------</span><span class="c"> 28</span><span class="nt">.</span><span class="c">8/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:08</span>
+<span class="c">   </span><span class="nb">------------------------------</span><span class="c"> </span><span class="nb">---------</span><span class="c"> 29</span><span class="nt">.</span><span class="c">1/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:08</span>
+<span class="c">   </span><span class="nb">------------------------------</span><span class="c"> </span><span class="nb">---------</span><span class="c"> 29</span><span class="nt">.</span><span class="c">1/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:08</span>
+<span class="c">   </span><span class="nb">------------------------------</span><span class="c"> </span><span class="nb">---------</span><span class="c"> 29</span><span class="nt">.</span><span class="c">4/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:08</span>
+<span class="c">   </span><span class="nb">------------------------------</span><span class="c"> </span><span class="nb">---------</span><span class="c"> 29</span><span class="nt">.</span><span class="c">6/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:08</span>
+<span class="c">   </span><span class="nb">------------------------------</span><span class="c"> </span><span class="nb">---------</span><span class="c"> 29</span><span class="nt">.</span><span class="c">6/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:08</span>
+<span class="c">   </span><span class="nb">-------------------------------</span><span class="c"> </span><span class="nb">--------</span><span class="c"> 30</span><span class="nt">.</span><span class="c">1/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:07</span>
+<span class="c">   </span><span class="nb">-------------------------------</span><span class="c"> </span><span class="nb">--------</span><span class="c"> 30</span><span class="nt">.</span><span class="c">4/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:07</span>
+<span class="c">   </span><span class="nb">-------------------------------</span><span class="c"> </span><span class="nb">--------</span><span class="c"> 30</span><span class="nt">.</span><span class="c">7/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:07</span>
+<span class="c">   </span><span class="nb">--------------------------------</span><span class="c"> </span><span class="nb">-------</span><span class="c"> 30</span><span class="nt">.</span><span class="c">9/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:07</span>
+<span class="c">   </span><span class="nb">--------------------------------</span><span class="c"> </span><span class="nb">-------</span><span class="c"> 31</span><span class="nt">.</span><span class="c">2/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:06</span>
+<span class="c">   </span><span class="nb">--------------------------------</span><span class="c"> </span><span class="nb">-------</span><span class="c"> 31</span><span class="nt">.</span><span class="c">2/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:06</span>
+<span class="c">   </span><span class="nb">--------------------------------</span><span class="c"> </span><span class="nb">-------</span><span class="c"> 31</span><span class="nt">.</span><span class="c">5/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:06</span>
+<span class="c">   </span><span class="nb">---------------------------------</span><span class="c"> </span><span class="nb">------</span><span class="c"> 31</span><span class="nt">.</span><span class="c">7/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:06</span>
+<span class="c">   </span><span class="nb">---------------------------------</span><span class="c"> </span><span class="nb">------</span><span class="c"> 32</span><span class="nt">.</span><span class="c">0/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:06</span>
+<span class="c">   </span><span class="nb">---------------------------------</span><span class="c"> </span><span class="nb">------</span><span class="c"> 32</span><span class="nt">.</span><span class="c">2/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:06</span>
+<span class="c">   </span><span class="nb">---------------------------------</span><span class="c"> </span><span class="nb">------</span><span class="c"> 32</span><span class="nt">.</span><span class="c">5/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:05</span>
+<span class="c">   </span><span class="nb">----------------------------------</span><span class="c"> </span><span class="nb">-----</span><span class="c"> 32</span><span class="nt">.</span><span class="c">8/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:05</span>
+<span class="c">   </span><span class="nb">----------------------------------</span><span class="c"> </span><span class="nb">-----</span><span class="c"> 33</span><span class="nt">.</span><span class="c">0/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:05</span>
+<span class="c">   </span><span class="nb">----------------------------------</span><span class="c"> </span><span class="nb">-----</span><span class="c"> 33</span><span class="nt">.</span><span class="c">3/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:05</span>
+<span class="c">   </span><span class="nb">----------------------------------</span><span class="c"> </span><span class="nb">-----</span><span class="c"> 33</span><span class="nt">.</span><span class="c">6/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:05</span>
+<span class="c">   </span><span class="nb">-----------------------------------</span><span class="c"> </span><span class="nb">----</span><span class="c"> 33</span><span class="nt">.</span><span class="c">8/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:04</span>
+<span class="c">   </span><span class="nb">-----------------------------------</span><span class="c"> </span><span class="nb">----</span><span class="c"> 34</span><span class="nt">.</span><span class="c">1/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:04</span>
+<span class="c">   </span><span class="nb">-----------------------------------</span><span class="c"> </span><span class="nb">----</span><span class="c"> 34</span><span class="nt">.</span><span class="c">3/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:04</span>
+<span class="c">   </span><span class="nb">------------------------------------</span><span class="c"> </span><span class="nb">---</span><span class="c"> 34</span><span class="nt">.</span><span class="c">6/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:04</span>
+<span class="c">   </span><span class="nb">------------------------------------</span><span class="c"> </span><span class="nb">---</span><span class="c"> 34</span><span class="nt">.</span><span class="c">9/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:03</span>
+<span class="c">   </span><span class="nb">------------------------------------</span><span class="c"> </span><span class="nb">---</span><span class="c"> 34</span><span class="nt">.</span><span class="c">9/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:03</span>
+<span class="c">   </span><span class="nb">------------------------------------</span><span class="c"> </span><span class="nb">---</span><span class="c"> 35</span><span class="nt">.</span><span class="c">1/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:03</span>
+<span class="c">   </span><span class="nb">------------------------------------</span><span class="c"> </span><span class="nb">---</span><span class="c"> 35</span><span class="nt">.</span><span class="c">1/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:03</span>
+<span class="c">   </span><span class="nb">-------------------------------------</span><span class="c"> </span><span class="nb">--</span><span class="c"> 35</span><span class="nt">.</span><span class="c">7/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:03</span>
+<span class="c">   </span><span class="nb">-------------------------------------</span><span class="c"> </span><span class="nb">--</span><span class="c"> 35</span><span class="nt">.</span><span class="c">9/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:03</span>
+<span class="c">   </span><span class="nb">-------------------------------------</span><span class="c"> </span><span class="nb">--</span><span class="c"> 35</span><span class="nt">.</span><span class="c">9/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:03</span>
+<span class="c">   </span><span class="nb">-------------------------------------</span><span class="c"> </span><span class="nb">--</span><span class="c"> 36</span><span class="nt">.</span><span class="c">4/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:02</span>
+<span class="c">   </span><span class="nb">-------------------------------------</span><span class="c"> </span><span class="nb">--</span><span class="c"> 36</span><span class="nt">.</span><span class="c">4/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:02</span>
+<span class="c">   </span><span class="nb">--------------------------------------</span><span class="c"> </span><span class="nb">-</span><span class="c"> 36</span><span class="nt">.</span><span class="c">7/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:02</span>
+<span class="c">   </span><span class="nb">--------------------------------------</span><span class="c"> </span><span class="nb">-</span><span class="c"> 37</span><span class="nt">.</span><span class="c">2/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:02</span>
+<span class="c">   </span><span class="nb">--------------------------------------</span><span class="c"> </span><span class="nb">-</span><span class="c"> 37</span><span class="nt">.</span><span class="c">2/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:02</span>
+<span class="c">   </span><span class="nb">---------------------------------------</span><span class="c">  37</span><span class="nt">.</span><span class="c">7/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:01</span>
+<span class="c">   </span><span class="nb">---------------------------------------</span><span class="c">  38</span><span class="nt">.</span><span class="c">0/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:01</span>
+<span class="c">   </span><span class="nb">---------------------------------------</span><span class="c">  38</span><span class="nt">.</span><span class="c">3/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:01</span>
+<span class="c">   </span><span class="nb">----------------------------------------</span><span class="c"> 38</span><span class="nt">.</span><span class="c">4/38</span><span class="nt">.</span><span class="c">4 MB 1</span><span class="nt">.</span><span class="c">2 MB/s eta 0:00:00</span>
+<span class="c">Downloading threadpoolctl</span><span class="nb">-</span><span class="c">3</span><span class="nt">.</span><span class="c">6</span><span class="nt">.</span><span class="c">0</span><span class="nb">-</span><span class="c">py3</span><span class="nb">-</span><span class="c">none</span><span class="nb">-</span><span class="c">any</span><span class="nt">.</span><span class="c">whl (18 kB)</span>
+<span class="c">Installing collected packages: threadpoolctl</span><span class="nt">,</span><span class="c"> scipy</span><span class="nt">,</span><span class="c"> joblib</span><span class="nt">,</span><span class="c"> scikit</span><span class="nb">-</span><span class="c">learn</span>
+
+<span class="c">   </span><span class="nb">----------</span><span class="c"> </span><span class="nb">-----------------------------</span><span class="c"> 1/4 </span><span class="k">[</span><span class="c">scipy</span><span class="k">]</span>
+<span class="c">   </span><span class="nb">----------</span><span class="c"> </span><span class="nb">-----------------------------</span><span class="c"> 1/4 </span><span class="k">[</span><span class="c">scipy</span><span class="k">]</span>
+<span class="c">   </span><span class="nb">----------</span><span class="c"> </span><span class="nb">-----------------------------</span><span class="c"> 1/4 </span><span class="k">[</span><span class="c">scipy</span><span class="k">]</span>
+<span class="c">   </span><span class="nb">----------</span><span class="c"> </span><span class="nb">-----------------------------</span><span class="c"> 1/4 </span><span class="k">[</span><span class="c">scipy</span><span class="k">]</span>
+<span class="c">   </span><span class="nb">----------</span><span class="c"> </span><span class="nb">-----------------------------</span><span class="c"> 1/4 </span><span class="k">[</span><span class="c">scipy</span><span class="k">]</span>
+<span class="c">   </span><span class="nb">----------</span><span class="c"> </span><span class="nb">-----------------------------</span><span class="c"> 1/4 </span><span class="k">[</span><span class="c">scipy</span><span class="k">]</span>
+<span class="c">   </span><span class="nb">----------</span><span class="c"> </span><span class="nb">-----------------------------</span><span class="c"> 1/4 </span><span class="k">[</span><span class="c">scipy</span><span class="k">]</span>
+<span class="c">   </span><span class="nb">----------</span><span class="c"> </span><span class="nb">-----------------------------</span><span class="c"> 1/4 </span><span class="k">[</span><span class="c">scipy</span><span class="k">]</span>
+<span class="c">   </span><span class="nb">----------</span><span class="c"> </span><span class="nb">-----------------------------</span><span class="c"> 1/4 </span><span class="k">[</span><span class="c">scipy</span><span class="k">]</span>
+<span class="c">   </span><span class="nb">----------</span><span class="c"> </span><span class="nb">-----------------------------</span><span class="c"> 1/4 </span><span class="k">[</span><span class="c">scipy</span><span class="k">]</span>
+<span class="c">   </span><span class="nb">----------</span><span class="c"> </span><span class="nb">-----------------------------</span><span class="c"> 1/4 </span><span class="k">[</span><span class="c">scipy</span><span class="k">]</span>
+<span class="c">   </span><span class="nb">----------</span><span class="c"> </span><span class="nb">-----------------------------</span><span class="c"> 1/4 </span><span class="k">[</span><span class="c">scipy</span><span class="k">]</span>
+<span class="c">   </span><span class="nb">----------</span><span class="c"> </span><span class="nb">-----------------------------</span><span class="c"> 1/4 </span><span class="k">[</span><span class="c">scipy</span><span class="k">]</span>
+<span class="c">   </span><span class="nb">----------</span><span class="c"> </span><span class="nb">-----------------------------</span><span class="c"> 1/4 </span><span class="k">[</span><span class="c">scipy</span><span class="k">]</span>
+<span class="c">   </span><span class="nb">----------</span><span class="c"> </span><span class="nb">-----------------------------</span><span class="c"> 1/4 </span><span class="k">[</span><span class="c">scipy</span><span class="k">]</span>
+<span class="c">   </span><span class="nb">----------</span><span class="c"> </span><span class="nb">-----------------------------</span><span class="c"> 1/4 </span><span class="k">[</span><span class="c">scipy</span><span class="k">]</span>
+<span class="c">   </span><span class="nb">----------</span><span class="c"> </span><span class="nb">-----------------------------</span><span class="c"> 1/4 </span><span class="k">[</span><span class="c">scipy</span><span class="k">]</span>
+<span class="c">   </span><span class="nb">----------</span><span class="c"> </span><span class="nb">-----------------------------</span><span class="c"> 1/4 </span><span class="k">[</span><span class="c">scipy</span><span class="k">]</span>
+<span class="c">   </span><span class="nb">----------</span><span class="c"> </span><span class="nb">-----------------------------</span><span class="c"> 1/4 </span><span class="k">[</span><span class="c">scipy</span><span class="k">]</span>
+<span class="c">   </span><span class="nb">----------</span><span class="c"> </span><span class="nb">-----------------------------</span><span class="c"> 1/4 </span><span class="k">[</span><span class="c">scipy</span><span class="k">]</span>
+<span class="c">   </span><span class="nb">----------</span><span class="c"> </span><span class="nb">-----------------------------</span><span class="c"> 1/4 </span><span class="k">[</span><span class="c">scipy</span><span class="k">]</span>
+<span class="c">   </span><span class="nb">----------</span><span class="c"> </span><span class="nb">-----------------------------</span><span class="c"> 1/4 </span><span class="k">[</span><span class="c">scipy</span><span class="k">]</span>
+<span class="c">   </span><span class="nb">----------</span><span class="c"> </span><span class="nb">-----------------------------</span><span class="c"> 1/4 </span><span class="k">[</span><span class="c">scipy</span><span class="k">]</span>
+<span class="c">   </span><span class="nb">----------</span><span class="c"> </span><span class="nb">-----------------------------</span><span class="c"> 1/4 </span><span class="k">[</span><span class="c">scipy</span><span class="k">]</span>
+<span class="c">   </span><span class="nb">----------</span><span class="c"> </span><span class="nb">-----------------------------</span><span class="c"> 1/4 </span><span class="k">[</span><span class="c">scipy</span><span class="k">]</span>
+<span class="c">   </span><span class="nb">----------</span><span class="c"> </span><span class="nb">-----------------------------</span><span class="c"> 1/4 </span><span class="k">[</span><span class="c">scipy</span><span class="k">]</span>
+<span class="c">   </span><span class="nb">----------</span><span class="c"> </span><span class="nb">-----------------------------</span><span class="c"> 1/4 </span><span class="k">[</span><span class="c">scipy</span><span class="k">]</span>
+<span class="c">   </span><span class="nb">----------</span><span class="c"> </span><span class="nb">-----------------------------</span><span class="c"> 1/4 </span><span class="k">[</span><span class="c">scipy</span><span class="k">]</span>
+<span class="c">   </span><span class="nb">----------</span><span class="c"> </span><span class="nb">-----------------------------</span><span class="c"> 1/4 </span><span class="k">[</span><span class="c">scipy</span><span class="k">]</span>
+<span class="c">   </span><span class="nb">----------</span><span class="c"> </span><span class="nb">-----------------------------</span><span class="c"> 1/4 </span><span class="k">[</span><span class="c">scipy</span><span class="k">]</span>
+<span class="c">   </span><span class="nb">----------</span><span class="c"> </span><span class="nb">-----------------------------</span><span class="c"> 1/4 </span><span class="k">[</span><span class="c">scipy</span><span class="k">]</span>
+<span class="c">   </span><span class="nb">----------</span><span class="c"> </span><span class="nb">-----------------------------</span><span class="c"> 1/4 </span><span class="k">[</span><span class="c">scipy</span><span class="k">]</span>
+<span class="c">   </span><span class="nb">----------</span><span class="c"> </span><span class="nb">-----------------------------</span><span class="c"> 1/4 </span><span class="k">[</span><span class="c">scipy</span><span class="k">]</span>
+<span class="c">   </span><span class="nb">----------</span><span class="c"> </span><span class="nb">-----------------------------</span><span class="c"> 1/4 </span><span class="k">[</span><span class="c">scipy</span><span class="k">]</span>
+<span class="c">   </span><span class="nb">----------</span><span class="c"> </span><span class="nb">-----------------------------</span><span class="c"> 1/4 </span><span class="k">[</span><span class="c">scipy</span><span class="k">]</span>
+<span class="c">   </span><span class="nb">----------</span><span class="c"> </span><span class="nb">-----------------------------</span><span class="c"> 1/4 </span><span class="k">[</span><span class="c">scipy</span><span class="k">]</span>
+<span class="c">   </span><span class="nb">----------</span><span class="c"> </span><span class="nb">-----------------------------</span><span class="c"> 1/4 </span><span class="k">[</span><span class="c">scipy</span><span class="k">]</span>
+<span class="c">   </span><span class="nb">----------</span><span class="c"> </span><span class="nb">-----------------------------</span><span class="c"> 1/4 </span><span class="k">[</span><span class="c">scipy</span><span class="k">]</span>
+<span class="c">   </span><span class="nb">----------</span><span class="c"> </span><span class="nb">-----------------------------</span><span class="c"> 1/4 </span><span class="k">[</span><span class="c">scipy</span><span class="k">]</span>
+<span class="c">   </span><span class="nb">----------</span><span class="c"> </span><span class="nb">-----------------------------</span><span class="c"> 1/4 </span><span class="k">[</span><span class="c">scipy</span><span class="k">]</span>
+<span class="c">   </span><span class="nb">----------</span><span class="c"> </span><span class="nb">-----------------------------</span><span class="c"> 1/4 </span><span class="k">[</span><span class="c">scipy</span><span class="k">]</span>
+<span class="c">   </span><span class="nb">----------</span><span class="c"> </span><span class="nb">-----------------------------</span><span class="c"> 1/4 </span><span class="k">[</span><span class="c">scipy</span><span class="k">]</span>
+<span class="c">   </span><span class="nb">----------</span><span class="c"> </span><span class="nb">-----------------------------</span><span class="c"> 1/4 </span><span class="k">[</span><span class="c">scipy</span><span class="k">]</span>
+<span class="c">   </span><span class="nb">----------</span><span class="c"> </span><span class="nb">-----------------------------</span><span class="c"> 1/4 </span><span class="k">[</span><span class="c">scipy</span><span class="k">]</span>
+<span class="c">   </span><span class="nb">----------</span><span class="c"> </span><span class="nb">-----------------------------</span><span class="c"> 1/4 </span><span class="k">[</span><span class="c">scipy</span><span class="k">]</span>
+<span class="c">   </span><span class="nb">----------</span><span class="c"> </span><span class="nb">-----------------------------</span><span class="c"> 1/4 </span><span class="k">[</span><span class="c">scipy</span><span class="k">]</span>
+<span class="c">   </span><span class="nb">----------</span><span class="c"> </span><span class="nb">-----------------------------</span><span class="c"> 1/4 </span><span class="k">[</span><span class="c">scipy</span><span class="k">]</span>
+<span class="c">   </span><span class="nb">----------</span><span class="c"> </span><span class="nb">-----------------------------</span><span class="c"> 1/4 </span><span class="k">[</span><span class="c">scipy</span><span class="k">]</span>
+<span class="c">   </span><span class="nb">----------</span><span class="c"> </span><span class="nb">-----------------------------</span><span class="c"> 1/4 </span><span class="k">[</span><span class="c">scipy</span><span class="k">]</span>
+<span class="c">   </span><span class="nb">--------------------</span><span class="c"> </span><span class="nb">-------------------</span><span class="c"> 2/4 </span><span class="k">[</span><span class="c">joblib</span><span class="k">]</span>
+<span class="c">   </span><span class="nb">--------------------</span><span class="c"> </span><span class="nb">-------------------</span><span class="c"> 2/4 </span><span class="k">[</span><span class="c">joblib</span><span class="k">]</span>
+<span class="c">   </span><span class="nb">------------------------------</span><span class="c"> </span><span class="nb">---------</span><span class="c"> 3/4 </span><span class="k">[</span><span class="c">scikit</span><span class="nb">-</span><span class="c">learn</span><span class="k">]</span>
+<span class="c">   </span><span class="nb">------------------------------</span><span class="c"> </span><span class="nb">---------</span><span class="c"> 3/4 </span><span class="k">[</span><span class="c">scikit</span><span class="nb">-</span><span class="c">learn</span><span class="k">]</span>
+<span class="c">   </span><span class="nb">------------------------------</span><span class="c"> </span><span class="nb">---------</span><span class="c"> 3/4 </span><span class="k">[</span><span class="c">scikit</span><span class="nb">-</span><span class="c">learn</span><span class="k">]</span>
+<span class="c">   </span><span class="nb">------------------------------</span><span class="c"> </span><span class="nb">---------</span><span class="c"> 3/4 </span><span class="k">[</span><span class="c">scikit</span><span class="nb">-</span><span class="c">learn</span><span class="k">]</span>
+<span class="c">   </span><span class="nb">------------------------------</span><span class="c"> </span><span class="nb">---------</span><span class="c"> 3/4 </span><span class="k">[</span><span class="c">scikit</span><span class="nb">-</span><span class="c">learn</span><span class="k">]</span>
+<span class="c">   </span><span class="nb">------------------------------</span><span class="c"> </span><span class="nb">---------</span><span class="c"> 3/4 </span><span class="k">[</span><span class="c">scikit</span><span class="nb">-</span><span class="c">learn</span><span class="k">]</span>
+<span class="c">   </span><span class="nb">------------------------------</span><span class="c"> </span><span class="nb">---------</span><span class="c"> 3/4 </span><span class="k">[</span><span class="c">scikit</span><span class="nb">-</span><span class="c">learn</span><span class="k">]</span>
+<span class="c">   </span><span class="nb">------------------------------</span><span class="c"> </span><span class="nb">---------</span><span class="c"> 3/4 </span><span class="k">[</span><span class="c">scikit</span><span class="nb">-</span><span class="c">learn</span><span class="k">]</span>
+<span class="c">   </span><span class="nb">------------------------------</span><span class="c"> </span><span class="nb">---------</span><span class="c"> 3/4 </span><span class="k">[</span><span class="c">scikit</span><span class="nb">-</span><span class="c">learn</span><span class="k">]</span>
+<span class="c">   </span><span class="nb">------------------------------</span><span class="c"> </span><span class="nb">---------</span><span class="c"> 3/4 </span><span class="k">[</span><span class="c">scikit</span><span class="nb">-</span><span class="c">learn</span><span class="k">]</span>
+<span class="c">   </span><span class="nb">------------------------------</span><span class="c"> </span><span class="nb">---------</span><span class="c"> 3/4 </span><span class="k">[</span><span class="c">scikit</span><span class="nb">-</span><span class="c">learn</span><span class="k">]</span>
+<span class="c">   </span><span class="nb">------------------------------</span><span class="c"> </span><span class="nb">---------</span><span class="c"> 3/4 </span><span class="k">[</span><span class="c">scikit</span><span class="nb">-</span><span class="c">learn</span><span class="k">]</span>
+<span class="c">   </span><span class="nb">------------------------------</span><span class="c"> </span><span class="nb">---------</span><span class="c"> 3/4 </span><span class="k">[</span><span class="c">scikit</span><span class="nb">-</span><span class="c">learn</span><span class="k">]</span>
+<span class="c">   </span><span class="nb">------------------------------</span><span class="c"> </span><span class="nb">---------</span><span class="c"> 3/4 </span><span class="k">[</span><span class="c">scikit</span><span class="nb">-</span><span class="c">learn</span><span class="k">]</span>
+<span class="c">   </span><span class="nb">------------------------------</span><span class="c"> </span><span class="nb">---------</span><span class="c"> 3/4 </span><span class="k">[</span><span class="c">scikit</span><span class="nb">-</span><span class="c">learn</span><span class="k">]</span>
+<span class="c">   </span><span class="nb">------------------------------</span><span class="c"> </span><span class="nb">---------</span><span class="c"> 3/4 </span><span class="k">[</span><span class="c">scikit</span><span class="nb">-</span><span class="c">learn</span><span class="k">]</span>
+<span class="c">   </span><span class="nb">------------------------------</span><span class="c"> </span><span class="nb">---------</span><span class="c"> 3/4 </span><span class="k">[</span><span class="c">scikit</span><span class="nb">-</span><span class="c">learn</span><span class="k">]</span>
+<span class="c">   </span><span class="nb">------------------------------</span><span class="c"> </span><span class="nb">---------</span><span class="c"> 3/4 </span><span class="k">[</span><span class="c">scikit</span><span class="nb">-</span><span class="c">learn</span><span class="k">]</span>
+<span class="c">   </span><span class="nb">------------------------------</span><span class="c"> </span><span class="nb">---------</span><span class="c"> 3/4 </span><span class="k">[</span><span class="c">scikit</span><span class="nb">-</span><span class="c">learn</span><span class="k">]</span>
+<span class="c">   </span><span class="nb">------------------------------</span><span class="c"> </span><span class="nb">---------</span><span class="c"> 3/4 </span><span class="k">[</span><span class="c">scikit</span><span class="nb">-</span><span class="c">learn</span><span class="k">]</span>
+<span class="c">   </span><span class="nb">------------------------------</span><span class="c"> </span><span class="nb">---------</span><span class="c"> 3/4 </span><span class="k">[</span><span class="c">scikit</span><span class="nb">-</span><span class="c">learn</span><span class="k">]</span>
+<span class="c">   </span><span class="nb">------------------------------</span><span class="c"> </span><span class="nb">---------</span><span class="c"> 3/4 </span><span class="k">[</span><span class="c">scikit</span><span class="nb">-</span><span class="c">learn</span><span class="k">]</span>
+<span class="c">   </span><span class="nb">------------------------------</span><span class="c"> </span><span class="nb">---------</span><span class="c"> 3/4 </span><span class="k">[</span><span class="c">scikit</span><span class="nb">-</span><span class="c">learn</span><span class="k">]</span>
+<span class="c">   </span><span class="nb">------------------------------</span><span class="c"> </span><span class="nb">---------</span><span class="c"> 3/4 </span><span class="k">[</span><span class="c">scikit</span><span class="nb">-</span><span class="c">learn</span><span class="k">]</span>
+<span class="c">   </span><span class="nb">------------------------------</span><span class="c"> </span><span class="nb">---------</span><span class="c"> 3/4 </span><span class="k">[</span><span class="c">scikit</span><span class="nb">-</span><span class="c">learn</span><span class="k">]</span>
+<span class="c">   </span><span class="nb">----------------------------------------</span><span class="c"> 4/4 </span><span class="k">[</span><span class="c">scikit</span><span class="nb">-</span><span class="c">learn</span><span class="k">]</span>
+
+<span class="c">Successfully installed joblib</span><span class="nb">-</span><span class="c">1</span><span class="nt">.</span><span class="c">5</span><span class="nt">.</span><span class="c">1 scikit</span><span class="nb">-</span><span class="c">learn</span><span class="nb">-</span><span class="c">1</span><span class="nt">.</span><span class="c">7</span><span class="nt">.</span><span class="c">0 scipy</span><span class="nb">-</span><span class="c">1</span><span class="nt">.</span><span class="c">16</span><span class="nt">.</span><span class="c">0 threadpoolctl</span><span class="nb">-</span><span class="c">3</span><span class="nt">.</span><span class="c">6</span><span class="nt">.</span><span class="c">0</span>
+<span class="c">Note: you may need to restart the kernel to use updated packages</span><span class="nt">.</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.linear_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">LogisticRegression</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">accuracy_score</span><span class="p">,</span> <span class="n">confusion_matrix</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">titanic</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s2">&quot;titanic&quot;</span><span class="p">)</span>
+<span class="n">titanic</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div>
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>survived</th>
+      <th>pclass</th>
+      <th>sex</th>
+      <th>age</th>
+      <th>sibsp</th>
+      <th>parch</th>
+      <th>fare</th>
+      <th>embarked</th>
+      <th>class</th>
+      <th>who</th>
+      <th>adult_male</th>
+      <th>deck</th>
+      <th>embark_town</th>
+      <th>alive</th>
+      <th>alone</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>3</td>
+      <td>male</td>
+      <td>22.0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>7.2500</td>
+      <td>S</td>
+      <td>Third</td>
+      <td>man</td>
+      <td>True</td>
+      <td>NaN</td>
+      <td>Southampton</td>
+      <td>no</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>1</td>
+      <td>female</td>
+      <td>38.0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>71.2833</td>
+      <td>C</td>
+      <td>First</td>
+      <td>woman</td>
+      <td>False</td>
+      <td>C</td>
+      <td>Cherbourg</td>
+      <td>yes</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1</td>
+      <td>3</td>
+      <td>female</td>
+      <td>26.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>7.9250</td>
+      <td>S</td>
+      <td>Third</td>
+      <td>woman</td>
+      <td>False</td>
+      <td>NaN</td>
+      <td>Southampton</td>
+      <td>yes</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1</td>
+      <td>1</td>
+      <td>female</td>
+      <td>35.0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>53.1000</td>
+      <td>S</td>
+      <td>First</td>
+      <td>woman</td>
+      <td>False</td>
+      <td>C</td>
+      <td>Southampton</td>
+      <td>yes</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0</td>
+      <td>3</td>
+      <td>male</td>
+      <td>35.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>8.0500</td>
+      <td>S</td>
+      <td>Third</td>
+      <td>man</td>
+      <td>True</td>
+      <td>NaN</td>
+      <td>Southampton</td>
+      <td>no</td>
+      <td>True</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="highlight"><pre><span></span><code><span class="n">titanic</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="kd">class</span><span class="w"> </span><span class="err">&#39;</span><span class="nx">pandas</span><span class="p">.</span><span class="nx">core</span><span class="p">.</span><span class="nx">frame</span><span class="p">.</span><span class="nx">DataFrame</span><span class="err">&#39;</span><span class="p">&gt;</span>
+<span class="nx">RangeIndex</span><span class="p">:</span><span class="w"> </span><span class="mi">891</span><span class="w"> </span><span class="nx">entries</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="nx">to</span><span class="w"> </span><span class="mi">890</span>
+<span class="nx">Data</span><span class="w"> </span><span class="nx">columns</span><span class="w"> </span><span class="p">(</span><span class="nx">total</span><span class="w"> </span><span class="mi">15</span><span class="w"> </span><span class="nx">columns</span><span class="p">):</span>
+<span class="w"> </span><span class="err">#</span><span class="w">   </span><span class="nx">Column</span><span class="w">       </span><span class="nx">Non</span><span class="o">-</span><span class="nx">Null</span><span class="w"> </span><span class="nx">Count</span><span class="w">  </span><span class="nx">Dtype</span><span class="w">   </span>
+<span class="o">---</span><span class="w">  </span><span class="o">------</span><span class="w">       </span><span class="o">--------------</span><span class="w">  </span><span class="o">-----</span><span class="w">   </span>
+<span class="w"> </span><span class="mi">0</span><span class="w">   </span><span class="nx">survived</span><span class="w">     </span><span class="mi">891</span><span class="w"> </span><span class="nx">non</span><span class="o">-</span><span class="nx">null</span><span class="w">    </span><span class="nx">int64</span><span class="w">   </span>
+<span class="w"> </span><span class="mi">1</span><span class="w">   </span><span class="nx">pclass</span><span class="w">       </span><span class="mi">891</span><span class="w"> </span><span class="nx">non</span><span class="o">-</span><span class="nx">null</span><span class="w">    </span><span class="nx">int64</span><span class="w">   </span>
+<span class="w"> </span><span class="mi">2</span><span class="w">   </span><span class="nx">sex</span><span class="w">          </span><span class="mi">891</span><span class="w"> </span><span class="nx">non</span><span class="o">-</span><span class="nx">null</span><span class="w">    </span><span class="nx">object</span><span class="w">  </span>
+<span class="w"> </span><span class="mi">3</span><span class="w">   </span><span class="nx">age</span><span class="w">          </span><span class="mi">714</span><span class="w"> </span><span class="nx">non</span><span class="o">-</span><span class="nx">null</span><span class="w">    </span><span class="nx">float64</span><span class="w"> </span>
+<span class="w"> </span><span class="mi">4</span><span class="w">   </span><span class="nx">sibsp</span><span class="w">        </span><span class="mi">891</span><span class="w"> </span><span class="nx">non</span><span class="o">-</span><span class="nx">null</span><span class="w">    </span><span class="nx">int64</span><span class="w">   </span>
+<span class="w"> </span><span class="mi">5</span><span class="w">   </span><span class="nx">parch</span><span class="w">        </span><span class="mi">891</span><span class="w"> </span><span class="nx">non</span><span class="o">-</span><span class="nx">null</span><span class="w">    </span><span class="nx">int64</span><span class="w">   </span>
+<span class="w"> </span><span class="mi">6</span><span class="w">   </span><span class="nx">fare</span><span class="w">         </span><span class="mi">891</span><span class="w"> </span><span class="nx">non</span><span class="o">-</span><span class="nx">null</span><span class="w">    </span><span class="nx">float64</span><span class="w"> </span>
+<span class="w"> </span><span class="mi">7</span><span class="w">   </span><span class="nx">embarked</span><span class="w">     </span><span class="mi">889</span><span class="w"> </span><span class="nx">non</span><span class="o">-</span><span class="nx">null</span><span class="w">    </span><span class="nx">object</span><span class="w">  </span>
+<span class="w"> </span><span class="mi">8</span><span class="w">   </span><span class="kd">class</span><span class="w">        </span><span class="mi">891</span><span class="w"> </span><span class="nx">non</span><span class="o">-</span><span class="nx">null</span><span class="w">    </span><span class="nx">category</span>
+<span class="w"> </span><span class="mi">9</span><span class="w">   </span><span class="nx">who</span><span class="w">          </span><span class="mi">891</span><span class="w"> </span><span class="nx">non</span><span class="o">-</span><span class="nx">null</span><span class="w">    </span><span class="nx">object</span><span class="w">  </span>
+<span class="w"> </span><span class="mi">10</span><span class="w">  </span><span class="nx">adult_male</span><span class="w">   </span><span class="mi">891</span><span class="w"> </span><span class="nx">non</span><span class="o">-</span><span class="nx">null</span><span class="w">    </span><span class="kt">bool</span><span class="w">    </span>
+<span class="w"> </span><span class="mi">11</span><span class="w">  </span><span class="nx">deck</span><span class="w">         </span><span class="mi">203</span><span class="w"> </span><span class="nx">non</span><span class="o">-</span><span class="nx">null</span><span class="w">    </span><span class="nx">category</span>
+<span class="w"> </span><span class="mi">12</span><span class="w">  </span><span class="nx">embark_town</span><span class="w">  </span><span class="mi">889</span><span class="w"> </span><span class="nx">non</span><span class="o">-</span><span class="nx">null</span><span class="w">    </span><span class="nx">object</span><span class="w">  </span>
+<span class="w"> </span><span class="mi">13</span><span class="w">  </span><span class="nx">alive</span><span class="w">        </span><span class="mi">891</span><span class="w"> </span><span class="nx">non</span><span class="o">-</span><span class="nx">null</span><span class="w">    </span><span class="nx">object</span><span class="w">  </span>
+<span class="w"> </span><span class="mi">14</span><span class="w">  </span><span class="nx">alone</span><span class="w">        </span><span class="mi">891</span><span class="w"> </span><span class="nx">non</span><span class="o">-</span><span class="nx">null</span><span class="w">    </span><span class="kt">bool</span><span class="w">    </span>
+<span class="nx">dtypes</span><span class="p">:</span><span class="w"> </span><span class="kt">bool</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span><span class="w"> </span><span class="nx">category</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span><span class="w"> </span><span class="nx">float64</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span><span class="w"> </span><span class="nx">int64</span><span class="p">(</span><span class="mi">4</span><span class="p">),</span><span class="w"> </span><span class="nx">object</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="nx">memory</span><span class="w"> </span><span class="nx">usage</span><span class="p">:</span><span class="w"> </span><span class="m m-Double">80.7</span><span class="o">+</span><span class="w"> </span><span class="nx">KB</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">titanic</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="nx">survived</span><span class="w">         </span><span class="mi">0</span>
+<span class="nx">pclass</span><span class="w">           </span><span class="mi">0</span>
+<span class="nx">sex</span><span class="w">              </span><span class="mi">0</span>
+<span class="nx">age</span><span class="w">            </span><span class="mi">177</span>
+<span class="nx">sibsp</span><span class="w">            </span><span class="mi">0</span>
+<span class="nx">parch</span><span class="w">            </span><span class="mi">0</span>
+<span class="nx">fare</span><span class="w">             </span><span class="mi">0</span>
+<span class="nx">embarked</span><span class="w">         </span><span class="mi">2</span>
+<span class="kd">class</span><span class="w">            </span><span class="mi">0</span>
+<span class="nx">who</span><span class="w">              </span><span class="mi">0</span>
+<span class="nx">adult_male</span><span class="w">       </span><span class="mi">0</span>
+<span class="nx">deck</span><span class="w">           </span><span class="mi">688</span>
+<span class="nx">embark_town</span><span class="w">      </span><span class="mi">2</span>
+<span class="nx">alive</span><span class="w">            </span><span class="mi">0</span>
+<span class="nx">alone</span><span class="w">            </span><span class="mi">0</span>
+<span class="nx">dtype</span><span class="p">:</span><span class="w"> </span><span class="nx">int64</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="c1"># Fill missing age values with the median</span>
+<span class="n">titanic</span><span class="p">[</span><span class="s2">&quot;age&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">titanic</span><span class="p">[</span><span class="s2">&quot;age&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">titanic</span><span class="p">[</span><span class="s2">&quot;age&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">median</span><span class="p">())</span>
+
+<span class="c1"># Check if there are still any missing values</span>
+<span class="n">titanic</span><span class="p">[</span><span class="s2">&quot;age&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>np.int64(0)
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="c1"># Fill missing embarked values with mode</span>
+<span class="n">titanic</span><span class="p">[</span><span class="s2">&quot;embarked&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">titanic</span><span class="p">[</span><span class="s2">&quot;embarked&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">titanic</span><span class="p">[</span><span class="s2">&quot;embarked&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mode</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="c1"># Convert categorical columns into numerical using one-hot encoding</span>
+<span class="n">titanic_encoded</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">titanic</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;sex&quot;</span><span class="p">,</span> <span class="s2">&quot;embarked&quot;</span><span class="p">,</span> <span class="s2">&quot;pclass&quot;</span><span class="p">],</span> <span class="n">drop_first</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">titanic_encoded</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div>
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>survived</th>
+      <th>age</th>
+      <th>sibsp</th>
+      <th>parch</th>
+      <th>fare</th>
+      <th>class</th>
+      <th>who</th>
+      <th>adult_male</th>
+      <th>deck</th>
+      <th>embark_town</th>
+      <th>alive</th>
+      <th>alone</th>
+      <th>sex_male</th>
+      <th>embarked_Q</th>
+      <th>embarked_S</th>
+      <th>pclass_2</th>
+      <th>pclass_3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>22.0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>7.2500</td>
+      <td>Third</td>
+      <td>man</td>
+      <td>True</td>
+      <td>NaN</td>
+      <td>Southampton</td>
+      <td>no</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>38.0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>71.2833</td>
+      <td>First</td>
+      <td>woman</td>
+      <td>False</td>
+      <td>C</td>
+      <td>Cherbourg</td>
+      <td>yes</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1</td>
+      <td>26.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>7.9250</td>
+      <td>Third</td>
+      <td>woman</td>
+      <td>False</td>
+      <td>NaN</td>
+      <td>Southampton</td>
+      <td>yes</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1</td>
+      <td>35.0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>53.1000</td>
+      <td>First</td>
+      <td>woman</td>
+      <td>False</td>
+      <td>C</td>
+      <td>Southampton</td>
+      <td>yes</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0</td>
+      <td>35.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>8.0500</td>
+      <td>Third</td>
+      <td>man</td>
+      <td>True</td>
+      <td>NaN</td>
+      <td>Southampton</td>
+      <td>no</td>
+      <td>True</td>
+      <td>True</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>True</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="highlight"><pre><span></span><code><span class="c1"># Optional: Drop columns that are not useful for prediction</span>
+<span class="n">titanic</span> <span class="o">=</span> <span class="n">titanic</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;who&quot;</span><span class="p">,</span> <span class="s2">&quot;adult_male&quot;</span><span class="p">,</span> <span class="s2">&quot;deck&quot;</span><span class="p">,</span> <span class="s2">&quot;embark_town&quot;</span><span class="p">,</span> <span class="s2">&quot;alive&quot;</span><span class="p">,</span> <span class="s2">&quot;class&quot;</span><span class="p">,</span> <span class="s2">&quot;alone&quot;</span><span class="p">],</span> <span class="n">errors</span><span class="o">=</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+
+<span class="c1"># Fill missing values</span>
+<span class="n">titanic</span><span class="p">[</span><span class="s2">&quot;age&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">titanic</span><span class="p">[</span><span class="s2">&quot;age&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">titanic</span><span class="p">[</span><span class="s2">&quot;age&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">median</span><span class="p">())</span>
+<span class="n">titanic</span><span class="p">[</span><span class="s2">&quot;fare&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">titanic</span><span class="p">[</span><span class="s2">&quot;fare&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">titanic</span><span class="p">[</span><span class="s2">&quot;fare&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">median</span><span class="p">())</span>
+<span class="n">titanic</span><span class="p">[</span><span class="s2">&quot;embarked&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">titanic</span><span class="p">[</span><span class="s2">&quot;embarked&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">titanic</span><span class="p">[</span><span class="s2">&quot;embarked&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mode</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="c1"># Convert categorical columns to numeric</span>
+<span class="n">titanic_encoded</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">titanic</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;sex&quot;</span><span class="p">,</span> <span class="s2">&quot;embarked&quot;</span><span class="p">,</span> <span class="s2">&quot;pclass&quot;</span><span class="p">],</span> <span class="n">drop_first</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Define features and label</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">titanic_encoded</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s2">&quot;survived&quot;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">titanic_encoded</span><span class="p">[</span><span class="s2">&quot;survived&quot;</span><span class="p">]</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span>
+
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.linear_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">LogisticRegression</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">max_iter</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+</code></pre></div>
+
+<style>#sk-container-id-1 {
+  /* Definition of color scheme common for light and dark mode */
+  --sklearn-color-text: #000;
+  --sklearn-color-text-muted: #666;
+  --sklearn-color-line: gray;
+  /* Definition of color scheme for unfitted estimators */
+  --sklearn-color-unfitted-level-0: #fff5e6;
+  --sklearn-color-unfitted-level-1: #f6e4d2;
+  --sklearn-color-unfitted-level-2: #ffe0b3;
+  --sklearn-color-unfitted-level-3: chocolate;
+  /* Definition of color scheme for fitted estimators */
+  --sklearn-color-fitted-level-0: #f0f8ff;
+  --sklearn-color-fitted-level-1: #d4ebff;
+  --sklearn-color-fitted-level-2: #b3dbfd;
+  --sklearn-color-fitted-level-3: cornflowerblue;
+
+  /* Specific color for light theme */
+  --sklearn-color-text-on-default-background: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, black)));
+  --sklearn-color-background: var(--sg-background-color, var(--theme-background, var(--jp-layout-color0, white)));
+  --sklearn-color-border-box: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, black)));
+  --sklearn-color-icon: #696969;
+
+  @media (prefers-color-scheme: dark) {
+    /* Redefinition of color scheme for dark theme */
+    --sklearn-color-text-on-default-background: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, white)));
+    --sklearn-color-background: var(--sg-background-color, var(--theme-background, var(--jp-layout-color0, #111)));
+    --sklearn-color-border-box: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, white)));
+    --sklearn-color-icon: #878787;
+  }
+}
+
+#sk-container-id-1 {
+  color: var(--sklearn-color-text);
+}
+
+#sk-container-id-1 pre {
+  padding: 0;
+}
+
+#sk-container-id-1 input.sk-hidden--visually {
+  border: 0;
+  clip: rect(1px 1px 1px 1px);
+  clip: rect(1px, 1px, 1px, 1px);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+#sk-container-id-1 div.sk-dashed-wrapped {
+  border: 1px dashed var(--sklearn-color-line);
+  margin: 0 0.4em 0.5em 0.4em;
+  box-sizing: border-box;
+  padding-bottom: 0.4em;
+  background-color: var(--sklearn-color-background);
+}
+
+#sk-container-id-1 div.sk-container {
+  /* jupyter's `normalize.less` sets `[hidden] { display: none; }`
+     but bootstrap.min.css set `[hidden] { display: none !important; }`
+     so we also need the `!important` here to be able to override the
+     default hidden behavior on the sphinx rendered scikit-learn.org.
+     See: https://github.com/scikit-learn/scikit-learn/issues/21755 */
+  display: inline-block !important;
+  position: relative;
+}
+
+#sk-container-id-1 div.sk-text-repr-fallback {
+  display: none;
+}
+
+div.sk-parallel-item,
+div.sk-serial,
+div.sk-item {
+  /* draw centered vertical line to link estimators */
+  background-image: linear-gradient(var(--sklearn-color-text-on-default-background), var(--sklearn-color-text-on-default-background));
+  background-size: 2px 100%;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+/* Parallel-specific style estimator block */
+
+#sk-container-id-1 div.sk-parallel-item::after {
+  content: "";
+  width: 100%;
+  border-bottom: 2px solid var(--sklearn-color-text-on-default-background);
+  flex-grow: 1;
+}
+
+#sk-container-id-1 div.sk-parallel {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  background-color: var(--sklearn-color-background);
+  position: relative;
+}
+
+#sk-container-id-1 div.sk-parallel-item {
+  display: flex;
+  flex-direction: column;
+}
+
+#sk-container-id-1 div.sk-parallel-item:first-child::after {
+  align-self: flex-end;
+  width: 50%;
+}
+
+#sk-container-id-1 div.sk-parallel-item:last-child::after {
+  align-self: flex-start;
+  width: 50%;
+}
+
+#sk-container-id-1 div.sk-parallel-item:only-child::after {
+  width: 0;
+}
+
+/* Serial-specific style estimator block */
+
+#sk-container-id-1 div.sk-serial {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--sklearn-color-background);
+  padding-right: 1em;
+  padding-left: 1em;
+}
+
+
+/* Toggleable style: style used for estimator/Pipeline/ColumnTransformer box that is
+clickable and can be expanded/collapsed.
+- Pipeline and ColumnTransformer use this feature and define the default style
+- Estimators will overwrite some part of the style using the `sk-estimator` class
+*/
+
+/* Pipeline and ColumnTransformer style (default) */
+
+#sk-container-id-1 div.sk-toggleable {
+  /* Default theme specific background. It is overwritten whether we have a
+  specific estimator or a Pipeline/ColumnTransformer */
+  background-color: var(--sklearn-color-background);
+}
+
+/* Toggleable label */
+#sk-container-id-1 label.sk-toggleable__label {
+  cursor: pointer;
+  display: flex;
+  width: 100%;
+  margin-bottom: 0;
+  padding: 0.5em;
+  box-sizing: border-box;
+  text-align: center;
+  align-items: start;
+  justify-content: space-between;
+  gap: 0.5em;
+}
+
+#sk-container-id-1 label.sk-toggleable__label .caption {
+  font-size: 0.6rem;
+  font-weight: lighter;
+  color: var(--sklearn-color-text-muted);
+}
+
+#sk-container-id-1 label.sk-toggleable__label-arrow:before {
+  /* Arrow on the left of the label */
+  content: "▸";
+  float: left;
+  margin-right: 0.25em;
+  color: var(--sklearn-color-icon);
+}
+
+#sk-container-id-1 label.sk-toggleable__label-arrow:hover:before {
+  color: var(--sklearn-color-text);
+}
+
+/* Toggleable content - dropdown */
+
+#sk-container-id-1 div.sk-toggleable__content {
+  display: none;
+  text-align: left;
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-0);
+}
+
+#sk-container-id-1 div.sk-toggleable__content.fitted {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-0);
+}
+
+#sk-container-id-1 div.sk-toggleable__content pre {
+  margin: 0.2em;
+  border-radius: 0.25em;
+  color: var(--sklearn-color-text);
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-0);
+}
+
+#sk-container-id-1 div.sk-toggleable__content.fitted pre {
+  /* unfitted */
+  background-color: var(--sklearn-color-fitted-level-0);
+}
+
+#sk-container-id-1 input.sk-toggleable__control:checked~div.sk-toggleable__content {
+  /* Expand drop-down */
+  display: block;
+  width: 100%;
+  overflow: visible;
+}
+
+#sk-container-id-1 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {
+  content: "▾";
+}
+
+/* Pipeline/ColumnTransformer-specific style */
+
+#sk-container-id-1 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  color: var(--sklearn-color-text);
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+#sk-container-id-1 div.sk-label.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+/* Estimator-specific style */
+
+/* Colorize estimator box */
+#sk-container-id-1 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+#sk-container-id-1 div.sk-estimator.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+#sk-container-id-1 div.sk-label label.sk-toggleable__label,
+#sk-container-id-1 div.sk-label label {
+  /* The background is the default theme color */
+  color: var(--sklearn-color-text-on-default-background);
+}
+
+/* On hover, darken the color of the background */
+#sk-container-id-1 div.sk-label:hover label.sk-toggleable__label {
+  color: var(--sklearn-color-text);
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+/* Label box, darken color on hover, fitted */
+#sk-container-id-1 div.sk-label.fitted:hover label.sk-toggleable__label.fitted {
+  color: var(--sklearn-color-text);
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+/* Estimator label */
+
+#sk-container-id-1 div.sk-label label {
+  font-family: monospace;
+  font-weight: bold;
+  display: inline-block;
+  line-height: 1.2em;
+}
+
+#sk-container-id-1 div.sk-label-container {
+  text-align: center;
+}
+
+/* Estimator-specific */
+#sk-container-id-1 div.sk-estimator {
+  font-family: monospace;
+  border: 1px dotted var(--sklearn-color-border-box);
+  border-radius: 0.25em;
+  box-sizing: border-box;
+  margin-bottom: 0.5em;
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-0);
+}
+
+#sk-container-id-1 div.sk-estimator.fitted {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-0);
+}
+
+/* on hover */
+#sk-container-id-1 div.sk-estimator:hover {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+#sk-container-id-1 div.sk-estimator.fitted:hover {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+/* Specification for estimator info (e.g. "i" and "?") */
+
+/* Common style for "i" and "?" */
+
+.sk-estimator-doc-link,
+a:link.sk-estimator-doc-link,
+a:visited.sk-estimator-doc-link {
+  float: right;
+  font-size: smaller;
+  line-height: 1em;
+  font-family: monospace;
+  background-color: var(--sklearn-color-background);
+  border-radius: 1em;
+  height: 1em;
+  width: 1em;
+  text-decoration: none !important;
+  margin-left: 0.5em;
+  text-align: center;
+  /* unfitted */
+  border: var(--sklearn-color-unfitted-level-1) 1pt solid;
+  color: var(--sklearn-color-unfitted-level-1);
+}
+
+.sk-estimator-doc-link.fitted,
+a:link.sk-estimator-doc-link.fitted,
+a:visited.sk-estimator-doc-link.fitted {
+  /* fitted */
+  border: var(--sklearn-color-fitted-level-1) 1pt solid;
+  color: var(--sklearn-color-fitted-level-1);
+}
+
+/* On hover */
+div.sk-estimator:hover .sk-estimator-doc-link:hover,
+.sk-estimator-doc-link:hover,
+div.sk-label-container:hover .sk-estimator-doc-link:hover,
+.sk-estimator-doc-link:hover {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-3);
+  color: var(--sklearn-color-background);
+  text-decoration: none;
+}
+
+div.sk-estimator.fitted:hover .sk-estimator-doc-link.fitted:hover,
+.sk-estimator-doc-link.fitted:hover,
+div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
+.sk-estimator-doc-link.fitted:hover {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-3);
+  color: var(--sklearn-color-background);
+  text-decoration: none;
+}
+
+/* Span, style for the box shown on hovering the info icon */
+.sk-estimator-doc-link span {
+  display: none;
+  z-index: 9999;
+  position: relative;
+  font-weight: normal;
+  right: .2ex;
+  padding: .5ex;
+  margin: .5ex;
+  width: min-content;
+  min-width: 20ex;
+  max-width: 50ex;
+  color: var(--sklearn-color-text);
+  box-shadow: 2pt 2pt 4pt #999;
+  /* unfitted */
+  background: var(--sklearn-color-unfitted-level-0);
+  border: .5pt solid var(--sklearn-color-unfitted-level-3);
+}
+
+.sk-estimator-doc-link.fitted span {
+  /* fitted */
+  background: var(--sklearn-color-fitted-level-0);
+  border: var(--sklearn-color-fitted-level-3);
+}
+
+.sk-estimator-doc-link:hover span {
+  display: block;
+}
+
+/* "?"-specific style due to the `<a>` HTML tag */
+
+#sk-container-id-1 a.estimator_doc_link {
+  float: right;
+  font-size: 1rem;
+  line-height: 1em;
+  font-family: monospace;
+  background-color: var(--sklearn-color-background);
+  border-radius: 1rem;
+  height: 1rem;
+  width: 1rem;
+  text-decoration: none;
+  /* unfitted */
+  color: var(--sklearn-color-unfitted-level-1);
+  border: var(--sklearn-color-unfitted-level-1) 1pt solid;
+}
+
+#sk-container-id-1 a.estimator_doc_link.fitted {
+  /* fitted */
+  border: var(--sklearn-color-fitted-level-1) 1pt solid;
+  color: var(--sklearn-color-fitted-level-1);
+}
+
+/* On hover */
+#sk-container-id-1 a.estimator_doc_link:hover {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-3);
+  color: var(--sklearn-color-background);
+  text-decoration: none;
+}
+
+#sk-container-id-1 a.estimator_doc_link.fitted:hover {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-3);
+}
+
+.estimator-table summary {
+    padding: .5rem;
+    font-family: monospace;
+    cursor: pointer;
+}
+
+.estimator-table details[open] {
+    padding-left: 0.1rem;
+    padding-right: 0.1rem;
+    padding-bottom: 0.3rem;
+}
+
+.estimator-table .parameters-table {
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+.estimator-table .parameters-table tr:nth-child(odd) {
+    background-color: #fff;
+}
+
+.estimator-table .parameters-table tr:nth-child(even) {
+    background-color: #f6f6f6;
+}
+
+.estimator-table .parameters-table tr:hover {
+    background-color: #e0e0e0;
+}
+
+.estimator-table table td {
+    border: 1px solid rgba(106, 105, 104, 0.232);
+}
+
+.user-set td {
+    color:rgb(255, 94, 0);
+    text-align: left;
+}
+
+.user-set td.value pre {
+    color:rgb(255, 94, 0) !important;
+    background-color: transparent !important;
+}
+
+.default td {
+    color: black;
+    text-align: left;
+}
+
+.user-set td i,
+.default td i {
+    color: black;
+}
+
+.copy-paste-icon {
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0NDggNTEyIj48IS0tIUZvbnQgQXdlc29tZSBGcmVlIDYuNy4yIGJ5IEBmb250YXdlc29tZSAtIGh0dHBzOi8vZm9udGF3ZXNvbWUuY29tIExpY2Vuc2UgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbS9saWNlbnNlL2ZyZWUgQ29weXJpZ2h0IDIwMjUgRm9udGljb25zLCBJbmMuLS0+PHBhdGggZD0iTTIwOCAwTDMzMi4xIDBjMTIuNyAwIDI0LjkgNS4xIDMzLjkgMTQuMWw2Ny45IDY3LjljOSA5IDE0LjEgMjEuMiAxNC4xIDMzLjlMNDQ4IDMzNmMwIDI2LjUtMjEuNSA0OC00OCA0OGwtMTkyIDBjLTI2LjUgMC00OC0yMS41LTQ4LTQ4bDAtMjg4YzAtMjYuNSAyMS41LTQ4IDQ4LTQ4ek00OCAxMjhsODAgMCAwIDY0LTY0IDAgMCAyNTYgMTkyIDAgMC0zMiA2NCAwIDAgNDhjMCAyNi41LTIxLjUgNDgtNDggNDhMNDggNTEyYy0yNi41IDAtNDgtMjEuNS00OC00OEwwIDE3NmMwLTI2LjUgMjEuNS00OCA0OC00OHoiLz48L3N2Zz4=);
+    background-repeat: no-repeat;
+    background-size: 14px 14px;
+    background-position: 0;
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    cursor: pointer;
+}
+</style>
+<body><div id="sk-container-id-1" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>LogisticRegression(max_iter=200)</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item"><div class="sk-estimator fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-1" type="checkbox" checked><label for="sk-estimator-id-1" class="sk-toggleable__label fitted sk-toggleable__label-arrow"><div><div>LogisticRegression</div></div><div><a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.7/modules/generated/sklearn.linear_model.LogisticRegression.html">?<span>Documentation for LogisticRegression</span></a><span class="sk-estimator-doc-link fitted">i<span>Fitted</span></span></div></label><div class="sk-toggleable__content fitted" data-param-prefix="">
+        <div class="estimator-table">
+            <details>
+                <summary>Parameters</summary>
+                <table class="parameters-table">
+                  <tbody>
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('penalty',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">penalty&nbsp;</td>
+            <td class="value">&#x27;l2&#x27;</td>
+        </tr>
+
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('dual',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">dual&nbsp;</td>
+            <td class="value">False</td>
+        </tr>
+
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('tol',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">tol&nbsp;</td>
+            <td class="value">0.0001</td>
+        </tr>
+
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('C',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">C&nbsp;</td>
+            <td class="value">1.0</td>
+        </tr>
+
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('fit_intercept',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">fit_intercept&nbsp;</td>
+            <td class="value">True</td>
+        </tr>
+
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('intercept_scaling',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">intercept_scaling&nbsp;</td>
+            <td class="value">1</td>
+        </tr>
+
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('class_weight',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">class_weight&nbsp;</td>
+            <td class="value">None</td>
+        </tr>
+
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('random_state',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">random_state&nbsp;</td>
+            <td class="value">None</td>
+        </tr>
+
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('solver',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">solver&nbsp;</td>
+            <td class="value">&#x27;lbfgs&#x27;</td>
+        </tr>
+
+
+        <tr class="user-set">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('max_iter',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">max_iter&nbsp;</td>
+            <td class="value">200</td>
+        </tr>
+
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('multi_class',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">multi_class&nbsp;</td>
+            <td class="value">&#x27;deprecated&#x27;</td>
+        </tr>
+
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('verbose',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">verbose&nbsp;</td>
+            <td class="value">0</td>
+        </tr>
+
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('warm_start',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">warm_start&nbsp;</td>
+            <td class="value">False</td>
+        </tr>
+
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('n_jobs',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">n_jobs&nbsp;</td>
+            <td class="value">None</td>
+        </tr>
+
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('l1_ratio',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">l1_ratio&nbsp;</td>
+            <td class="value">None</td>
+        </tr>
+
+                  </tbody>
+                </table>
+            </details>
+        </div>
+    </div></div></div></div></div><script>function copyToClipboard(text, element) {
+    // Get the parameter prefix from the closest toggleable content
+    const toggleableContent = element.closest('.sk-toggleable__content');
+    const paramPrefix = toggleableContent ? toggleableContent.dataset.paramPrefix : '';
+    const fullParamName = paramPrefix ? `${paramPrefix}${text}` : text;
+
+    const originalStyle = element.style;
+    const computedStyle = window.getComputedStyle(element);
+    const originalWidth = computedStyle.width;
+    const originalHTML = element.innerHTML.replace('Copied!', '');
+
+    navigator.clipboard.writeText(fullParamName)
+        .then(() => {
+            element.style.width = originalWidth;
+            element.style.color = 'green';
+            element.innerHTML = "Copied!";
+
+            setTimeout(() => {
+                element.innerHTML = originalHTML;
+                element.style = originalStyle;
+            }, 2000);
+        })
+        .catch(err => {
+            console.error('Failed to copy:', err);
+            element.style.color = 'red';
+            element.innerHTML = "Failed!";
+            setTimeout(() => {
+                element.innerHTML = originalHTML;
+                element.style = originalStyle;
+            }, 2000);
+        });
+    return false;
+}
+
+document.querySelectorAll('.fa-regular.fa-copy').forEach(function(element) {
+    const toggleableContent = element.closest('.sk-toggleable__content');
+    const paramPrefix = toggleableContent ? toggleableContent.dataset.paramPrefix : '';
+    const paramName = element.parentElement.nextElementSibling.textContent.trim();
+    const fullParamName = paramPrefix ? `${paramPrefix}${paramName}` : paramName;
+
+    element.setAttribute('title', fullParamName);
+});
+</script></body>
+
+<div class="highlight"><pre><span></span><code><span class="c1"># Predict on the test set</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">accuracy_score</span>
+
+<span class="c1"># Evaluate the model</span>
+<span class="n">accuracy</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Accuracy: </span><span class="si">{</span><span class="n">accuracy</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">Accuracy</span><span class="o">:</span><span class="w"> </span><span class="mf">0.80</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">classification_report</span>
+
+<span class="c1"># Detailed performance report</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>              precision    recall  f1-score   support
+
+           0       0.81      0.86      0.83       105
+           1       0.78      0.72      0.75        74
+
+    accuracy                           0.80       179
+   macro avg       0.80      0.79      0.79       179
+weighted avg       0.80      0.80      0.80       179
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">confusion_matrix</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="c1"># Plot confusion matrix</span>
+<span class="n">cm</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">cm</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;d&quot;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;Blues&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Predicted&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Actual&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Confusion Matrix&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+
+<p><img alt="png" src="/pynotes/images/titanic_13_0.png"></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Show feature importance</span>
+<span class="n">coefficients</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">coef_</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="n">X</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+<span class="n">coefficients</span><span class="o">.</span><span class="n">sort_values</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;barh&#39;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">6</span><span class="p">),</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Feature Impact on Survival&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+
+<p><img alt="png" src="/pynotes/images/titanic_14_0.png"></p>
+<div class="highlight"><pre><span></span><code>
+</code></pre></div>
+
+<hr>
+<p><strong>Score: 15</strong></p>
+<p class="subheader">Category: <a href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/category/basics.html">basics</a>
+
+</p>
+
+
+
+
+</article>
+    </div>
+    <!-- End Main Content -->
+
+    <!-- Sidebar -->
+    <aside class="large-3 columns">
+        <h5 class="sidebar-title">Site</h5>
+        <ul class="side-nav">
+            <li><a href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/archives.html">Archives</a>
+            <li><a href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/tags.html">Tags</a>
+        </ul>
+
+		
+        <h5 class="sidebar-title">Categories</h5>
+        <ul class="side-nav">
+            <li><a href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/category/basics.html">basics</a></li>
+            <li><a href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/category/pandas-work.html">pandas-work</a></li>
+   
+        </ul>
+
+		
+        <h5 class="sidebar-title">Social</h5>
+        <ul class="side-nav">
+            <li><a href="https://github.com/<yourusername>/">GitHub</a></li>
+            <li><a href="<linkedin handle>">LinkedIn</a></li>
+        </ul>
+
+    </aside> <!-- End Sidebar -->
+
+</div> <!-- End Main Content and Sidebar -->
+
+
+<!-- Footer -->
+<footer class="row">
+    <div class="large-12 columns">
+        <hr />
+        <div class="row">
+            <div class="large-6 columns">
+              <!--                  <p>My Python Notes by Fahd</p> -->
+            </div>
+            </div>
+    </div>
+</footer>
+</body>
+</html>
