@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8" />
+    <!-- Set the viewport width to device width for mobile -->
+    <meta name="viewport" content="width=device-width" />
+
+    <title>Expense</title>
+
+    <link rel="stylesheet" href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/theme/css/normalize.css" />
+    <link rel="stylesheet" href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/theme/css/foundation.min.css" />
+    <link rel="stylesheet" href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/theme/css/style.css" />
+    <link rel="stylesheet" href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/theme/css/pygments.css" />	
+    <script src="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/theme/js/modernizr.js"></script>
+</head>
+
+<body>
+
+<!-- Nav Bar -->
+<nav>
+<div class="top-bar">
+<div class="row">
+    <div class="large-9 large-centered columns">
+	    <h1><a href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes">My Python Notes</a></h1>
+    </div>
+</div>
+</div>
+
+<!-- Show menu items and pages -->
+<div class="row">
+<div class="large-9 columns">
+    <ul class="button-group navigation">
+
+    </ul>
+</div>
+</div>
+</nav>
+<!-- End Nav -->
+
+
+<!-- Main Page Content and Sidebar -->
+<div class="row">
+
+    <!-- Main Blog Content -->
+    <div class="large-9 columns">
+<article>
+    <header>
+        <h3 class="article-title"><a href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/expense.html" rel="bookmark"
+        title="Permalink to Expense">Expense</a></h3>
+    </header>
+
+<h6 class="subheader" title="2025-06-28T00:00:00-04:00">Sat 28 June 2025
+</h6>
+
+
+    <div class="highlight"><pre><span></span><code><span class="c1"># Import libraries</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="c1"># Define expense data</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span><span class="s2">&quot;Date&quot;</span><span class="p">:</span> <span class="s2">&quot;2025-06-01&quot;</span><span class="p">,</span> <span class="s2">&quot;Category&quot;</span><span class="p">:</span> <span class="s2">&quot;Food&quot;</span><span class="p">,</span> <span class="s2">&quot;Amount&quot;</span><span class="p">:</span> <span class="mi">250</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;Date&quot;</span><span class="p">:</span> <span class="s2">&quot;2025-06-03&quot;</span><span class="p">,</span> <span class="s2">&quot;Category&quot;</span><span class="p">:</span> <span class="s2">&quot;Transport&quot;</span><span class="p">,</span> <span class="s2">&quot;Amount&quot;</span><span class="p">:</span> <span class="mi">80</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;Date&quot;</span><span class="p">:</span> <span class="s2">&quot;2025-06-05&quot;</span><span class="p">,</span> <span class="s2">&quot;Category&quot;</span><span class="p">:</span> <span class="s2">&quot;Rent&quot;</span><span class="p">,</span> <span class="s2">&quot;Amount&quot;</span><span class="p">:</span> <span class="mi">5000</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;Date&quot;</span><span class="p">:</span> <span class="s2">&quot;2025-06-10&quot;</span><span class="p">,</span> <span class="s2">&quot;Category&quot;</span><span class="p">:</span> <span class="s2">&quot;Food&quot;</span><span class="p">,</span> <span class="s2">&quot;Amount&quot;</span><span class="p">:</span> <span class="mi">300</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;Date&quot;</span><span class="p">:</span> <span class="s2">&quot;2025-06-15&quot;</span><span class="p">,</span> <span class="s2">&quot;Category&quot;</span><span class="p">:</span> <span class="s2">&quot;Shopping&quot;</span><span class="p">,</span> <span class="s2">&quot;Amount&quot;</span><span class="p">:</span> <span class="mi">1200</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;Date&quot;</span><span class="p">:</span> <span class="s2">&quot;2025-06-20&quot;</span><span class="p">,</span> <span class="s2">&quot;Category&quot;</span><span class="p">:</span> <span class="s2">&quot;Entertainment&quot;</span><span class="p">,</span> <span class="s2">&quot;Amount&quot;</span><span class="p">:</span> <span class="mi">600</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;Date&quot;</span><span class="p">:</span> <span class="s2">&quot;2025-06-25&quot;</span><span class="p">,</span> <span class="s2">&quot;Category&quot;</span><span class="p">:</span> <span class="s2">&quot;Food&quot;</span><span class="p">,</span> <span class="s2">&quot;Amount&quot;</span><span class="p">:</span> <span class="mi">280</span><span class="p">},</span>
+<span class="p">]</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="c1"># Create DataFrame</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">df</span>
+</code></pre></div>
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Date</th>
+      <th>Category</th>
+      <th>Amount</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2025-06-01</td>
+      <td>Food</td>
+      <td>250</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2025-06-03</td>
+      <td>Transport</td>
+      <td>80</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2025-06-05</td>
+      <td>Rent</td>
+      <td>5000</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2025-06-10</td>
+      <td>Food</td>
+      <td>300</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2025-06-15</td>
+      <td>Shopping</td>
+      <td>1200</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>2025-06-20</td>
+      <td>Entertainment</td>
+      <td>600</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>2025-06-25</td>
+      <td>Food</td>
+      <td>280</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="highlight"><pre><span></span><code><span class="c1"># Total expenses</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;Amount&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>np.int64(7710)
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="c1"># Total by category</span>
+<span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;Category&quot;</span><span class="p">)[</span><span class="s2">&quot;Amount&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="nx">Category</span>
+<span class="nx">Entertainment</span><span class="w">     </span><span class="mi">600</span>
+<span class="nx">Food</span><span class="w">              </span><span class="mi">830</span>
+<span class="nx">Rent</span><span class="w">             </span><span class="mi">5000</span>
+<span class="nx">Shopping</span><span class="w">         </span><span class="mi">1200</span>
+<span class="nx">Transport</span><span class="w">          </span><span class="mi">80</span>
+<span class="nx">Name</span><span class="p">:</span><span class="w"> </span><span class="nx">Amount</span><span class="p">,</span><span class="w"> </span><span class="nx">dtype</span><span class="p">:</span><span class="w"> </span><span class="nx">int64</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="c1"># Add weekday</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;Date&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Date&quot;</span><span class="p">])</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;Weekday&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Date&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">day_name</span><span class="p">()</span>
+<span class="n">df</span>
+</code></pre></div>
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Date</th>
+      <th>Category</th>
+      <th>Amount</th>
+      <th>Weekday</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2025-06-01</td>
+      <td>Food</td>
+      <td>250</td>
+      <td>Sunday</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2025-06-03</td>
+      <td>Transport</td>
+      <td>80</td>
+      <td>Tuesday</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2025-06-05</td>
+      <td>Rent</td>
+      <td>5000</td>
+      <td>Thursday</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2025-06-10</td>
+      <td>Food</td>
+      <td>300</td>
+      <td>Tuesday</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2025-06-15</td>
+      <td>Shopping</td>
+      <td>1200</td>
+      <td>Sunday</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>2025-06-20</td>
+      <td>Entertainment</td>
+      <td>600</td>
+      <td>Friday</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>2025-06-25</td>
+      <td>Food</td>
+      <td>280</td>
+      <td>Wednesday</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="highlight"><pre><span></span><code><span class="c1"># Expenses by weekday</span>
+<span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;Weekday&quot;</span><span class="p">)[</span><span class="s2">&quot;Amount&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">sort_values</span><span class="p">()</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="nx">Weekday</span>
+<span class="nx">Wednesday</span><span class="w">     </span><span class="mi">280</span>
+<span class="nx">Tuesday</span><span class="w">       </span><span class="mi">380</span>
+<span class="nx">Friday</span><span class="w">        </span><span class="mi">600</span>
+<span class="nx">Sunday</span><span class="w">       </span><span class="mi">1450</span>
+<span class="nx">Thursday</span><span class="w">     </span><span class="mi">5000</span>
+<span class="nx">Name</span><span class="p">:</span><span class="w"> </span><span class="nx">Amount</span><span class="p">,</span><span class="w"> </span><span class="nx">dtype</span><span class="p">:</span><span class="w"> </span><span class="nx">int64</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="c1"># Pie chart by category</span>
+<span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;Category&quot;</span><span class="p">)[</span><span class="s2">&quot;Amount&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">pie</span><span class="p">(</span><span class="n">autopct</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%1.1f%%</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Expense Distribution&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+
+<p><img alt="png" src="/pynotes/images/expense_7_0.png"></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Daily trend line</span>
+<span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;Date&quot;</span><span class="p">)[</span><span class="s2">&quot;Amount&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">marker</span><span class="o">=</span><span class="s2">&quot;o&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Daily Expense Trend&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+
+<p><img alt="png" src="/pynotes/images/expense_8_0.png"></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Highest spending day</span>
+<span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Amount&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Amount&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()]</span>
+</code></pre></div>
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Date</th>
+      <th>Category</th>
+      <th>Amount</th>
+      <th>Weekday</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2</th>
+      <td>2025-06-05</td>
+      <td>Rent</td>
+      <td>5000</td>
+      <td>Thursday</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="highlight"><pre><span></span><code><span class="c1"># Add comments</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;Comment&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Amount&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="s2">&quot;Too much!&quot;</span> <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">1000</span> <span class="k">else</span> <span class="s2">&quot;Okay&quot;</span><span class="p">)</span>
+<span class="n">df</span>
+</code></pre></div>
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Date</th>
+      <th>Category</th>
+      <th>Amount</th>
+      <th>Weekday</th>
+      <th>Comment</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2025-06-01</td>
+      <td>Food</td>
+      <td>250</td>
+      <td>Sunday</td>
+      <td>Okay</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2025-06-03</td>
+      <td>Transport</td>
+      <td>80</td>
+      <td>Tuesday</td>
+      <td>Okay</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2025-06-05</td>
+      <td>Rent</td>
+      <td>5000</td>
+      <td>Thursday</td>
+      <td>Too much!</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2025-06-10</td>
+      <td>Food</td>
+      <td>300</td>
+      <td>Tuesday</td>
+      <td>Okay</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2025-06-15</td>
+      <td>Shopping</td>
+      <td>1200</td>
+      <td>Sunday</td>
+      <td>Too much!</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>2025-06-20</td>
+      <td>Entertainment</td>
+      <td>600</td>
+      <td>Friday</td>
+      <td>Okay</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>2025-06-25</td>
+      <td>Food</td>
+      <td>280</td>
+      <td>Wednesday</td>
+      <td>Okay</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="highlight"><pre><span></span><code><span class="c1"># Save report</span>
+<span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;expenses_report.csv&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>
+</code></pre></div>
+
+<hr>
+<p><strong>Score: 10</strong></p>
+<p class="subheader">Category: <a href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/category/basics.html">basics</a>
+
+</p>
+
+
+
+
+</article>
+    </div>
+    <!-- End Main Content -->
+
+    <!-- Sidebar -->
+    <aside class="large-3 columns">
+        <h5 class="sidebar-title">Site</h5>
+        <ul class="side-nav">
+            <li><a href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/archives.html">Archives</a>
+            <li><a href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/tags.html">Tags</a>
+        </ul>
+
+		
+        <h5 class="sidebar-title">Categories</h5>
+        <ul class="side-nav">
+            <li><a href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/category/basics.html">basics</a></li>
+            <li><a href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/category/pandas-work.html">pandas-work</a></li>
+   
+        </ul>
+
+		
+        <h5 class="sidebar-title">Social</h5>
+        <ul class="side-nav">
+            <li><a href="https://github.com/<yourusername>/">GitHub</a></li>
+            <li><a href="<linkedin handle>">LinkedIn</a></li>
+        </ul>
+
+    </aside> <!-- End Sidebar -->
+
+</div> <!-- End Main Content and Sidebar -->
+
+
+<!-- Footer -->
+<footer class="row">
+    <div class="large-12 columns">
+        <hr />
+        <div class="row">
+            <div class="large-6 columns">
+              <!--                  <p>My Python Notes by Fahd</p> -->
+            </div>
+            </div>
+    </div>
+</footer>
+</body>
+</html>
