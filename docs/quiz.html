@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8" />
+    <!-- Set the viewport width to device width for mobile -->
+    <meta name="viewport" content="width=device-width" />
+
+    <title>Quiz</title>
+
+    <link rel="stylesheet" href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/theme/css/normalize.css" />
+    <link rel="stylesheet" href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/theme/css/foundation.min.css" />
+    <link rel="stylesheet" href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/theme/css/style.css" />
+    <link rel="stylesheet" href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/theme/css/pygments.css" />	
+    <script src="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/theme/js/modernizr.js"></script>
+</head>
+
+<body>
+
+<!-- Nav Bar -->
+<nav>
+<div class="top-bar">
+<div class="row">
+    <div class="large-9 large-centered columns">
+	    <h1><a href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes">My Python Notes</a></h1>
+    </div>
+</div>
+</div>
+
+<!-- Show menu items and pages -->
+<div class="row">
+<div class="large-9 columns">
+    <ul class="button-group navigation">
+
+    </ul>
+</div>
+</div>
+</nav>
+<!-- End Nav -->
+
+
+<!-- Main Page Content and Sidebar -->
+<div class="row">
+
+    <!-- Main Blog Content -->
+    <div class="large-9 columns">
+<article>
+    <header>
+        <h3 class="article-title"><a href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/quiz.html" rel="bookmark"
+        title="Permalink to Quiz">Quiz</a></h3>
+    </header>
+
+<h6 class="subheader" title="2025-06-29T00:00:00-04:00">Sun 29 June 2025
+</h6>
+
+
+    <div class="highlight"><pre><span></span><code><span class="c1"># Quiz data as a list of dictionaries</span>
+<span class="n">quiz</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span><span class="s2">&quot;question&quot;</span><span class="p">:</span> <span class="s2">&quot;What is the capital of France?&quot;</span><span class="p">,</span> <span class="s2">&quot;options&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Paris&quot;</span><span class="p">,</span> <span class="s2">&quot;London&quot;</span><span class="p">,</span> <span class="s2">&quot;Berlin&quot;</span><span class="p">,</span> <span class="s2">&quot;Rome&quot;</span><span class="p">],</span> <span class="s2">&quot;answer&quot;</span><span class="p">:</span> <span class="s2">&quot;Paris&quot;</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;question&quot;</span><span class="p">:</span> <span class="s2">&quot;Which planet is known as the Red Planet?&quot;</span><span class="p">,</span> <span class="s2">&quot;options&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Earth&quot;</span><span class="p">,</span> <span class="s2">&quot;Mars&quot;</span><span class="p">,</span> <span class="s2">&quot;Venus&quot;</span><span class="p">,</span> <span class="s2">&quot;Jupiter&quot;</span><span class="p">],</span> <span class="s2">&quot;answer&quot;</span><span class="p">:</span> <span class="s2">&quot;Mars&quot;</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;question&quot;</span><span class="p">:</span> <span class="s2">&quot;Who wrote &#39;1984&#39;?&quot;</span><span class="p">,</span> <span class="s2">&quot;options&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;George Orwell&quot;</span><span class="p">,</span> <span class="s2">&quot;Mark Twain&quot;</span><span class="p">,</span> <span class="s2">&quot;J.K. Rowling&quot;</span><span class="p">,</span> <span class="s2">&quot;Ernest Hemingway&quot;</span><span class="p">],</span> <span class="s2">&quot;answer&quot;</span><span class="p">:</span> <span class="s2">&quot;George Orwell&quot;</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;question&quot;</span><span class="p">:</span> <span class="s2">&quot;What is the square root of 64?&quot;</span><span class="p">,</span> <span class="s2">&quot;options&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;6&quot;</span><span class="p">,</span> <span class="s2">&quot;8&quot;</span><span class="p">,</span> <span class="s2">&quot;10&quot;</span><span class="p">,</span> <span class="s2">&quot;7&quot;</span><span class="p">],</span> <span class="s2">&quot;answer&quot;</span><span class="p">:</span> <span class="s2">&quot;8&quot;</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;question&quot;</span><span class="p">:</span> <span class="s2">&quot;Which element has the chemical symbol &#39;O&#39;?&quot;</span><span class="p">,</span> <span class="s2">&quot;options&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Oxygen&quot;</span><span class="p">,</span> <span class="s2">&quot;Gold&quot;</span><span class="p">,</span> <span class="s2">&quot;Iron&quot;</span><span class="p">,</span> <span class="s2">&quot;Hydrogen&quot;</span><span class="p">],</span> <span class="s2">&quot;answer&quot;</span><span class="p">:</span> <span class="s2">&quot;Oxygen&quot;</span><span class="p">}</span>
+<span class="p">]</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">quiz</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">score</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">responses</span> <span class="o">=</span> <span class="p">[]</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">ask_question</span><span class="p">(</span><span class="n">q_data</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Q</span><span class="si">{</span><span class="n">index</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">q_data</span><span class="p">[</span><span class="s1">&#39;question&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">option</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">q_data</span><span class="p">[</span><span class="s2">&quot;options&quot;</span><span class="p">],</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">. </span><span class="si">{</span><span class="n">option</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter the option number: &quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">q</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">quiz</span><span class="p">):</span>
+    <span class="n">user_input</span> <span class="o">=</span> <span class="n">ask_question</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">selected</span> <span class="o">=</span> <span class="n">q</span><span class="p">[</span><span class="s2">&quot;options&quot;</span><span class="p">][</span><span class="nb">int</span><span class="p">(</span><span class="n">user_input</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+    <span class="k">except</span> <span class="p">(</span><span class="ne">IndexError</span><span class="p">,</span> <span class="ne">ValueError</span><span class="p">):</span>
+        <span class="n">selected</span> <span class="o">=</span> <span class="s2">&quot;Invalid&quot;</span>
+
+    <span class="n">correct</span> <span class="o">=</span> <span class="n">selected</span> <span class="o">==</span> <span class="n">q</span><span class="p">[</span><span class="s2">&quot;answer&quot;</span><span class="p">]</span>
+    <span class="n">responses</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">q</span><span class="p">[</span><span class="s2">&quot;question&quot;</span><span class="p">],</span> <span class="n">selected</span><span class="p">,</span> <span class="n">q</span><span class="p">[</span><span class="s2">&quot;answer&quot;</span><span class="p">],</span> <span class="n">correct</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">correct</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;✅ Correct!&quot;</span><span class="p">)</span>
+        <span class="n">score</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;❌ Incorrect! The correct answer was: </span><span class="si">{</span><span class="n">q</span><span class="p">[</span><span class="s1">&#39;answer&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">Q1</span><span class="o">:</span><span class="w"> </span><span class="n">What</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">square</span><span class="w"> </span><span class="n">root</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="mi">64</span><span class="o">?</span>
+<span class="mi">1</span><span class="o">.</span><span class="w"> </span><span class="mi">6</span>
+<span class="mi">2</span><span class="o">.</span><span class="w"> </span><span class="mi">8</span>
+<span class="mi">3</span><span class="o">.</span><span class="w"> </span><span class="mi">10</span>
+<span class="mi">4</span><span class="o">.</span><span class="w"> </span><span class="mi">7</span>
+
+
+<span class="n">Enter</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">option</span><span class="w"> </span><span class="n">number</span><span class="o">:</span><span class="w">  </span><span class="mi">2</span>
+
+
+<span class="err">✅</span><span class="w"> </span><span class="n">Correct</span><span class="o">!</span>
+
+<span class="n">Q2</span><span class="o">:</span><span class="w"> </span><span class="n">Who</span><span class="w"> </span><span class="n">wrote</span><span class="w"> </span><span class="s1">&#39;1984&#39;</span><span class="o">?</span>
+<span class="mi">1</span><span class="o">.</span><span class="w"> </span><span class="n">George</span><span class="w"> </span><span class="n">Orwell</span>
+<span class="mi">2</span><span class="o">.</span><span class="w"> </span><span class="n">Mark</span><span class="w"> </span><span class="n">Twain</span>
+<span class="mi">3</span><span class="o">.</span><span class="w"> </span><span class="n">J</span><span class="o">.</span><span class="na">K</span><span class="o">.</span><span class="w"> </span><span class="n">Rowling</span>
+<span class="mi">4</span><span class="o">.</span><span class="w"> </span><span class="n">Ernest</span><span class="w"> </span><span class="n">Hemingway</span>
+
+
+<span class="n">Enter</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">option</span><span class="w"> </span><span class="n">number</span><span class="o">:</span><span class="w">  </span><span class="mi">1</span>
+
+
+<span class="err">✅</span><span class="w"> </span><span class="n">Correct</span><span class="o">!</span>
+
+<span class="n">Q3</span><span class="o">:</span><span class="w"> </span><span class="n">Which</span><span class="w"> </span><span class="n">element</span><span class="w"> </span><span class="n">has</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">chemical</span><span class="w"> </span><span class="n">symbol</span><span class="w"> </span><span class="s1">&#39;O&#39;</span><span class="o">?</span>
+<span class="mi">1</span><span class="o">.</span><span class="w"> </span><span class="n">Oxygen</span>
+<span class="mi">2</span><span class="o">.</span><span class="w"> </span><span class="n">Gold</span>
+<span class="mi">3</span><span class="o">.</span><span class="w"> </span><span class="n">Iron</span>
+<span class="mi">4</span><span class="o">.</span><span class="w"> </span><span class="n">Hydrogen</span>
+
+
+<span class="n">Enter</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">option</span><span class="w"> </span><span class="n">number</span><span class="o">:</span><span class="w">  </span><span class="mi">1</span>
+
+
+<span class="err">✅</span><span class="w"> </span><span class="n">Correct</span><span class="o">!</span>
+
+<span class="n">Q4</span><span class="o">:</span><span class="w"> </span><span class="n">What</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">capital</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">France</span><span class="o">?</span>
+<span class="mi">1</span><span class="o">.</span><span class="w"> </span><span class="n">Paris</span>
+<span class="mi">2</span><span class="o">.</span><span class="w"> </span><span class="n">London</span>
+<span class="mi">3</span><span class="o">.</span><span class="w"> </span><span class="n">Berlin</span>
+<span class="mi">4</span><span class="o">.</span><span class="w"> </span><span class="n">Rome</span>
+
+
+<span class="n">Enter</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">option</span><span class="w"> </span><span class="n">number</span><span class="o">:</span><span class="w">  </span><span class="mi">1</span>
+
+
+<span class="err">✅</span><span class="w"> </span><span class="n">Correct</span><span class="o">!</span>
+
+<span class="n">Q5</span><span class="o">:</span><span class="w"> </span><span class="n">Which</span><span class="w"> </span><span class="n">planet</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">known</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">Red</span><span class="w"> </span><span class="n">Planet</span><span class="o">?</span>
+<span class="mi">1</span><span class="o">.</span><span class="w"> </span><span class="n">Earth</span>
+<span class="mi">2</span><span class="o">.</span><span class="w"> </span><span class="n">Mars</span>
+<span class="mi">3</span><span class="o">.</span><span class="w"> </span><span class="n">Venus</span>
+<span class="mi">4</span><span class="o">.</span><span class="w"> </span><span class="n">Jupiter</span>
+
+
+<span class="n">Enter</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">option</span><span class="w"> </span><span class="n">number</span><span class="o">:</span><span class="w">  </span><span class="mi">2</span>
+
+
+<span class="err">✅</span><span class="w"> </span><span class="n">Correct</span><span class="o">!</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">end_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">total_time</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">end_time</span> <span class="o">-</span> <span class="n">start_time</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">📊 Quiz Summary:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Total Questions: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">quiz</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Correct Answers: </span><span class="si">{</span><span class="n">score</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Wrong Answers: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">quiz</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">score</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Time Taken: </span><span class="si">{</span><span class="n">total_time</span><span class="si">}</span><span class="s2"> seconds&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>📊 Quiz Summary:
+Total Questions: 5
+Correct Answers: 5
+Wrong Answers: 0
+Time Taken: 39.25 seconds
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">q</span><span class="p">,</span> <span class="n">user_ans</span><span class="p">,</span> <span class="n">correct_ans</span><span class="p">,</span> <span class="n">result</span> <span class="ow">in</span> <span class="n">responses</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Question: </span><span class="si">{</span><span class="n">q</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Your Answer: </span><span class="si">{</span><span class="n">user_ans</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Correct Answer: </span><span class="si">{</span><span class="n">correct_ans</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;✅&quot;</span> <span class="k">if</span> <span class="n">result</span> <span class="k">else</span> <span class="s2">&quot;❌&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">Question</span><span class="o">:</span><span class="w"> </span><span class="n">What</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">square</span><span class="w"> </span><span class="n">root</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="mi">64</span><span class="o">?</span>
+<span class="n">Your</span><span class="w"> </span><span class="n">Answer</span><span class="o">:</span><span class="w"> </span><span class="mi">8</span>
+<span class="n">Correct</span><span class="w"> </span><span class="n">Answer</span><span class="o">:</span><span class="w"> </span><span class="mi">8</span>
+<span class="err">✅</span>
+
+<span class="n">Question</span><span class="o">:</span><span class="w"> </span><span class="n">Who</span><span class="w"> </span><span class="n">wrote</span><span class="w"> </span><span class="s1">&#39;1984&#39;</span><span class="o">?</span>
+<span class="n">Your</span><span class="w"> </span><span class="n">Answer</span><span class="o">:</span><span class="w"> </span><span class="n">George</span><span class="w"> </span><span class="n">Orwell</span>
+<span class="n">Correct</span><span class="w"> </span><span class="n">Answer</span><span class="o">:</span><span class="w"> </span><span class="n">George</span><span class="w"> </span><span class="n">Orwell</span>
+<span class="err">✅</span>
+
+<span class="n">Question</span><span class="o">:</span><span class="w"> </span><span class="n">Which</span><span class="w"> </span><span class="n">element</span><span class="w"> </span><span class="n">has</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">chemical</span><span class="w"> </span><span class="n">symbol</span><span class="w"> </span><span class="s1">&#39;O&#39;</span><span class="o">?</span>
+<span class="n">Your</span><span class="w"> </span><span class="n">Answer</span><span class="o">:</span><span class="w"> </span><span class="n">Oxygen</span>
+<span class="n">Correct</span><span class="w"> </span><span class="n">Answer</span><span class="o">:</span><span class="w"> </span><span class="n">Oxygen</span>
+<span class="err">✅</span>
+
+<span class="n">Question</span><span class="o">:</span><span class="w"> </span><span class="n">What</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">capital</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">France</span><span class="o">?</span>
+<span class="n">Your</span><span class="w"> </span><span class="n">Answer</span><span class="o">:</span><span class="w"> </span><span class="n">Paris</span>
+<span class="n">Correct</span><span class="w"> </span><span class="n">Answer</span><span class="o">:</span><span class="w"> </span><span class="n">Paris</span>
+<span class="err">✅</span>
+
+<span class="n">Question</span><span class="o">:</span><span class="w"> </span><span class="n">Which</span><span class="w"> </span><span class="n">planet</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">known</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">Red</span><span class="w"> </span><span class="n">Planet</span><span class="o">?</span>
+<span class="n">Your</span><span class="w"> </span><span class="n">Answer</span><span class="o">:</span><span class="w"> </span><span class="n">Mars</span>
+<span class="n">Correct</span><span class="w"> </span><span class="n">Answer</span><span class="o">:</span><span class="w"> </span><span class="n">Mars</span>
+<span class="err">✅</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">percentage</span> <span class="o">=</span> <span class="p">(</span><span class="n">score</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">quiz</span><span class="p">))</span> <span class="o">*</span> <span class="mi">100</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Your Score Percentage: </span><span class="si">{</span><span class="n">percentage</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">%&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>Your Score Percentage: 100.00%
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="n">percentage</span> <span class="o">&gt;=</span> <span class="mi">90</span><span class="p">:</span>
+    <span class="n">feedback</span> <span class="o">=</span> <span class="s2">&quot;🌟 Excellent performance!&quot;</span>
+<span class="k">elif</span> <span class="n">percentage</span> <span class="o">&gt;=</span> <span class="mi">70</span><span class="p">:</span>
+    <span class="n">feedback</span> <span class="o">=</span> <span class="s2">&quot;👍 Good job!&quot;</span>
+<span class="k">elif</span> <span class="n">percentage</span> <span class="o">&gt;=</span> <span class="mi">50</span><span class="p">:</span>
+    <span class="n">feedback</span> <span class="o">=</span> <span class="s2">&quot;🙂 Fair effort, keep practicing!&quot;</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">feedback</span> <span class="o">=</span> <span class="s2">&quot;😓 Needs improvement.&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">feedback</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>🌟 Excellent performance!
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;quiz_results.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">q</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">responses</span><span class="p">:</span>
+        <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Q: </span><span class="si">{</span><span class="n">q</span><span class="si">}</span><span class="se">\n</span><span class="s2">Your Answer: </span><span class="si">{</span><span class="n">u</span><span class="si">}</span><span class="se">\n</span><span class="s2">Correct Answer: </span><span class="si">{</span><span class="n">c</span><span class="si">}</span><span class="se">\n</span><span class="si">{</span><span class="s1">&#39;Correct&#39;</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="s1">&#39;Wrong&#39;</span><span class="si">}</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Score: </span><span class="si">{</span><span class="n">score</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">quiz</span><span class="p">)</span><span class="si">}</span><span class="se">\n</span><span class="s2">Percentage: </span><span class="si">{</span><span class="n">percentage</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">%</span><span class="se">\n</span><span class="s2">Feedback: </span><span class="si">{</span><span class="n">feedback</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;quiz_results.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">📁 Saved Result File:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">file</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>📁 Saved Result File:
+
+Q: What is the square root of 64?
+Your Answer: 8
+Correct Answer: 8
+Correct
+
+Q: Who wrote &#39;1984&#39;?
+Your Answer: George Orwell
+Correct Answer: George Orwell
+Correct
+
+Q: Which element has the chemical symbol &#39;O&#39;?
+Your Answer: Oxygen
+Correct Answer: Oxygen
+Correct
+
+Q: What is the capital of France?
+Your Answer: Paris
+Correct Answer: Paris
+Correct
+
+Q: Which planet is known as the Red Planet?
+Your Answer: Mars
+Correct Answer: Mars
+Correct
+
+Score: 5/5
+Percentage: 100.00%
+Feedback: ðŸŒŸ Excellent performance!
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">new_q</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;question&quot;</span><span class="p">:</span> <span class="s2">&quot;What language is this quiz written in?&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;options&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Java&quot;</span><span class="p">,</span> <span class="s2">&quot;C++&quot;</span><span class="p">,</span> <span class="s2">&quot;Python&quot;</span><span class="p">,</span> <span class="s2">&quot;Go&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;answer&quot;</span><span class="p">:</span> <span class="s2">&quot;Python&quot;</span>
+<span class="p">}</span>
+<span class="n">quiz</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">new_q</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>
+</code></pre></div>
+
+<hr>
+<p><strong>Score: 15</strong></p>
+<p class="subheader">Category: <a href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/category/basics.html">basics</a>
+
+</p>
+
+
+
+
+</article>
+    </div>
+    <!-- End Main Content -->
+
+    <!-- Sidebar -->
+    <aside class="large-3 columns">
+        <h5 class="sidebar-title">Site</h5>
+        <ul class="side-nav">
+            <li><a href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/archives.html">Archives</a>
+            <li><a href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/tags.html">Tags</a>
+        </ul>
+
+		
+        <h5 class="sidebar-title">Categories</h5>
+        <ul class="side-nav">
+            <li><a href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/category/basics.html">basics</a></li>
+            <li><a href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/category/pandas-work.html">pandas-work</a></li>
+   
+        </ul>
+
+		
+        <h5 class="sidebar-title">Social</h5>
+        <ul class="side-nav">
+            <li><a href="https://github.com/<yourusername>/">GitHub</a></li>
+            <li><a href="<linkedin handle>">LinkedIn</a></li>
+        </ul>
+
+    </aside> <!-- End Sidebar -->
+
+</div> <!-- End Main Content and Sidebar -->
+
+
+<!-- Footer -->
+<footer class="row">
+    <div class="large-12 columns">
+        <hr />
+        <div class="row">
+            <div class="large-6 columns">
+              <!--                  <p>My Python Notes by Fahd</p> -->
+            </div>
+            </div>
+    </div>
+</footer>
+</body>
+</html>

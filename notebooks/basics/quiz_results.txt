@@ -1,0 +1,28 @@
+Q: What is the square root of 64?
+Your Answer: 8
+Correct Answer: 8
+Correct
+
+Q: Who wrote '1984'?
+Your Answer: George Orwell
+Correct Answer: George Orwell
+Correct
+
+Q: Which element has the chemical symbol 'O'?
+Your Answer: Oxygen
+Correct Answer: Oxygen
+Correct
+
+Q: What is the capital of France?
+Your Answer: Paris
+Correct Answer: Paris
+Correct
+
+Q: Which planet is known as the Red Planet?
+Your Answer: Mars
+Correct Answer: Mars
+Correct
+
+Score: 5/5
+Percentage: 100.00%
+Feedback: 🌟 Excellent performance!
