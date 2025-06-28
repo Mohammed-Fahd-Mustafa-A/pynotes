@@ -1,0 +1,9 @@
+Name,Age,Salary,Department,Experience,Bonus
+Alice,25.0,50000.0,HR,2,5000.0
+Bob,30.0,60000.0,Finance,5,6000.0
+Charlie,31.5,55000.0,IT,3,5500.0
+David,45.0,65000.0,Finance,10,6500.0
+Eva,28.0,60000.0,HR,4,6000.0
+Frank,33.0,70000.0,IT,8,7000.0
+Grace,38.0,62000.0,IT,6,6200.0
+Henry,31.5,58000.0,HR,7,5800.0

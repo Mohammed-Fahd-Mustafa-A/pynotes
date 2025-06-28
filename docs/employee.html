@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8" />
+    <!-- Set the viewport width to device width for mobile -->
+    <meta name="viewport" content="width=device-width" />
+
+    <title>Employee</title>
+
+    <link rel="stylesheet" href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/theme/css/normalize.css" />
+    <link rel="stylesheet" href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/theme/css/foundation.min.css" />
+    <link rel="stylesheet" href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/theme/css/style.css" />
+    <link rel="stylesheet" href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/theme/css/pygments.css" />	
+    <script src="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/theme/js/modernizr.js"></script>
+</head>
+
+<body>
+
+<!-- Nav Bar -->
+<nav>
+<div class="top-bar">
+<div class="row">
+    <div class="large-9 large-centered columns">
+	    <h1><a href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes">My Python Notes</a></h1>
+    </div>
+</div>
+</div>
+
+<!-- Show menu items and pages -->
+<div class="row">
+<div class="large-9 columns">
+    <ul class="button-group navigation">
+
+    </ul>
+</div>
+</div>
+</nav>
+<!-- End Nav -->
+
+
+<!-- Main Page Content and Sidebar -->
+<div class="row">
+
+    <!-- Main Blog Content -->
+    <div class="large-9 columns">
+<article>
+    <header>
+        <h3 class="article-title"><a href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/employee.html" rel="bookmark"
+        title="Permalink to Employee">Employee</a></h3>
+    </header>
+
+<h6 class="subheader" title="2025-06-28T00:00:00-04:00">Sat 28 June 2025
+</h6>
+
+
+    <div class="highlight"><pre><span></span><code><span class="n">pip</span> <span class="n">install</span> <span class="n">seaborn</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">Collecting</span><span class="w"> </span><span class="n">seaborn</span>
+<span class="w">  </span><span class="n">Downloading</span><span class="w"> </span><span class="n">seaborn</span><span class="o">-</span><span class="mf">0.13</span><span class="o">.</span><span class="mi">2</span><span class="o">-</span><span class="n">py3</span><span class="o">-</span><span class="n">none</span><span class="o">-</span><span class="n">any</span><span class="o">.</span><span class="n">whl</span><span class="o">.</span><span class="n">metadata</span><span class="w"> </span><span class="p">(</span><span class="mf">5.4</span><span class="w"> </span><span class="n">kB</span><span class="p">)</span>
+<span class="n">Requirement</span><span class="w"> </span><span class="n">already</span><span class="w"> </span><span class="n">satisfied</span><span class="p">:</span><span class="w"> </span><span class="n">numpy</span><span class="o">!=</span><span class="mf">1.24</span><span class="o">.</span><span class="mi">0</span><span class="p">,</span><span class="o">&gt;=</span><span class="mf">1.20</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">c</span><span class="p">:</span>\<span class="n">users</span>\<span class="n">hp</span>\<span class="n">miniconda3</span>\<span class="n">envs</span>\<span class="n">py312</span>\<span class="n">lib</span>\<span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="w"> </span><span class="p">(</span><span class="n">from</span><span class="w"> </span><span class="n">seaborn</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="mf">2.3</span><span class="o">.</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">Requirement</span><span class="w"> </span><span class="n">already</span><span class="w"> </span><span class="n">satisfied</span><span class="p">:</span><span class="w"> </span><span class="n">pandas</span><span class="o">&gt;=</span><span class="mf">1.2</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">c</span><span class="p">:</span>\<span class="n">users</span>\<span class="n">hp</span>\<span class="n">miniconda3</span>\<span class="n">envs</span>\<span class="n">py312</span>\<span class="n">lib</span>\<span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="w"> </span><span class="p">(</span><span class="n">from</span><span class="w"> </span><span class="n">seaborn</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="mf">2.3</span><span class="o">.</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">Requirement</span><span class="w"> </span><span class="n">already</span><span class="w"> </span><span class="n">satisfied</span><span class="p">:</span><span class="w"> </span><span class="n">matplotlib</span><span class="o">!=</span><span class="mf">3.6</span><span class="o">.</span><span class="mi">1</span><span class="p">,</span><span class="o">&gt;=</span><span class="mf">3.4</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">c</span><span class="p">:</span>\<span class="n">users</span>\<span class="n">hp</span>\<span class="n">miniconda3</span>\<span class="n">envs</span>\<span class="n">py312</span>\<span class="n">lib</span>\<span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="w"> </span><span class="p">(</span><span class="n">from</span><span class="w"> </span><span class="n">seaborn</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="mf">3.10</span><span class="o">.</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">Requirement</span><span class="w"> </span><span class="n">already</span><span class="w"> </span><span class="n">satisfied</span><span class="p">:</span><span class="w"> </span><span class="n">contourpy</span><span class="o">&gt;=</span><span class="mf">1.0</span><span class="o">.</span><span class="mi">1</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">c</span><span class="p">:</span>\<span class="n">users</span>\<span class="n">hp</span>\<span class="n">miniconda3</span>\<span class="n">envs</span>\<span class="n">py312</span>\<span class="n">lib</span>\<span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="w"> </span><span class="p">(</span><span class="n">from</span><span class="w"> </span><span class="n">matplotlib</span><span class="o">!=</span><span class="mf">3.6</span><span class="o">.</span><span class="mi">1</span><span class="p">,</span><span class="o">&gt;=</span><span class="mf">3.4</span><span class="o">-&gt;</span><span class="n">seaborn</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="mf">1.3</span><span class="o">.</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">Requirement</span><span class="w"> </span><span class="n">already</span><span class="w"> </span><span class="n">satisfied</span><span class="p">:</span><span class="w"> </span><span class="n">cycler</span><span class="o">&gt;=</span><span class="mf">0.10</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">c</span><span class="p">:</span>\<span class="n">users</span>\<span class="n">hp</span>\<span class="n">miniconda3</span>\<span class="n">envs</span>\<span class="n">py312</span>\<span class="n">lib</span>\<span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="w"> </span><span class="p">(</span><span class="n">from</span><span class="w"> </span><span class="n">matplotlib</span><span class="o">!=</span><span class="mf">3.6</span><span class="o">.</span><span class="mi">1</span><span class="p">,</span><span class="o">&gt;=</span><span class="mf">3.4</span><span class="o">-&gt;</span><span class="n">seaborn</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="mf">0.12</span><span class="o">.</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">Requirement</span><span class="w"> </span><span class="n">already</span><span class="w"> </span><span class="n">satisfied</span><span class="p">:</span><span class="w"> </span><span class="n">fonttools</span><span class="o">&gt;=</span><span class="mf">4.22</span><span class="o">.</span><span class="mi">0</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">c</span><span class="p">:</span>\<span class="n">users</span>\<span class="n">hp</span>\<span class="n">miniconda3</span>\<span class="n">envs</span>\<span class="n">py312</span>\<span class="n">lib</span>\<span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="w"> </span><span class="p">(</span><span class="n">from</span><span class="w"> </span><span class="n">matplotlib</span><span class="o">!=</span><span class="mf">3.6</span><span class="o">.</span><span class="mi">1</span><span class="p">,</span><span class="o">&gt;=</span><span class="mf">3.4</span><span class="o">-&gt;</span><span class="n">seaborn</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="mf">4.58</span><span class="o">.</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">Requirement</span><span class="w"> </span><span class="n">already</span><span class="w"> </span><span class="n">satisfied</span><span class="p">:</span><span class="w"> </span><span class="n">kiwisolver</span><span class="o">&gt;=</span><span class="mf">1.3</span><span class="o">.</span><span class="mi">1</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">c</span><span class="p">:</span>\<span class="n">users</span>\<span class="n">hp</span>\<span class="n">miniconda3</span>\<span class="n">envs</span>\<span class="n">py312</span>\<span class="n">lib</span>\<span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="w"> </span><span class="p">(</span><span class="n">from</span><span class="w"> </span><span class="n">matplotlib</span><span class="o">!=</span><span class="mf">3.6</span><span class="o">.</span><span class="mi">1</span><span class="p">,</span><span class="o">&gt;=</span><span class="mf">3.4</span><span class="o">-&gt;</span><span class="n">seaborn</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="mf">1.4</span><span class="o">.</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">Requirement</span><span class="w"> </span><span class="n">already</span><span class="w"> </span><span class="n">satisfied</span><span class="p">:</span><span class="w"> </span><span class="n">packaging</span><span class="o">&gt;=</span><span class="mf">20.0</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">c</span><span class="p">:</span>\<span class="n">users</span>\<span class="n">hp</span>\<span class="n">miniconda3</span>\<span class="n">envs</span>\<span class="n">py312</span>\<span class="n">lib</span>\<span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="w"> </span><span class="p">(</span><span class="n">from</span><span class="w"> </span><span class="n">matplotlib</span><span class="o">!=</span><span class="mf">3.6</span><span class="o">.</span><span class="mi">1</span><span class="p">,</span><span class="o">&gt;=</span><span class="mf">3.4</span><span class="o">-&gt;</span><span class="n">seaborn</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="mf">24.2</span><span class="p">)</span>
+<span class="n">Requirement</span><span class="w"> </span><span class="n">already</span><span class="w"> </span><span class="n">satisfied</span><span class="p">:</span><span class="w"> </span><span class="n">pillow</span><span class="o">&gt;=</span><span class="mi">8</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">c</span><span class="p">:</span>\<span class="n">users</span>\<span class="n">hp</span>\<span class="n">miniconda3</span>\<span class="n">envs</span>\<span class="n">py312</span>\<span class="n">lib</span>\<span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="w"> </span><span class="p">(</span><span class="n">from</span><span class="w"> </span><span class="n">matplotlib</span><span class="o">!=</span><span class="mf">3.6</span><span class="o">.</span><span class="mi">1</span><span class="p">,</span><span class="o">&gt;=</span><span class="mf">3.4</span><span class="o">-&gt;</span><span class="n">seaborn</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="mf">11.2</span><span class="o">.</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">Requirement</span><span class="w"> </span><span class="n">already</span><span class="w"> </span><span class="n">satisfied</span><span class="p">:</span><span class="w"> </span><span class="n">pyparsing</span><span class="o">&gt;=</span><span class="mf">2.3</span><span class="o">.</span><span class="mi">1</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">c</span><span class="p">:</span>\<span class="n">users</span>\<span class="n">hp</span>\<span class="n">miniconda3</span>\<span class="n">envs</span>\<span class="n">py312</span>\<span class="n">lib</span>\<span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="w"> </span><span class="p">(</span><span class="n">from</span><span class="w"> </span><span class="n">matplotlib</span><span class="o">!=</span><span class="mf">3.6</span><span class="o">.</span><span class="mi">1</span><span class="p">,</span><span class="o">&gt;=</span><span class="mf">3.4</span><span class="o">-&gt;</span><span class="n">seaborn</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="mf">3.2</span><span class="o">.</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">Requirement</span><span class="w"> </span><span class="n">already</span><span class="w"> </span><span class="n">satisfied</span><span class="p">:</span><span class="w"> </span><span class="n">python</span><span class="o">-</span><span class="n">dateutil</span><span class="o">&gt;=</span><span class="mf">2.7</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">c</span><span class="p">:</span>\<span class="n">users</span>\<span class="n">hp</span>\<span class="n">miniconda3</span>\<span class="n">envs</span>\<span class="n">py312</span>\<span class="n">lib</span>\<span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="w"> </span><span class="p">(</span><span class="n">from</span><span class="w"> </span><span class="n">matplotlib</span><span class="o">!=</span><span class="mf">3.6</span><span class="o">.</span><span class="mi">1</span><span class="p">,</span><span class="o">&gt;=</span><span class="mf">3.4</span><span class="o">-&gt;</span><span class="n">seaborn</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="mf">2.9</span><span class="o">.</span><span class="mf">0.</span><span class="n">post0</span><span class="p">)</span>
+<span class="n">Requirement</span><span class="w"> </span><span class="n">already</span><span class="w"> </span><span class="n">satisfied</span><span class="p">:</span><span class="w"> </span><span class="n">pytz</span><span class="o">&gt;=</span><span class="mf">2020.1</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">c</span><span class="p">:</span>\<span class="n">users</span>\<span class="n">hp</span>\<span class="n">miniconda3</span>\<span class="n">envs</span>\<span class="n">py312</span>\<span class="n">lib</span>\<span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="w"> </span><span class="p">(</span><span class="n">from</span><span class="w"> </span><span class="n">pandas</span><span class="o">&gt;=</span><span class="mf">1.2</span><span class="o">-&gt;</span><span class="n">seaborn</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="mf">2025.2</span><span class="p">)</span>
+<span class="n">Requirement</span><span class="w"> </span><span class="n">already</span><span class="w"> </span><span class="n">satisfied</span><span class="p">:</span><span class="w"> </span><span class="n">tzdata</span><span class="o">&gt;=</span><span class="mf">2022.7</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">c</span><span class="p">:</span>\<span class="n">users</span>\<span class="n">hp</span>\<span class="n">miniconda3</span>\<span class="n">envs</span>\<span class="n">py312</span>\<span class="n">lib</span>\<span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="w"> </span><span class="p">(</span><span class="n">from</span><span class="w"> </span><span class="n">pandas</span><span class="o">&gt;=</span><span class="mf">1.2</span><span class="o">-&gt;</span><span class="n">seaborn</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="mf">2025.2</span><span class="p">)</span>
+<span class="n">Requirement</span><span class="w"> </span><span class="n">already</span><span class="w"> </span><span class="n">satisfied</span><span class="p">:</span><span class="w"> </span><span class="n">six</span><span class="o">&gt;=</span><span class="mf">1.5</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">c</span><span class="p">:</span>\<span class="n">users</span>\<span class="n">hp</span>\<span class="n">miniconda3</span>\<span class="n">envs</span>\<span class="n">py312</span>\<span class="n">lib</span>\<span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="w"> </span><span class="p">(</span><span class="n">from</span><span class="w"> </span><span class="n">python</span><span class="o">-</span><span class="n">dateutil</span><span class="o">&gt;=</span><span class="mf">2.7</span><span class="o">-&gt;</span><span class="n">matplotlib</span><span class="o">!=</span><span class="mf">3.6</span><span class="o">.</span><span class="mi">1</span><span class="p">,</span><span class="o">&gt;=</span><span class="mf">3.4</span><span class="o">-&gt;</span><span class="n">seaborn</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="mf">1.17</span><span class="o">.</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">Downloading</span><span class="w"> </span><span class="n">seaborn</span><span class="o">-</span><span class="mf">0.13</span><span class="o">.</span><span class="mi">2</span><span class="o">-</span><span class="n">py3</span><span class="o">-</span><span class="n">none</span><span class="o">-</span><span class="n">any</span><span class="o">.</span><span class="n">whl</span><span class="w"> </span><span class="p">(</span><span class="mi">294</span><span class="w"> </span><span class="n">kB</span><span class="p">)</span>
+<span class="n">Installing</span><span class="w"> </span><span class="n">collected</span><span class="w"> </span><span class="n">packages</span><span class="p">:</span><span class="w"> </span><span class="n">seaborn</span>
+<span class="n">Successfully</span><span class="w"> </span><span class="n">installed</span><span class="w"> </span><span class="n">seaborn</span><span class="o">-</span><span class="mf">0.13</span><span class="o">.</span><span class="mi">2</span>
+<span class="n">Note</span><span class="p">:</span><span class="w"> </span><span class="n">you</span><span class="w"> </span><span class="n">may</span><span class="w"> </span><span class="n">need</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">restart</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">kernel</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">use</span><span class="w"> </span><span class="n">updated</span><span class="w"> </span><span class="n">packages</span><span class="o">.</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+
+<span class="c1"># Enable inline plotting</span>
+<span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;Name&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Alice&quot;</span><span class="p">,</span> <span class="s2">&quot;Bob&quot;</span><span class="p">,</span> <span class="s2">&quot;Charlie&quot;</span><span class="p">,</span> <span class="s2">&quot;David&quot;</span><span class="p">,</span> <span class="s2">&quot;Eva&quot;</span><span class="p">,</span> <span class="s2">&quot;Frank&quot;</span><span class="p">,</span> <span class="s2">&quot;Grace&quot;</span><span class="p">,</span> <span class="s2">&quot;Henry&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;Age&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">25</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">33</span><span class="p">,</span> <span class="mi">38</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">],</span>
+    <span class="s2">&quot;Salary&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">50000</span><span class="p">,</span> <span class="mi">60000</span><span class="p">,</span> <span class="mi">55000</span><span class="p">,</span> <span class="mi">65000</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="mi">70000</span><span class="p">,</span> <span class="mi">62000</span><span class="p">,</span> <span class="mi">58000</span><span class="p">],</span>
+    <span class="s2">&quot;Department&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;HR&quot;</span><span class="p">,</span> <span class="s2">&quot;Finance&quot;</span><span class="p">,</span> <span class="s2">&quot;IT&quot;</span><span class="p">,</span> <span class="s2">&quot;Finance&quot;</span><span class="p">,</span> <span class="s2">&quot;HR&quot;</span><span class="p">,</span> <span class="s2">&quot;IT&quot;</span><span class="p">,</span> <span class="s2">&quot;IT&quot;</span><span class="p">,</span> <span class="s2">&quot;HR&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">df</span>
+</code></pre></div>
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Name</th>
+      <th>Age</th>
+      <th>Salary</th>
+      <th>Department</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Alice</td>
+      <td>25.0</td>
+      <td>50000.0</td>
+      <td>HR</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Bob</td>
+      <td>30.0</td>
+      <td>60000.0</td>
+      <td>Finance</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Charlie</td>
+      <td>NaN</td>
+      <td>55000.0</td>
+      <td>IT</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>David</td>
+      <td>45.0</td>
+      <td>65000.0</td>
+      <td>Finance</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Eva</td>
+      <td>28.0</td>
+      <td>NaN</td>
+      <td>HR</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Frank</td>
+      <td>33.0</td>
+      <td>70000.0</td>
+      <td>IT</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Grace</td>
+      <td>38.0</td>
+      <td>62000.0</td>
+      <td>IT</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Henry</td>
+      <td>NaN</td>
+      <td>58000.0</td>
+      <td>HR</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="highlight"><pre><span></span><code><span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="kd">class</span><span class="w"> </span><span class="err">&#39;</span><span class="nx">pandas</span><span class="p">.</span><span class="nx">core</span><span class="p">.</span><span class="nx">frame</span><span class="p">.</span><span class="nx">DataFrame</span><span class="err">&#39;</span><span class="p">&gt;</span>
+<span class="nx">RangeIndex</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="nx">entries</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="nx">to</span><span class="w"> </span><span class="mi">7</span>
+<span class="nx">Data</span><span class="w"> </span><span class="nx">columns</span><span class="w"> </span><span class="p">(</span><span class="nx">total</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="nx">columns</span><span class="p">):</span>
+<span class="w"> </span><span class="err">#</span><span class="w">   </span><span class="nx">Column</span><span class="w">      </span><span class="nx">Non</span><span class="o">-</span><span class="nx">Null</span><span class="w"> </span><span class="nx">Count</span><span class="w">  </span><span class="nx">Dtype</span><span class="w">  </span>
+<span class="o">---</span><span class="w">  </span><span class="o">------</span><span class="w">      </span><span class="o">--------------</span><span class="w">  </span><span class="o">-----</span><span class="w">  </span>
+<span class="w"> </span><span class="mi">0</span><span class="w">   </span><span class="nx">Name</span><span class="w">        </span><span class="mi">8</span><span class="w"> </span><span class="nx">non</span><span class="o">-</span><span class="nx">null</span><span class="w">      </span><span class="nx">object</span><span class="w"> </span>
+<span class="w"> </span><span class="mi">1</span><span class="w">   </span><span class="nx">Age</span><span class="w">         </span><span class="mi">6</span><span class="w"> </span><span class="nx">non</span><span class="o">-</span><span class="nx">null</span><span class="w">      </span><span class="nx">float64</span>
+<span class="w"> </span><span class="mi">2</span><span class="w">   </span><span class="nx">Salary</span><span class="w">      </span><span class="mi">7</span><span class="w"> </span><span class="nx">non</span><span class="o">-</span><span class="nx">null</span><span class="w">      </span><span class="nx">float64</span>
+<span class="w"> </span><span class="mi">3</span><span class="w">   </span><span class="nx">Department</span><span class="w">  </span><span class="mi">8</span><span class="w"> </span><span class="nx">non</span><span class="o">-</span><span class="nx">null</span><span class="w">      </span><span class="nx">object</span><span class="w"> </span>
+<span class="nx">dtypes</span><span class="p">:</span><span class="w"> </span><span class="nx">float64</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span><span class="w"> </span><span class="nx">object</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="nx">memory</span><span class="w"> </span><span class="nx">usage</span><span class="p">:</span><span class="w"> </span><span class="m m-Double">388.0</span><span class="o">+</span><span class="w"> </span><span class="nx">bytes</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">df</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="nx">Name</span><span class="w">          </span><span class="mi">0</span>
+<span class="nx">Age</span><span class="w">           </span><span class="mi">2</span>
+<span class="nx">Salary</span><span class="w">        </span><span class="mi">1</span>
+<span class="nx">Department</span><span class="w">    </span><span class="mi">0</span>
+<span class="nx">dtype</span><span class="p">:</span><span class="w"> </span><span class="nx">int64</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Age&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Age&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Age&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">median</span><span class="p">())</span>
+<span class="n">df</span>
+</code></pre></div>
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Name</th>
+      <th>Age</th>
+      <th>Salary</th>
+      <th>Department</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Alice</td>
+      <td>25.0</td>
+      <td>50000.0</td>
+      <td>HR</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Bob</td>
+      <td>30.0</td>
+      <td>60000.0</td>
+      <td>Finance</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Charlie</td>
+      <td>31.5</td>
+      <td>55000.0</td>
+      <td>IT</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>David</td>
+      <td>45.0</td>
+      <td>65000.0</td>
+      <td>Finance</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Eva</td>
+      <td>28.0</td>
+      <td>NaN</td>
+      <td>HR</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Frank</td>
+      <td>33.0</td>
+      <td>70000.0</td>
+      <td>IT</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Grace</td>
+      <td>38.0</td>
+      <td>62000.0</td>
+      <td>IT</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Henry</td>
+      <td>31.5</td>
+      <td>58000.0</td>
+      <td>HR</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="highlight"><pre><span></span><code><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Salary&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Salary&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Salary&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+<span class="n">df</span>
+</code></pre></div>
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Name</th>
+      <th>Age</th>
+      <th>Salary</th>
+      <th>Department</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Alice</td>
+      <td>25.0</td>
+      <td>50000.0</td>
+      <td>HR</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Bob</td>
+      <td>30.0</td>
+      <td>60000.0</td>
+      <td>Finance</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Charlie</td>
+      <td>31.5</td>
+      <td>55000.0</td>
+      <td>IT</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>David</td>
+      <td>45.0</td>
+      <td>65000.0</td>
+      <td>Finance</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Eva</td>
+      <td>28.0</td>
+      <td>60000.0</td>
+      <td>HR</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Frank</td>
+      <td>33.0</td>
+      <td>70000.0</td>
+      <td>IT</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Grace</td>
+      <td>38.0</td>
+      <td>62000.0</td>
+      <td>IT</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Henry</td>
+      <td>31.5</td>
+      <td>58000.0</td>
+      <td>HR</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="highlight"><pre><span></span><code><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</code></pre></div>
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Age</th>
+      <th>Salary</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>8.00000</td>
+      <td>8.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>32.75000</td>
+      <td>60000.000000</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>6.22208</td>
+      <td>6071.008389</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>25.00000</td>
+      <td>50000.000000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>29.50000</td>
+      <td>57250.000000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>31.50000</td>
+      <td>60000.000000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>34.25000</td>
+      <td>62750.000000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>45.00000</td>
+      <td>70000.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="highlight"><pre><span></span><code><span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Age&#39;</span><span class="p">],</span> <span class="n">kde</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;skyblue&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Age Distribution&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Age&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Count&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+
+<p><img alt="png" src="/pynotes/images/employee_8_0.png"></p>
+<div class="highlight"><pre><span></span><code><span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;Department&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s2">&quot;viridis&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Department Count&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">C</span><span class="o">:</span><span class="err">\</span><span class="n">Users</span><span class="err">\</span><span class="n">HP</span><span class="err">\</span><span class="n">AppData</span><span class="err">\</span><span class="k">Local</span><span class="err">\</span><span class="n">Temp</span><span class="err">\</span><span class="n">ipykernel_1960</span><span class="err">\</span><span class="mf">1748937494.</span><span class="n">py</span><span class="o">:</span><span class="mi">1</span><span class="o">:</span><span class="w"> </span><span class="n">FutureWarning</span><span class="o">:</span>
+
+<span class="n">Passing</span><span class="w"> </span><span class="n n-Quoted">`palette`</span><span class="w"> </span><span class="k">without</span><span class="w"> </span><span class="n">assigning</span><span class="w"> </span><span class="n n-Quoted">`hue`</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">deprecated</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">removed</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">v0</span><span class="mf">.14.0</span><span class="p">.</span><span class="w"> </span><span class="n">Assign</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n n-Quoted">`x`</span><span class="w"> </span><span class="n">variable</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n n-Quoted">`hue`</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="k">set</span><span class="w"> </span><span class="n n-Quoted">`legend=False`</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">same</span><span class="w"> </span><span class="n">effect</span><span class="p">.</span>
+
+<span class="w">  </span><span class="n">sns</span><span class="p">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;Department&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span><span class="w"> </span><span class="n">palette</span><span class="o">=</span><span class="s2">&quot;viridis&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p><img alt="png" src="/pynotes/images/employee_9_1.png"></p>
+<div class="highlight"><pre><span></span><code><span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;Department&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;Salary&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Salary Distribution by Department&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+
+<p><img alt="png" src="/pynotes/images/employee_10_0.png"></p>
+<div class="highlight"><pre><span></span><code><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Experience&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">]</span>
+<span class="n">df</span>
+</code></pre></div>
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Name</th>
+      <th>Age</th>
+      <th>Salary</th>
+      <th>Department</th>
+      <th>Experience</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Alice</td>
+      <td>25.0</td>
+      <td>50000.0</td>
+      <td>HR</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Bob</td>
+      <td>30.0</td>
+      <td>60000.0</td>
+      <td>Finance</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Charlie</td>
+      <td>31.5</td>
+      <td>55000.0</td>
+      <td>IT</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>David</td>
+      <td>45.0</td>
+      <td>65000.0</td>
+      <td>Finance</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Eva</td>
+      <td>28.0</td>
+      <td>60000.0</td>
+      <td>HR</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Frank</td>
+      <td>33.0</td>
+      <td>70000.0</td>
+      <td>IT</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Grace</td>
+      <td>38.0</td>
+      <td>62000.0</td>
+      <td>IT</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Henry</td>
+      <td>31.5</td>
+      <td>58000.0</td>
+      <td>HR</td>
+      <td>7</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="highlight"><pre><span></span><code><span class="n">df</span><span class="o">.</span><span class="n">corr</span><span class="p">(</span><span class="n">numeric_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Age</th>
+      <th>Salary</th>
+      <th>Experience</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Age</th>
+      <td>1.000000</td>
+      <td>0.606989</td>
+      <td>0.819292</td>
+    </tr>
+    <tr>
+      <th>Salary</th>
+      <td>0.606989</td>
+      <td>1.000000</td>
+      <td>0.819845</td>
+    </tr>
+    <tr>
+      <th>Experience</th>
+      <td>0.819292</td>
+      <td>0.819845</td>
+      <td>1.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="highlight"><pre><span></span><code><span class="n">df</span><span class="o">.</span><span class="n">corr</span><span class="p">(</span><span class="n">numeric_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Age</th>
+      <th>Salary</th>
+      <th>Experience</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Age</th>
+      <td>1.000000</td>
+      <td>0.606989</td>
+      <td>0.819292</td>
+    </tr>
+    <tr>
+      <th>Salary</th>
+      <td>0.606989</td>
+      <td>1.000000</td>
+      <td>0.819845</td>
+    </tr>
+    <tr>
+      <th>Experience</th>
+      <td>0.819292</td>
+      <td>0.819845</td>
+      <td>1.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="highlight"><pre><span></span><code><span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">corr</span><span class="p">(</span><span class="n">numeric_only</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;coolwarm&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Correlation Heatmap&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+
+<p><img alt="png" src="/pynotes/images/employee_14_0.png"></p>
+<div class="highlight"><pre><span></span><code><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Salary&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">60000</span><span class="p">]</span>
+</code></pre></div>
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Name</th>
+      <th>Age</th>
+      <th>Salary</th>
+      <th>Department</th>
+      <th>Experience</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>3</th>
+      <td>David</td>
+      <td>45.0</td>
+      <td>65000.0</td>
+      <td>Finance</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Frank</td>
+      <td>33.0</td>
+      <td>70000.0</td>
+      <td>IT</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Grace</td>
+      <td>38.0</td>
+      <td>62000.0</td>
+      <td>IT</td>
+      <td>6</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="highlight"><pre><span></span><code><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Department&#39;</span><span class="p">)[</span><span class="s1">&#39;Salary&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="nx">Department</span>
+<span class="nx">Finance</span><span class="w">    </span><span class="m m-Double">62500.000000</span>
+<span class="nx">HR</span><span class="w">         </span><span class="m m-Double">56000.000000</span>
+<span class="nx">IT</span><span class="w">         </span><span class="m m-Double">62333.333333</span>
+<span class="nx">Name</span><span class="p">:</span><span class="w"> </span><span class="nx">Salary</span><span class="p">,</span><span class="w"> </span><span class="nx">dtype</span><span class="p">:</span><span class="w"> </span><span class="nx">float64</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Age&#39;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Salary&#39;</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Age&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Salary&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Age vs Salary&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+
+<p><img alt="png" src="/pynotes/images/employee_17_0.png"></p>
+<div class="highlight"><pre><span></span><code><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Department&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">pie</span><span class="p">(</span><span class="n">autopct</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%1.1f%%</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">startangle</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Department Distribution&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+
+<p><img alt="png" src="/pynotes/images/employee_18_0.png"></p>
+<div class="highlight"><pre><span></span><code><span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Experience&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Salary&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Salary vs Experience&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+
+<p><img alt="png" src="/pynotes/images/employee_19_0.png"></p>
+<div class="highlight"><pre><span></span><code><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Bonus&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Salary&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="mf">0.1</span>
+<span class="n">df</span>
+</code></pre></div>
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Name</th>
+      <th>Age</th>
+      <th>Salary</th>
+      <th>Department</th>
+      <th>Experience</th>
+      <th>Bonus</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Alice</td>
+      <td>25.0</td>
+      <td>50000.0</td>
+      <td>HR</td>
+      <td>2</td>
+      <td>5000.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Bob</td>
+      <td>30.0</td>
+      <td>60000.0</td>
+      <td>Finance</td>
+      <td>5</td>
+      <td>6000.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Charlie</td>
+      <td>31.5</td>
+      <td>55000.0</td>
+      <td>IT</td>
+      <td>3</td>
+      <td>5500.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>David</td>
+      <td>45.0</td>
+      <td>65000.0</td>
+      <td>Finance</td>
+      <td>10</td>
+      <td>6500.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Eva</td>
+      <td>28.0</td>
+      <td>60000.0</td>
+      <td>HR</td>
+      <td>4</td>
+      <td>6000.0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Frank</td>
+      <td>33.0</td>
+      <td>70000.0</td>
+      <td>IT</td>
+      <td>8</td>
+      <td>7000.0</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Grace</td>
+      <td>38.0</td>
+      <td>62000.0</td>
+      <td>IT</td>
+      <td>6</td>
+      <td>6200.0</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Henry</td>
+      <td>31.5</td>
+      <td>58000.0</td>
+      <td>HR</td>
+      <td>7</td>
+      <td>5800.0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="highlight"><pre><span></span><code><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div>
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Name</th>
+      <th>Age</th>
+      <th>Salary</th>
+      <th>Department</th>
+      <th>Experience</th>
+      <th>Bonus</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Alice</td>
+      <td>25.0</td>
+      <td>50000.0</td>
+      <td>HR</td>
+      <td>2</td>
+      <td>5000.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Bob</td>
+      <td>30.0</td>
+      <td>60000.0</td>
+      <td>Finance</td>
+      <td>5</td>
+      <td>6000.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Charlie</td>
+      <td>31.5</td>
+      <td>55000.0</td>
+      <td>IT</td>
+      <td>3</td>
+      <td>5500.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>David</td>
+      <td>45.0</td>
+      <td>65000.0</td>
+      <td>Finance</td>
+      <td>10</td>
+      <td>6500.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Eva</td>
+      <td>28.0</td>
+      <td>60000.0</td>
+      <td>HR</td>
+      <td>4</td>
+      <td>6000.0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="highlight"><pre><span></span><code><span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;cleaned_employee_data.csv&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Saved to cleaned_employee_data.csv&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>Saved to cleaned_employee_data.csv
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>
+</code></pre></div>
+
+<hr>
+<p><strong>Score: 20</strong></p>
+<p class="subheader">Category: <a href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/category/basics.html">basics</a>
+
+</p>
+
+
+
+
+</article>
+    </div>
+    <!-- End Main Content -->
+
+    <!-- Sidebar -->
+    <aside class="large-3 columns">
+        <h5 class="sidebar-title">Site</h5>
+        <ul class="side-nav">
+            <li><a href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/archives.html">Archives</a>
+            <li><a href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/tags.html">Tags</a>
+        </ul>
+
+		
+        <h5 class="sidebar-title">Categories</h5>
+        <ul class="side-nav">
+            <li><a href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/category/basics.html">basics</a></li>
+            <li><a href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/category/pandas-work.html">pandas-work</a></li>
+   
+        </ul>
+
+		
+        <h5 class="sidebar-title">Social</h5>
+        <ul class="side-nav">
+            <li><a href="https://github.com/<yourusername>/">GitHub</a></li>
+            <li><a href="<linkedin handle>">LinkedIn</a></li>
+        </ul>
+
+    </aside> <!-- End Sidebar -->
+
+</div> <!-- End Main Content and Sidebar -->
+
+
+<!-- Footer -->
+<footer class="row">
+    <div class="large-12 columns">
+        <hr />
+        <div class="row">
+            <div class="large-6 columns">
+              <!--                  <p>My Python Notes by Fahd</p> -->
+            </div>
+            </div>
+    </div>
+</footer>
+</body>
+</html>
