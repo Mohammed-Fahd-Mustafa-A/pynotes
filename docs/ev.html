@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8" />
+    <!-- Set the viewport width to device width for mobile -->
+    <meta name="viewport" content="width=device-width" />
+
+    <title>Ev</title>
+
+    <link rel="stylesheet" href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/theme/css/normalize.css" />
+    <link rel="stylesheet" href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/theme/css/foundation.min.css" />
+    <link rel="stylesheet" href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/theme/css/style.css" />
+    <link rel="stylesheet" href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/theme/css/pygments.css" />	
+    <script src="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/theme/js/modernizr.js"></script>
+</head>
+
+<body>
+
+<!-- Nav Bar -->
+<nav>
+<div class="top-bar">
+<div class="row">
+    <div class="large-9 large-centered columns">
+	    <h1><a href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes">My Python Notes</a></h1>
+    </div>
+</div>
+</div>
+
+<!-- Show menu items and pages -->
+<div class="row">
+<div class="large-9 columns">
+    <ul class="button-group navigation">
+
+    </ul>
+</div>
+</div>
+</nav>
+<!-- End Nav -->
+
+
+<!-- Main Page Content and Sidebar -->
+<div class="row">
+
+    <!-- Main Blog Content -->
+    <div class="large-9 columns">
+<article>
+    <header>
+        <h3 class="article-title"><a href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/ev.html" rel="bookmark"
+        title="Permalink to Ev">Ev</a></h3>
+    </header>
+
+<h6 class="subheader" title="2025-06-29T00:00:00-04:00">Sun 29 June 2025
+</h6>
+
+
+    <div class="highlight"><pre><span></span><code><span class="c1"># Block 1: Import necessary libraries</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">plotly.express</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">px</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="c1"># Block 2: Load the dataset</span>
+<span class="c1"># Sample EV adoption dataset (can replace with real one)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;Country&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;USA&#39;</span><span class="p">,</span> <span class="s1">&#39;China&#39;</span><span class="p">,</span> <span class="s1">&#39;Norway&#39;</span><span class="p">,</span> <span class="s1">&#39;Germany&#39;</span><span class="p">,</span> <span class="s1">&#39;UK&#39;</span><span class="p">,</span> <span class="s1">&#39;India&#39;</span><span class="p">,</span> <span class="s1">&#39;France&#39;</span><span class="p">,</span> <span class="s1">&#39;Canada&#39;</span><span class="p">,</span> <span class="s1">&#39;Netherlands&#39;</span><span class="p">,</span> <span class="s1">&#39;Japan&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;EV_Sales_2020&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">330000</span><span class="p">,</span> <span class="mi">1300000</span><span class="p">,</span> <span class="mi">105000</span><span class="p">,</span> <span class="mi">194000</span><span class="p">,</span> <span class="mi">175000</span><span class="p">,</span> <span class="mi">22000</span><span class="p">,</span> <span class="mi">111000</span><span class="p">,</span> <span class="mi">54000</span><span class="p">,</span> <span class="mi">90000</span><span class="p">,</span> <span class="mi">56000</span><span class="p">],</span>
+    <span class="s1">&#39;EV_Sales_2021&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">607000</span><span class="p">,</span> <span class="mi">3200000</span><span class="p">,</span> <span class="mi">153000</span><span class="p">,</span> <span class="mi">355000</span><span class="p">,</span> <span class="mi">310000</span><span class="p">,</span> <span class="mi">48000</span><span class="p">,</span> <span class="mi">165000</span><span class="p">,</span> <span class="mi">94000</span><span class="p">,</span> <span class="mi">115000</span><span class="p">,</span> <span class="mi">87000</span><span class="p">],</span>
+    <span class="s1">&#39;EV_Sales_2022&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">918000</span><span class="p">,</span> <span class="mi">6800000</span><span class="p">,</span> <span class="mi">174000</span><span class="p">,</span> <span class="mi">475000</span><span class="p">,</span> <span class="mi">420000</span><span class="p">,</span> <span class="mi">90000</span><span class="p">,</span> <span class="mi">200000</span><span class="p">,</span> <span class="mi">123000</span><span class="p">,</span> <span class="mi">130000</span><span class="p">,</span> <span class="mi">110000</span><span class="p">],</span>
+<span class="p">}</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">df</span>
+</code></pre></div>
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Country</th>
+      <th>EV_Sales_2020</th>
+      <th>EV_Sales_2021</th>
+      <th>EV_Sales_2022</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>USA</td>
+      <td>330000</td>
+      <td>607000</td>
+      <td>918000</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>China</td>
+      <td>1300000</td>
+      <td>3200000</td>
+      <td>6800000</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Norway</td>
+      <td>105000</td>
+      <td>153000</td>
+      <td>174000</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Germany</td>
+      <td>194000</td>
+      <td>355000</td>
+      <td>475000</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>UK</td>
+      <td>175000</td>
+      <td>310000</td>
+      <td>420000</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>India</td>
+      <td>22000</td>
+      <td>48000</td>
+      <td>90000</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>France</td>
+      <td>111000</td>
+      <td>165000</td>
+      <td>200000</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Canada</td>
+      <td>54000</td>
+      <td>94000</td>
+      <td>123000</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Netherlands</td>
+      <td>90000</td>
+      <td>115000</td>
+      <td>130000</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Japan</td>
+      <td>56000</td>
+      <td>87000</td>
+      <td>110000</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="highlight"><pre><span></span><code><span class="c1"># Block 3: Calculate Growth Rate</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;Growth_2020_2021&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">((</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;EV_Sales_2021&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;EV_Sales_2020&quot;</span><span class="p">])</span> <span class="o">/</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;EV_Sales_2020&quot;</span><span class="p">])</span> <span class="o">*</span> <span class="mi">100</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;Growth_2021_2022&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">((</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;EV_Sales_2022&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;EV_Sales_2021&quot;</span><span class="p">])</span> <span class="o">/</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;EV_Sales_2021&quot;</span><span class="p">])</span> <span class="o">*</span> <span class="mi">100</span>
+<span class="n">df</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</code></pre></div>
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Country</th>
+      <th>EV_Sales_2020</th>
+      <th>EV_Sales_2021</th>
+      <th>EV_Sales_2022</th>
+      <th>Growth_2020_2021</th>
+      <th>Growth_2021_2022</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>USA</td>
+      <td>330000</td>
+      <td>607000</td>
+      <td>918000</td>
+      <td>83.94</td>
+      <td>51.24</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>China</td>
+      <td>1300000</td>
+      <td>3200000</td>
+      <td>6800000</td>
+      <td>146.15</td>
+      <td>112.50</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Norway</td>
+      <td>105000</td>
+      <td>153000</td>
+      <td>174000</td>
+      <td>45.71</td>
+      <td>13.73</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Germany</td>
+      <td>194000</td>
+      <td>355000</td>
+      <td>475000</td>
+      <td>82.99</td>
+      <td>33.80</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>UK</td>
+      <td>175000</td>
+      <td>310000</td>
+      <td>420000</td>
+      <td>77.14</td>
+      <td>35.48</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>India</td>
+      <td>22000</td>
+      <td>48000</td>
+      <td>90000</td>
+      <td>118.18</td>
+      <td>87.50</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>France</td>
+      <td>111000</td>
+      <td>165000</td>
+      <td>200000</td>
+      <td>48.65</td>
+      <td>21.21</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Canada</td>
+      <td>54000</td>
+      <td>94000</td>
+      <td>123000</td>
+      <td>74.07</td>
+      <td>30.85</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Netherlands</td>
+      <td>90000</td>
+      <td>115000</td>
+      <td>130000</td>
+      <td>27.78</td>
+      <td>13.04</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Japan</td>
+      <td>56000</td>
+      <td>87000</td>
+      <td>110000</td>
+      <td>55.36</td>
+      <td>26.44</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="highlight"><pre><span></span><code><span class="c1"># Block 4: Bar chart - 2022 EV Sales by Country</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;EV_Sales_2022&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;Country&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s2">&quot;viridis&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;EV Sales in 2022 by Country&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;EV Units Sold&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Country&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">C</span><span class="o">:</span><span class="err">\</span><span class="n">Users</span><span class="err">\</span><span class="n">HP</span><span class="err">\</span><span class="n">AppData</span><span class="err">\</span><span class="k">Local</span><span class="err">\</span><span class="n">Temp</span><span class="err">\</span><span class="n">ipykernel_11660</span><span class="err">\</span><span class="mf">3378219073.</span><span class="n">py</span><span class="o">:</span><span class="mi">3</span><span class="o">:</span><span class="w"> </span><span class="n">FutureWarning</span><span class="o">:</span>
+
+<span class="n">Passing</span><span class="w"> </span><span class="n n-Quoted">`palette`</span><span class="w"> </span><span class="k">without</span><span class="w"> </span><span class="n">assigning</span><span class="w"> </span><span class="n n-Quoted">`hue`</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">deprecated</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">removed</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">v0</span><span class="mf">.14.0</span><span class="p">.</span><span class="w"> </span><span class="n">Assign</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n n-Quoted">`y`</span><span class="w"> </span><span class="n">variable</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n n-Quoted">`hue`</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="k">set</span><span class="w"> </span><span class="n n-Quoted">`legend=False`</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">same</span><span class="w"> </span><span class="n">effect</span><span class="p">.</span>
+
+<span class="w">  </span><span class="n">sns</span><span class="p">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;EV_Sales_2022&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="o">=</span><span class="s2">&quot;Country&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span><span class="w"> </span><span class="n">palette</span><span class="o">=</span><span class="s2">&quot;viridis&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p><img alt="png" src="/pynotes/images/EV_3_1.png"></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Block 5: Line plot - Year-wise EV sales</span>
+<span class="n">df_long</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">melt</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">id_vars</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Country&#39;</span><span class="p">],</span> <span class="n">value_vars</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;EV_Sales_2020&#39;</span><span class="p">,</span> <span class="s1">&#39;EV_Sales_2021&#39;</span><span class="p">,</span> <span class="s1">&#39;EV_Sales_2022&#39;</span><span class="p">],</span>
+                  <span class="n">var_name</span><span class="o">=</span><span class="s1">&#39;Year&#39;</span><span class="p">,</span> <span class="n">value_name</span><span class="o">=</span><span class="s1">&#39;EV_Sales&#39;</span><span class="p">)</span>
+<span class="n">df_long</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_long</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;(\d+)&#39;</span><span class="p">)</span>  <span class="c1"># &lt;-- fixed here</span>
+<span class="n">df_long</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_long</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df_long</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;Year&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;EV_Sales&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;Country&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;EV Sales Over Years&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;EV Units Sold&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+
+<p><img alt="png" src="/pynotes/images/EV_4_0.png"></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Block 6: Heatmap for growth percentages</span>
+<span class="n">growth_data</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s2">&quot;Country&quot;</span><span class="p">,</span> <span class="s2">&quot;Growth_2020_2021&quot;</span><span class="p">,</span> <span class="s2">&quot;Growth_2021_2022&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;Country&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">growth_data</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;YlGnBu&quot;</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;.1f&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;EV Sales Growth Percentage (2020–2022)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+
+<p><img alt="png" src="/pynotes/images/EV_5_0.png"></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Block 7: Top 5 countries by 2022 EV sales</span>
+<span class="n">top5</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s2">&quot;EV_Sales_2022&quot;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">top5</span><span class="p">[[</span><span class="s1">&#39;Country&#39;</span><span class="p">,</span> <span class="s1">&#39;EV_Sales_2022&#39;</span><span class="p">]]</span>
+</code></pre></div>
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Country</th>
+      <th>EV_Sales_2022</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>China</td>
+      <td>6800000</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>USA</td>
+      <td>918000</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Germany</td>
+      <td>475000</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>UK</td>
+      <td>420000</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>France</td>
+      <td>200000</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="highlight"><pre><span></span><code><span class="c1"># Block 8: Pie chart of market share (2022)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">pie</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;EV_Sales_2022&quot;</span><span class="p">],</span> <span class="n">labels</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Country&quot;</span><span class="p">],</span> <span class="n">autopct</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%1.1f%%</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">startangle</span><span class="o">=</span><span class="mi">140</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Global Market Share of EV Sales (2022)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+
+<p><img alt="png" src="/pynotes/images/EV_7_0.png"></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Block 9: Scatter plot - 2022 vs Growth</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;EV_Sales_2022&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;Growth_2021_2022&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;Country&quot;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;2022 Sales vs Growth (2021–2022)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;EV Sales 2022&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Growth %&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+
+<p><img alt="png" src="/pynotes/images/EV_8_0.png"></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Block 10: Interactive Plotly bar chart</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;Country&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;EV_Sales_2020&#39;</span><span class="p">,</span> <span class="s1">&#39;EV_Sales_2021&#39;</span><span class="p">,</span> <span class="s1">&#39;EV_Sales_2022&#39;</span><span class="p">],</span>
+             <span class="n">title</span><span class="o">=</span><span class="s1">&#39;EV Sales by Country (2020–2022)&#39;</span><span class="p">,</span> <span class="n">barmode</span><span class="o">=</span><span class="s1">&#39;group&#39;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="c1"># Block 11: Add average sales column</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;Average_Sales&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s2">&quot;EV_Sales_2020&quot;</span><span class="p">,</span> <span class="s2">&quot;EV_Sales_2021&quot;</span><span class="p">,</span> <span class="s2">&quot;EV_Sales_2022&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[[</span><span class="s2">&quot;Country&quot;</span><span class="p">,</span> <span class="s2">&quot;Average_Sales&quot;</span><span class="p">]]</span>
+</code></pre></div>
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Country</th>
+      <th>Average_Sales</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>USA</td>
+      <td>618333</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>China</td>
+      <td>3766666</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Norway</td>
+      <td>144000</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Germany</td>
+      <td>341333</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>UK</td>
+      <td>301666</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>India</td>
+      <td>53333</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>France</td>
+      <td>158666</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Canada</td>
+      <td>90333</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Netherlands</td>
+      <td>111666</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Japan</td>
+      <td>84333</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="highlight"><pre><span></span><code><span class="c1"># Block 12: Highlight countries with below-average growth</span>
+<span class="n">threshold</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Growth_2021_2022&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">below_avg</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Growth_2021_2022&quot;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">threshold</span><span class="p">]</span>
+<span class="n">below_avg</span><span class="p">[[</span><span class="s2">&quot;Country&quot;</span><span class="p">,</span> <span class="s2">&quot;Growth_2021_2022&quot;</span><span class="p">]]</span>
+</code></pre></div>
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Country</th>
+      <th>Growth_2021_2022</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2</th>
+      <td>Norway</td>
+      <td>13.725490</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Germany</td>
+      <td>33.802817</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>UK</td>
+      <td>35.483871</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>France</td>
+      <td>21.212121</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Canada</td>
+      <td>30.851064</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Netherlands</td>
+      <td>13.043478</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Japan</td>
+      <td>26.436782</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="highlight"><pre><span></span><code><span class="c1"># Block 13: Correlation heatmap</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">corr</span><span class="p">(</span><span class="n">numeric_only</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;coolwarm&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Correlation Between Numeric Features&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+
+<p><img alt="png" src="/pynotes/images/EV_12_0.png"></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Block 14: Boxplot of sales over years</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df_long</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;Year&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;EV_Sales&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Distribution of EV Sales Over the Years&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+
+<p><img alt="png" src="/pynotes/images/EV_13_0.png"></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Block 15: Save results to CSV</span>
+<span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;ev_sales_analysis.csv&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Data saved to ev_sales_analysis.csv&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>Data saved to ev_sales_analysis.csv
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>
+</code></pre></div>
+
+<hr>
+<p><strong>Score: 15</strong></p>
+<p class="subheader">Category: <a href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/category/basics.html">basics</a>
+
+</p>
+
+
+
+
+</article>
+    </div>
+    <!-- End Main Content -->
+
+    <!-- Sidebar -->
+    <aside class="large-3 columns">
+        <h5 class="sidebar-title">Site</h5>
+        <ul class="side-nav">
+            <li><a href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/archives.html">Archives</a>
+            <li><a href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/tags.html">Tags</a>
+        </ul>
+
+		
+        <h5 class="sidebar-title">Categories</h5>
+        <ul class="side-nav">
+            <li><a href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/category/basics.html">basics</a></li>
+            <li><a href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/category/pandas-work.html">pandas-work</a></li>
+   
+        </ul>
+
+		
+        <h5 class="sidebar-title">Social</h5>
+        <ul class="side-nav">
+            <li><a href="https://github.com/<yourusername>/">GitHub</a></li>
+            <li><a href="<linkedin handle>">LinkedIn</a></li>
+        </ul>
+
+    </aside> <!-- End Sidebar -->
+
+</div> <!-- End Main Content and Sidebar -->
+
+
+<!-- Footer -->
+<footer class="row">
+    <div class="large-12 columns">
+        <hr />
+        <div class="row">
+            <div class="large-6 columns">
+              <!--                  <p>My Python Notes by Fahd</p> -->
+            </div>
+            </div>
+    </div>
+</footer>
+</body>
+</html>
