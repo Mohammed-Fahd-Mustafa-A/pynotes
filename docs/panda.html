@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8" />
+    <!-- Set the viewport width to device width for mobile -->
+    <meta name="viewport" content="width=device-width" />
+
+    <title>Panda</title>
+
+    <link rel="stylesheet" href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/theme/css/normalize.css" />
+    <link rel="stylesheet" href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/theme/css/foundation.min.css" />
+    <link rel="stylesheet" href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/theme/css/style.css" />
+    <link rel="stylesheet" href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/theme/css/pygments.css" />	
+    <script src="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/theme/js/modernizr.js"></script>
+</head>
+
+<body>
+
+<!-- Nav Bar -->
+<nav>
+<div class="top-bar">
+<div class="row">
+    <div class="large-9 large-centered columns">
+	    <h1><a href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes">My Python Notes</a></h1>
+    </div>
+</div>
+</div>
+
+<!-- Show menu items and pages -->
+<div class="row">
+<div class="large-9 columns">
+    <ul class="button-group navigation">
+
+    </ul>
+</div>
+</div>
+</nav>
+<!-- End Nav -->
+
+
+<!-- Main Page Content and Sidebar -->
+<div class="row">
+
+    <!-- Main Blog Content -->
+    <div class="large-9 columns">
+<article>
+    <header>
+        <h3 class="article-title"><a href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/panda.html" rel="bookmark"
+        title="Permalink to Panda">Panda</a></h3>
+    </header>
+
+<h6 class="subheader" title="2025-06-29T00:00:00-04:00">Sun 29 June 2025
+</h6>
+
+
+    <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;Name&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Alice&#39;</span><span class="p">,</span> <span class="s1">&#39;Bob&#39;</span><span class="p">,</span> <span class="s1">&#39;Charlie&#39;</span><span class="p">],</span> <span class="s1">&#39;Age&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">25</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">35</span><span class="p">]})</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>      Name  Age
+0    Alice   25
+1      Bob   30
+2  Charlie   35
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Name_Upper&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Name&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>  <span class="c1"># Now works because &#39;Name&#39; exists</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>      Name  Age Name_Upper
+0    Alice   25      ALICE
+1      Bob   30        BOB
+2  Charlie   35    CHARLIE
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Age_Next_Year&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Age&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>      Name  Age Name_Upper  Age_Next_Year
+0    Alice   25      ALICE             26
+1      Bob   30        BOB             31
+2  Charlie   35    CHARLIE             36
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">young_people</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Age&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">30</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">young_people</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>    Name  Age Name_Upper  Age_Next_Year
+0  Alice   25      ALICE             26
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;Age&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>      Name  Age Name_Upper  Age_Next_Year
+2  Charlie   35    CHARLIE             36
+1      Bob   30        BOB             31
+0    Alice   25      ALICE             26
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="c1"># Adding a department column for grouping</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Dept&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;HR&#39;</span><span class="p">,</span> <span class="s1">&#39;IT&#39;</span><span class="p">,</span> <span class="s1">&#39;HR&#39;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Dept&#39;</span><span class="p">)[</span><span class="s1">&#39;Age&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="nx">Dept</span>
+<span class="nx">HR</span><span class="w">    </span><span class="m m-Double">30.0</span>
+<span class="nx">IT</span><span class="w">    </span><span class="m m-Double">30.0</span>
+<span class="nx">Name</span><span class="p">:</span><span class="w"> </span><span class="nx">Age</span><span class="p">,</span><span class="w"> </span><span class="nx">dtype</span><span class="p">:</span><span class="w"> </span><span class="nx">float64</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Age_Squared&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Age&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>      Name  Age Name_Upper  Age_Next_Year Dept  Age_Squared
+0    Alice   25      ALICE             26   HR          625
+1      Bob   30        BOB             31   IT          900
+2  Charlie   35    CHARLIE             36   HR         1225
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Name&#39;</span><span class="p">:</span> <span class="s1">&#39;Full_Name&#39;</span><span class="p">})</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>  Full_Name  Age Name_Upper  Age_Next_Year Dept  Age_Squared
+0     Alice   25      ALICE             26   HR          625
+1       Bob   30        BOB             31   IT          900
+2   Charlie   35    CHARLIE             36   HR         1225
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Age_Squared&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>  Full_Name  Age Name_Upper  Age_Next_Year Dept
+0     Alice   25      ALICE             26   HR
+1       Bob   30        BOB             31   IT
+2   Charlie   35    CHARLIE             36   HR
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">filtered</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Age&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">28</span><span class="p">]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">filtered</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>  Full_Name  Age Name_Upper  Age_Next_Year Dept
+0       Bob   30        BOB             31   IT
+1   Charlie   35    CHARLIE             36   HR
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>  <span class="c1"># Random 2 rows</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>  Full_Name  Age Name_Upper  Age_Next_Year Dept
+2   Charlie   35    CHARLIE             36   HR
+1       Bob   30        BOB             31   IT
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Dept&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">())</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="nx">Dept</span>
+<span class="nx">HR</span><span class="w">    </span><span class="mi">2</span>
+<span class="nx">IT</span><span class="w">    </span><span class="mi">1</span>
+<span class="nx">Name</span><span class="p">:</span><span class="w"> </span><span class="nx">count</span><span class="p">,</span><span class="w"> </span><span class="nx">dtype</span><span class="p">:</span><span class="w"> </span><span class="nx">int64</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">mask</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Age&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">25</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Dept&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;HR&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">mask</span><span class="p">])</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>  Full_Name  Age Name_Upper  Age_Next_Year Dept
+2   Charlie   35    CHARLIE             36   HR
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Join_Date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">([</span><span class="s1">&#39;2022-01-01&#39;</span><span class="p">,</span> <span class="s1">&#39;2021-05-15&#39;</span><span class="p">,</span> <span class="s1">&#39;2023-03-10&#39;</span><span class="p">])</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Join_Year&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Join_Date&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">year</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>  Full_Name  Age Name_Upper  Age_Next_Year Dept  Join_Date  Join_Year
+0     Alice   25      ALICE             26   HR 2022-01-01       2022
+1       Bob   30        BOB             31   IT 2021-05-15       2021
+2   Charlie   35    CHARLIE             36   HR 2023-03-10       2023
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">memory_usage</span><span class="p">())</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="nx">Index</span><span class="w">            </span><span class="mi">132</span>
+<span class="nx">Full_Name</span><span class="w">         </span><span class="mi">24</span>
+<span class="nx">Age</span><span class="w">               </span><span class="mi">24</span>
+<span class="nx">Name_Upper</span><span class="w">        </span><span class="mi">24</span>
+<span class="nx">Age_Next_Year</span><span class="w">     </span><span class="mi">24</span>
+<span class="nx">Dept</span><span class="w">              </span><span class="mi">24</span>
+<span class="nx">Join_Date</span><span class="w">         </span><span class="mi">24</span>
+<span class="nx">Join_Year</span><span class="w">         </span><span class="mi">12</span>
+<span class="nx">dtype</span><span class="p">:</span><span class="w"> </span><span class="nx">int64</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>
+</code></pre></div>
+
+<hr>
+<p><strong>Score: 15</strong></p>
+<p class="subheader">Category: <a href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/category/basics.html">basics</a>
+
+</p>
+
+
+
+
+</article>
+    </div>
+    <!-- End Main Content -->
+
+    <!-- Sidebar -->
+    <aside class="large-3 columns">
+        <h5 class="sidebar-title">Site</h5>
+        <ul class="side-nav">
+            <li><a href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/archives.html">Archives</a>
+            <li><a href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/tags.html">Tags</a>
+        </ul>
+
+		
+        <h5 class="sidebar-title">Categories</h5>
+        <ul class="side-nav">
+            <li><a href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/category/basics.html">basics</a></li>
+            <li><a href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/category/pandas-work.html">pandas-work</a></li>
+   
+        </ul>
+
+		
+        <h5 class="sidebar-title">Social</h5>
+        <ul class="side-nav">
+            <li><a href="https://github.com/<yourusername>/">GitHub</a></li>
+            <li><a href="<linkedin handle>">LinkedIn</a></li>
+        </ul>
+
+    </aside> <!-- End Sidebar -->
+
+</div> <!-- End Main Content and Sidebar -->
+
+
+<!-- Footer -->
+<footer class="row">
+    <div class="large-12 columns">
+        <hr />
+        <div class="row">
+            <div class="large-6 columns">
+              <!--                  <p>My Python Notes by Fahd</p> -->
+            </div>
+            </div>
+    </div>
+</footer>
+</body>
+</html>
