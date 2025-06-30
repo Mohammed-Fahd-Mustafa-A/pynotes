@@ -194,6 +194,41 @@ def square …</code></pre></div><p class="subheader">Category: <a href="https:/
 
 
             <article>
+                <a href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/meganotes-4.html"><h3 class="article-title">Meganotes 4</h3></a>
+<h6 class="subheader" title="2025-06-30T00:00:00-04:00">Mon 30 June 2025
+</h6>
+
+
+<div class="highlight"><pre><span></span><code><span class="gh">#</span> Topic: Recursion
+def fact(n): return 1 if n==0 else n*fact(n-1)
+print(fact(5))
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="c1"># Topic: OOP</span>
+<span class="k">class</span> <span class="n">Student:</span>
+    <span class="n">def</span> <span class="n">__init__</span>(<span class="nb">self</span>, <span class="nb">name</span>): <span class="nb">self</span>.<span class="nb">name</span> = <span class="nb">name</span>
+<span class="nb">s</span> = <span class="n">Student</span>(<span class="s">&#39;Fahd&#39;</span>)
+<span class="nb">print</span>(<span class="nb">s</span>.<span class="nb">name</span>)
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="c1"># Topic: Web Scraping</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">bs4</span><span class="w"> </span><span class="kn">import</span> <span class="n">BeautifulSoup</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;https://example.com&#39;</span><span class="p">)</span>
+<span class="n">soup …</span></code></pre></div><p class="subheader">Category: <a href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/category/basics.html">basics</a>
+
+</p>
+
+
+
+                <a class="button radius secondary small right" href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/meganotes-4.html">Read More</a>
+                <hr  class="gradient"/>
+            </article>
+
+        
+
+
+            <article>
                 <a href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/movies.html"><h3 class="article-title">Movies</h3></a>
 <h6 class="subheader" title="2025-06-30T00:00:00-04:00">Mon 30 June 2025
 </h6>
@@ -381,45 +416,9 @@ print(factorial(5))
                 <hr  class="gradient"/>
             </article>
 
-        
-
-
-            <article>
-                <a href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/pynotes-advanced-2.html"><h3 class="article-title">Pynotes Advanced 2</h3></a>
-<h6 class="subheader" title="2025-06-30T00:00:00-04:00">Mon 30 June 2025
-</h6>
-
-
-<div class="highlight"><pre><span></span><code>#<span class="w"> </span><span class="nv">Topic</span>:<span class="w"> </span><span class="nv">Recursion</span>
-<span class="nv">def</span><span class="w"> </span><span class="nv">fib</span><span class="ss">(</span><span class="nv">n</span><span class="ss">)</span>:
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nv">n</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">1</span>:<span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nv">n</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nv">fib</span><span class="ss">(</span><span class="nv">n</span><span class="o">-</span><span class="mi">1</span><span class="ss">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nv">fib</span><span class="ss">(</span><span class="nv">n</span><span class="o">-</span><span class="mi">2</span><span class="ss">)</span>
-<span class="nv">print</span><span class="ss">(</span><span class="nv">fib</span><span class="ss">(</span><span class="mi">5</span><span class="ss">))</span>
-</code></pre></div>
-
-<div class="highlight"><pre><span></span><code><span class="c1"># Topic: Web Scraping</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">bs4</span><span class="w"> </span><span class="kn">import</span> <span class="n">BeautifulSoup</span>
-<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;https://example.com&#39;</span><span class="p">)</span>
-<span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="s1">&#39;html.parser&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">soup</span><span class="o">.</span><span class="n">title</span><span class="o">.</span><span class="n">string</span><span class="p">)</span>
-</code></pre></div>
-
-<div class="highlight"><pre><span></span><code>#<span class="w"> </span><span class="nv">Topic</span>:<span class="w"> </span><span class="nv">Loops</span>
-<span class="nv">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
-<span class="k">while …</span></code></pre></div><p class="subheader">Category: <a href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/category/basics.html">basics</a>
-
-</p>
-
-
-
-                <a class="button radius secondary small right" href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/pynotes-advanced-2.html">Read More</a>
-                <hr  class="gradient"/>
-            </article>
-
             <!-- /#posts-list -->
 <div class="pagination-centered">
-<h6 class="subheader">Page 2 of 3</h6>
+<h6 class="subheader">Page 2 of 4</h6>
 
 <p>
             <a href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/author/your-name.html">&laquo; Prev</a>
