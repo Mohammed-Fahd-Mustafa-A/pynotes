@@ -150,6 +150,46 @@
 
 
             <article>
+                <a href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/note003.html"><h3 class="article-title">Note003</h3></a>
+<h6 class="subheader" title="2025-06-30T00:00:00-04:00">Mon 30 June 2025
+</h6>
+
+
+<div class="highlight"><pre><span></span><code><span class="c1"># Topic: NumPy</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="kp">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code># Topic: Dictionaries &amp; Sets
+s = {1,2,3}
+s.add(4)
+print(s)
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="c1"># Topic: Matplotlib</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">([</span><span class="s1">&#39;A&#39;</span><span class="p">,</span><span class="s1">&#39;B&#39;</span><span class="p">],</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span><span class="mi">20</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code># Topic: Exceptions
+try:
+    print(10/0)
+except ZeroDivisionError:
+    print(&#39;Cannot divide …</code></pre></div><p class="subheader">Category: <a href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/category/basics.html">basics</a>
+
+</p>
+
+
+
+                <a class="button radius secondary small right" href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/note003.html">Read More</a>
+                <hr  class="gradient"/>
+            </article>
+
+        
+
+
+            <article>
                 <a href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/notes002.html"><h3 class="article-title">Notes002</h3></a>
 <h6 class="subheader" title="2025-06-30T00:00:00-04:00">Mon 30 June 2025
 </h6>
@@ -351,35 +391,6 @@ print(nums)
 
 
                 <a class="button radius secondary small right" href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/quiz.html">Read More</a>
-                <hr  class="gradient"/>
-            </article>
-
-        
-
-
-            <article>
-                <a href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/ratings.html"><h3 class="article-title">Ratings</h3></a>
-<h6 class="subheader" title="2025-06-30T00:00:00-04:00">Mon 30 June 2025
-</h6>
-
-
-<div class="highlight"><pre><span></span><code><span class="c1"># 1. Import required libraries</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
-</code></pre></div>
-
-<div class="highlight"><pre><span></span><code><span class="c1"># 2. Create a sample movie dataset</span>
-<span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Inception&quot;</span><span class="p">,</span> <span class="s2">&quot;Titanic&quot;</span><span class="p">,</span> <span class="s2">&quot;Avengers&quot;</span><span class="p">,</span> <span class="s2">&quot;Shrek&quot;</span><span class="p">,</span> <span class="s2">&quot;Up&quot;</span><span class="p">,</span> <span class="s2">&quot;Coco&quot;</span><span class="p">,</span> <span class="s2">&quot;Joker&quot;</span><span class="p">,</span> <span class="s2">&quot;Frozen&quot;</span><span class="p">,</span> <span class="s2">&quot;Toy Story&quot;</span><span class="p">,</span> <span class="s2">&quot;Tenet&quot;</span><span class="p">],</span>
-    <span class="s2">&quot;genre&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Sci-Fi&quot;</span><span class="p">,</span> <span class="s2">&quot;Romance&quot;</span><span class="p">,</span> <span class="s2">&quot;Action&quot;</span><span class="p">,</span> <span class="s2">&quot;Animation&quot;</span><span class="p">,</span> <span class="s2">&quot;Animation&quot;</span><span class="p">,</span> <span class="s2">&quot;Animation&quot;</span><span class="p">,</span> <span class="s2">&quot;Drama&quot;</span><span class="p">,</span> <span class="s2">&quot;Animation&quot;</span><span class="p">,</span> <span class="s2">&quot;Animation&quot;</span><span class="p">,</span> <span class="s2">&quot;Sci-Fi&quot;</span><span class="p">],</span>
-    <span class="s2">&quot;year&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">2010</span><span class="p">,</span> <span class="mi">1997 …</span></code></pre></div><p class="subheader">Category: <a href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/category/basics.html">basics</a>
-
-</p>
-
-
-
-                <a class="button radius secondary small right" href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/ratings.html">Read More</a>
                 <hr  class="gradient"/>
             </article>
 
