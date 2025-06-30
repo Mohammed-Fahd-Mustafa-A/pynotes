@@ -47,6 +47,84 @@
 
 
             <article>
+                <a href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/panda.html"><h3 class="article-title">Panda</h3></a>
+<h6 class="subheader" title="2025-06-30T00:00:00-04:00">Mon 30 June 2025
+</h6>
+
+
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;Name&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Alice&#39;</span><span class="p">,</span> <span class="s1">&#39;Bob&#39;</span><span class="p">,</span> <span class="s1">&#39;Charlie&#39;</span><span class="p">],</span> <span class="s1">&#39;Age&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">25</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">35</span><span class="p">]})</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>      Name  Age
+0    Alice   25
+1      Bob   30
+2  Charlie   35
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Name_Upper&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Name&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>  <span class="c1"># Now works because &#39;Name&#39; exists</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>      Name  Age Name_Upper
+0    Alice   25      ALICE
+1      Bob …</code></pre></div><p class="subheader">Category: <a href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/category/basics.html">basics</a>
+
+</p>
+
+
+
+                <a class="button radius secondary small right" href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/panda.html">Read More</a>
+                <hr  class="gradient"/>
+            </article>
+
+        
+
+
+            <article>
+                <a href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/pynotes-advanced-1.html"><h3 class="article-title">Pynotes Advanced 1</h3></a>
+<h6 class="subheader" title="2025-06-30T00:00:00-04:00">Mon 30 June 2025
+</h6>
+
+
+<div class="highlight"><pre><span></span><code>#<span class="w"> </span><span class="nv">Topic</span>:<span class="w"> </span><span class="nv">Basics</span>
+<span class="nv">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">7</span>
+<span class="nv">print</span><span class="ss">(</span><span class="s1">&#39;Odd&#39;</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="nv">x</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="s1">&#39;Even&#39;</span><span class="ss">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="gh">#</span> Topic: Functions
+def factorial(n):
+    return 1 if n==0 else n * factorial(n-1)
+print(factorial(5))
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="err">#</span><span class="w"> </span><span class="nl">Topic</span><span class="p">:</span><span class="w"> </span><span class="n">Decorators</span>
+<span class="n">def</span><span class="w"> </span><span class="n">decorator</span><span class="p">(</span><span class="n">fn</span><span class="p">)</span><span class="err">:</span>
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">wrapper</span><span class="p">()</span><span class="err">:</span>
+<span class="w">        </span><span class="k">print</span><span class="p">(</span><span class="s1">&#39;Before&#39;</span><span class="p">)</span>
+<span class="w">        </span><span class="n">fn</span><span class="p">()</span>
+<span class="w">        </span><span class="k">print</span><span class="p">(</span><span class="s1">&#39;After&#39;</span><span class="p">)</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">wrapper</span>
+<span class="nv">@decorator</span>
+<span class="n">def</span><span class="w"> </span><span class="n">say</span><span class="p">()</span><span class="err">:</span><span class="w"> </span><span class="k">print</span><span class="p">(</span><span class="s1">&#39;Hi&#39;</span><span class="p">)</span>
+<span class="n">say</span><span class="p">()</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="c1"># Topic: Pandas …</span></code></pre></div><p class="subheader">Category: <a href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/category/basics.html">basics</a>
+
+</p>
+
+
+
+                <a class="button radius secondary small right" href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/pynotes-advanced-1.html">Read More</a>
+                <hr  class="gradient"/>
+            </article>
+
+        
+
+
+            <article>
                 <a href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/pynotes-advanced-2.html"><h3 class="article-title">Pynotes Advanced 2</h3></a>
 <h6 class="subheader" title="2025-06-30T00:00:00-04:00">Mon 30 June 2025
 </h6>
@@ -290,60 +368,6 @@ print(s)
 
 
                 <a class="button radius secondary small right" href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/student.html">Read More</a>
-                <hr  class="gradient"/>
-            </article>
-
-        
-
-
-            <article>
-                <a href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/test.html"><h3 class="article-title">Test</h3></a>
-<h6 class="subheader" title="2025-06-30T00:00:00-04:00">Mon 30 June 2025
-</h6>
-
-
-<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello World&quot;</span><span class="p">)</span>
-</code></pre></div>
-
-<div class="highlight"><pre><span></span><code>Hello World
-</code></pre></div>
-
-<div class="highlight"><pre><span></span><code>
-</code></pre></div>
-
-<hr>
-<p><strong>Score: 0</strong></p><p class="subheader">Category: <a href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/category/basics.html">basics</a>
-
-</p>
-
-
-
-                <a class="button radius secondary small right" href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/test.html">Read More</a>
-                <hr  class="gradient"/>
-            </article>
-
-        
-
-
-            <article>
-                <a href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/titanic.html"><h3 class="article-title">Titanic</h3></a>
-<h6 class="subheader" title="2025-06-30T00:00:00-04:00">Mon 30 June 2025
-</h6>
-
-
-<div class="highlight"><pre><span></span><code><span class="n">pip</span> <span class="n">install</span> <span class="n">scikit</span><span class="o">-</span><span class="n">learn</span>
-</code></pre></div>
-
-<div class="highlight"><pre><span></span><code><span class="c">Collecting scikit</span><span class="nb">-</span><span class="c">learn</span>
-<span class="c">  Downloading scikit_learn</span><span class="nb">-</span><span class="c">1</span><span class="nt">.</span><span class="c">7</span><span class="nt">.</span><span class="c">0</span><span class="nb">-</span><span class="c">cp312</span><span class="nb">-</span><span class="c">cp312</span><span class="nb">-</span><span class="c">win_amd64</span><span class="nt">.</span><span class="c">whl</span><span class="nt">.</span><span class="c">metadata (14 kB)</span>
-<span class="c">Requirement already satisfied: numpy</span><span class="nv">&gt;</span><span class="c">=1</span><span class="nt">.</span><span class="c">22</span><span class="nt">.</span><span class="c">0 in c:\users\hp\miniconda3\envs\py312\lib\site</span><span class="nb">-</span><span class="c">packages (from scikit</span><span class="nb">-</span><span class="c">learn) (2</span><span class="nt">.</span><span class="c">3</span><span class="nt">.</span><span class="c">1)</span>
-<span class="c">Collecting scipy</span><span class="nv">&gt;</span><span class="c">=1</span><span class="nt">.</span><span class="c">8</span><span class="nt">.</span><span class="c">0 (from scikit</span><span class="nb">-</span><span class="c">learn …</span></code></pre></div><p class="subheader">Category: <a href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/category/basics.html">basics</a>
-
-</p>
-
-
-
-                <a class="button radius secondary small right" href="https://Mohammed-Fahd-Mustafa-A.github.io/pynotes/titanic.html">Read More</a>
                 <hr  class="gradient"/>
             </article>
 
