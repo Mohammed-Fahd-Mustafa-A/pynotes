@@ -1,6 +1,6 @@
 ---
 title: Movies
-date: 2025-06-29
+date: 2025-06-30
 author: Your Name
 cell_count: 9
 score: 5
